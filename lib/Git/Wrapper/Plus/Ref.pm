@@ -72,7 +72,7 @@ version 0.001000
 
 Return the fully qualified ref name for this object.
 
-This exists so that L<< C<name>|/name >> can be made specialised in a subclass, for instance, a C<branch>
+This exists so that L<< C<name>|/name >> can be made specialized in a subclass, for instance, a C<branch>
 may have C<name> as C<master>, and C<refname> will be overloaded to return C<refs/heads/master>.
 
 This is then used by the L<< C<sha1>|/sha1 >> method to resolve the C<ref> name to a C<sha1>
