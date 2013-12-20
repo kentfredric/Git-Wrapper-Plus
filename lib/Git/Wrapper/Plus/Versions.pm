@@ -10,7 +10,7 @@ BEGIN {
   $Git::Wrapper::Plus::Versions::VERSION = '0.001000';
 }
 
-# ABSTRACT: Analyse and compare git versions
+# ABSTRACT: Analyze and compare git versions
 
 use Moo;
 use Sort::Versions;
@@ -43,7 +43,7 @@ __END__
 
 =head1 NAME
 
-Git::Wrapper::Plus::Versions - Analyse and compare git versions
+Git::Wrapper::Plus::Versions - Analyze and compare git versions
 
 =head1 VERSION
 
