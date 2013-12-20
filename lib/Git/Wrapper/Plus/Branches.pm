@@ -90,7 +90,10 @@ sub _current_branch_name {
     die $e;
   };
   if ($ok) {
-    return map { $_ =~ s{\A refs/heads/ }{}msx; $_ } @current_names;
+    for (@current_names) {
+      $_ =~ s{\A refs/heads/ }{}msx;
+    }
+    return @current_names;
   }
   return;
 
