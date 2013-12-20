@@ -30,6 +30,7 @@ t/00-compile/lib_Git_Wrapper_Plus_pm.t
 t/00-report-git-version.t
 t/000-report-versions-tiny.t
 t/branches/basic.t
+t/plus/basic.t
 t/refs/basic_branches.t
 t/refs/basic_tags.t
 t/tags/basic.t

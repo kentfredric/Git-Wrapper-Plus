@@ -41,6 +41,12 @@ DESCRIPTION
     And there's more common failures, like some commands simply don't exist
     on old gits.
 
+ATTRIBUTES
+  "git"
+  "refs"
+  "tags"
+  "branches"
+  "versions"
 MODULES
   "Git::Wrapper::Plus::Refs"
     "Git::Wrapper::Plus::Refs" is a low level interface to refs.
@@ -58,13 +64,25 @@ MODULES
 
     This builds upon "::Refs"
 
+  "Git::Wrapper::Plus::Versions"
+    "Git::Wrapper::Plus::Versions" is a simple interface for comparing git
+    versions.
+
 COMMON INTERFACE
+    You don't have to use this interface, and its probably more convenient
+    to use one of the other classes contained in this distribution.
+
+    However, this top level object is usable if you want an easier way to
+    use many of the contained tools without having to pass "Git::Wrapper"
+    instances everywhere.
+
         use Git::Wrapper::Plus;
 
-        my $plus = Git::Wrapper::Plus->new( '.' );
-        $plus->refs     # Git::Wrapper::Plus::Refs
-        $plus->branches # Git::Wrapper::Plus::Branches
-        $plus->tags     # Git::Wrapper::Plus::Tags
+        my $plus = Git::Wrapper::Plus->new('.');
+        $plus->refs        # Git::Wrapper::Plus::Refs
+        $plus->branches    # Git::Wrapper::Plus::Branches
+        $plus->tags        # Git::Wrapper::Plus::Tags
+        $plus->versions    # Git::Wrapper::Plus::Versions
 
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
