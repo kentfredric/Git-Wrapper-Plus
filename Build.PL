@@ -12,7 +12,7 @@ my %module_build_args = (
   "configure_requires" => {
     "Module::Build" => "0.4203"
   },
-  "dist_abstract" => "A Toolkit for working with Git::Wrapper in an OO Way.",
+  "dist_abstract" => "A Toolkit for working with Git::Wrapper in an Object Oriented Way.",
   "dist_author" => [
     "Kent Fredric <kentfredric\@gmail.com>"
   ],

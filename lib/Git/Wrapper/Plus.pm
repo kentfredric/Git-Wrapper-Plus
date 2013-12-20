@@ -9,7 +9,7 @@ BEGIN {
   $Git::Wrapper::Plus::VERSION = '0.001000';
 }
 
-# ABSTRACT: A Toolkit for working with Git::Wrapper in an OO Way.
+# ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
 
 
@@ -65,7 +65,7 @@ __END__
 
 =head1 NAME
 
-Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an OO Way.
+Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
 =head1 VERSION
 
@@ -74,11 +74,11 @@ version 0.001000
 =head1 DESCRIPTION
 
 Initially, I started off with C<Dist::Zilla::Util::> and friends, but I soon discovered so many quirks
-in C<git>, especially multi-version support, and that such a toolkit would be more useful independent.
+in C<git>, especially multiple-version support, and that such a toolkit would be more useful independent.
 
 So C<Git::Wrapper::Plus> is a collection of tools for using C<Git::Wrapper>, aiming to work on all versions of Git since at least Git C<1.3>.
 
-For instance, you probably don't realise this, but on older C<git>'s, 
+For instance, you probably don't realize this, but on older C<git>'s, 
 
     echo > file
     git add file
@@ -98,7 +98,7 @@ does nothing, because on Git 1.3, C<git add> is only for the addition to tree, n
 
 Is how it works there.
 
-And you'd have probably not realised this till you had a few smoke reports back with failures on old Gits.
+And you'd have probably not realized this till you had a few smoke reports back with failures on old Gits.
 
 And there's more common failures, like some commands simply don't exist on old gits.
 
