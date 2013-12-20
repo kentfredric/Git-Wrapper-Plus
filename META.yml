@@ -3,10 +3,7 @@ abstract: 'A Toolkit for working with Git::Wrapper in an OO Way.'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:
-  Git::Wrapper: 0
   Module::Build: 0.4203
-  Path::Tiny: 0
-  Sort::Versions: 0
   Test::Fatal: 0
   Test::More: 1.001002
 configure_requires:
@@ -22,6 +19,12 @@ provides:
   Git::Wrapper::Plus:
     file: lib/Git/Wrapper/Plus.pm
     version: 0.001000
+  Git::Wrapper::Plus::Branch:
+    file: lib/Git/Wrapper/Plus/Branch.pm
+    version: 0.001000
+  Git::Wrapper::Plus::Branches:
+    file: lib/Git/Wrapper/Plus/Branches.pm
+    version: 0.001000
   Git::Wrapper::Plus::Ref:
     file: lib/Git/Wrapper/Plus/Ref.pm
     version: 0.001000
@@ -34,10 +37,20 @@ provides:
   Git::Wrapper::Plus::Tags:
     file: lib/Git/Wrapper/Plus/Tags.pm
     version: 0.001000
+  Git::Wrapper::Plus::Tester:
+    file: lib/Git/Wrapper/Plus/Tester.pm
+    version: 0.001000
+  Git::Wrapper::Plus::Versions:
+    file: lib/Git/Wrapper/Plus/Versions.pm
+    version: 0.001000
 requires:
   Carp: 0
+  Git::Wrapper: 0
   Moo: 0
-  Moose: 0
+  Path::Tiny: 0
+  Scalar::Util: 0
+  Sort::Versions: 0
+  Try::Tiny: 0
   perl: 5.008
   strict: 0
   utf8: 0
@@ -92,9 +105,9 @@ x_BuiltWith:
     Git::Wrapper: 0.030
     Module::Build: 0.4203
     Moo: 1.003001
-    Moose: 2.1107
     Path::Tiny: 0.051
     Pod::Coverage::TrustPod: 0.100003
+    Scalar::Util: 1.35
     Sort::Versions: 1.5
     Test::CPAN::Changes: 0.27
     Test::CPAN::Meta: 0.23
@@ -103,6 +116,7 @@ x_BuiltWith:
     Test::More: 1.001002
     Test::Pod: 1.48
     Test::Pod::Coverage: 1.08
+    Try::Tiny: 0.18
     strict: 1.08
     utf8: 1.13
     version: 0.9904
@@ -229,10 +243,14 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Test::Compile::PerFile:
           file:
             - lib/Git/Wrapper/Plus.pm
+            - lib/Git/Wrapper/Plus/Branch.pm
+            - lib/Git/Wrapper/Plus/Branches.pm
             - lib/Git/Wrapper/Plus/Ref.pm
             - lib/Git/Wrapper/Plus/Refs.pm
             - lib/Git/Wrapper/Plus/Tag.pm
             - lib/Git/Wrapper/Plus/Tags.pm
+            - lib/Git/Wrapper/Plus/Tester.pm
+            - lib/Git/Wrapper/Plus/Versions.pm
           path_translator: base64_filter
           prefix: t/00-compile
           skip: []

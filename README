@@ -58,6 +58,14 @@ MODULES
 
     This builds upon "::Refs"
 
+COMMON INTERFACE
+        use Git::Wrapper::Plus;
+
+        my $plus = Git::Wrapper::Plus->new( '.' );
+        $plus->refs     # Git::Wrapper::Plus::Refs
+        $plus->branches # Git::Wrapper::Plus::Branches
+        $plus->tags     # Git::Wrapper::Plus::Tags
+
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 

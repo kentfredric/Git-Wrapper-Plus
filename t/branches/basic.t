@@ -6,7 +6,7 @@ use Test::More;
 use Git::Wrapper::Plus::Tester;
 use Test::Fatal qw(exception);
 use Git::Wrapper::Plus::Versions;
-use Git::Wrapper::Plus::Refs;
+use Git::Wrapper::Plus::Branches;
 
 my $t = Git::Wrapper::Plus::Tester->new();
 my $v = Git::Wrapper::Plus::Versions->new( git => $t->git );
@@ -25,15 +25,10 @@ $t->run_env(
       else {
         $wrapper->init_db();
       }
-      note 'touch';
+
       $file->touch;
-
-      note 'git add ' . $rfile;
       $wrapper->add($rfile);
-
-      note 'git commit';
       $wrapper->commit( '-m', 'Test Commit' );
-      note 'git checkout -b';
       $wrapper->checkout( '-b', 'master_2' );
       $file->spew('New Content');
       if ( $v->newer_than('1.5') ) {
@@ -44,9 +39,7 @@ $t->run_env(
         note 'git update-index ' . $rfile;
         $wrapper->update_index($rfile);
       }
-      note 'git commit';
       $wrapper->commit( '-m', 'Test Commit 2' );
-      note 'git checkout -b';
       $wrapper->checkout( '-b', 'master_3' );
 
       ( $tip, ) = $wrapper->rev_parse('HEAD');
@@ -54,21 +47,18 @@ $t->run_env(
 
     is( $excp, undef, 'Git::Wrapper methods executed without failure' ) or diag $excp;
 
-    my $branch_finder = Git::Wrapper::Plus::Refs->new( git => $wrapper );
+    my $branch_finder = Git::Wrapper::Plus::Branches->new( git => $wrapper );
 
-    is( scalar $branch_finder->get_ref('refs/heads/**'), 3, '3 Branches found' );
+    is( $branch_finder->current_branch->name, 'master_3', 'master_3 exists' );
+    is( scalar $branch_finder->branches,      3,          '3 Branches found' );
     my $branches = {};
-    for my $branch ( $branch_finder->get_ref('refs/heads/**') ) {
+    for my $branch ( $branch_finder->branches ) {
       $branches->{ $branch->name } = $branch;
     }
-    ok( exists $branches->{'refs/heads/master'},   'master branch found' );
-    ok( exists $branches->{'refs/heads/master_2'}, 'master_2 branch found' );
-    ok( exists $branches->{'refs/heads/master_3'}, 'master_3 branch found' );
-    is(
-      $branches->{'refs/heads/master_2'}->sha1,
-      $branches->{'refs/heads/master_3'}->sha1,
-      'master_2 and master_3 have the same sha1'
-    );
+    ok( exists $branches->{master},   'master branch found' );
+    ok( exists $branches->{master_2}, 'master_2 branch found' );
+    ok( exists $branches->{master_3}, 'master_3 branch found' );
+    is( $branches->{master_2}->sha1, $branches->{master_3}->sha1, 'master_2 and master_3 have the same sha1' );
   }
 );
 done_testing;

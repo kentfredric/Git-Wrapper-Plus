@@ -13,6 +13,48 @@ BEGIN {
 
 
 
+use Moo;
+use Scalar::Util qw( blessed );
+
+sub BUILDARGS {
+  my ( $class, @args ) = @_;
+  if ( @args == 1 ) {
+
+    return { git => $args[0] } if blessed $args[0];
+    return $args[0] if ref $args[0];
+
+    require Git::Wrapper;
+    return { git => Git::Wrapper->new( $args[0] ) };
+  }
+  return {@args};
+}
+
+has git => ( is => ro =>, required => 1 );
+
+has refs => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_refs {
+  my ( $self, @args ) = @_;
+  require Git::Wrapper::Plus::Refs;
+  return Git::Wrapper::Plus::Refs->new( git => $self->git );
+}
+
+has tags => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_tags {
+  my ( $self, @args ) = @_;
+  require Git::Wrapper::Plus::Tags;
+  return Git::Wrapper::Plus::Tags->new( git => $self->git );
+}
+
+has branches => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_branches {
+  my ( $self, @args ) = @_;
+  require Git::Wrapper::Plus::Branches;
+  return Git::Wrapper::Plus::Branches->new( git => $self->git );
+}
+
 1;
 
 __END__
@@ -79,6 +121,15 @@ This builds upon C<::Refs>
 L<< C<Git::Wrapper::Plus::Tags>|Git::Wrapper::Plus::Tags >> is a general purpose interface to tags.
 
 This builds upon C<::Refs>
+
+=head1 COMMON INTERFACE
+
+    use Git::Wrapper::Plus;
+
+    my $plus = Git::Wrapper::Plus->new( '.' );
+    $plus->refs     # Git::Wrapper::Plus::Refs
+    $plus->branches # Git::Wrapper::Plus::Branches
+    $plus->tags     # Git::Wrapper::Plus::Tags
 
 =head1 AUTHOR
 
