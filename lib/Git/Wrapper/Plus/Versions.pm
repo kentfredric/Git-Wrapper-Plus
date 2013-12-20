@@ -4,7 +4,7 @@ use utf8;
 
 package Git::Wrapper::Plus::Versions;
 
-# ABSTRACT: Analyse and compare git versions
+# ABSTRACT: Analyze and compare git versions
 
 use Moo;
 use Sort::Versions;
