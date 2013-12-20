@@ -23,7 +23,7 @@ $t->run_env(
         $wrapper->init();
       }
       else {
-        $wrapper->init_db;
+        $wrapper->init_db();
       }
 
       $file->touch;
@@ -45,7 +45,7 @@ $t->run_env(
       ( $tip, ) = $wrapper->rev_parse('HEAD');
     };
 
-    is( $excp, undef, 'Git::Wrapper methods executed without failure' );
+    is( $excp, undef, 'Git::Wrapper methods executed without failure' ) or diag $excp;
 
     my $branch_finder = Git::Wrapper::Plus::Branches->new( git => $wrapper );
 
