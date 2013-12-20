@@ -78,7 +78,7 @@ in C<git>, especially multiple-version support, and that such a toolkit would be
 
 So C<Git::Wrapper::Plus> is a collection of tools for using C<Git::Wrapper>, aiming to work on all versions of Git since at least Git C<1.3>.
 
-For instance, you probably don't realize this, but on older C<git>'s, 
+For instance, you probably don't realize this, but on older C<git>'s,
 
     echo > file
     git add file
