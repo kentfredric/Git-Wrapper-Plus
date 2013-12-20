@@ -96,7 +96,6 @@ sub _mk_ref {
     name => $name,
   );
 }
-__PACKAGE__->meta->make_immutable;
-no Moose;
+no Moo;
 
 1;
