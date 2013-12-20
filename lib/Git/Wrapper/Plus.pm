@@ -5,6 +5,16 @@ package Git::Wrapper::Plus;
 
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+=end MetaPOD::JSON
+
 =head1 DESCRIPTION
 
 Initially, I started off with C<Dist::Zilla::Util::> and friends, but I soon discovered so many quirks
@@ -58,14 +68,26 @@ L<< C<Git::Wrapper::Plus::Tags>|Git::Wrapper::Plus::Tags >> is a general purpose
 
 This builds upon C<::Refs>
 
+=head2 C<Git::Wrapper::Plus::Versions>
+
+L<< C<Git::Wrapper::Plus::Versions>|Git::Wrapper::Plus::Versions >> is a simple interface for comparing git versions.
+
 =head1 COMMON INTERFACE
+
+You don't have to use this interface, and its probably more convenient
+to use one of the other classes contained in this distribution.
+
+However, this top level object is usable if you want an easier way to use many
+of the contained tools without having to pass C<Git::Wrapper> instances everywhere.
+
 
     use Git::Wrapper::Plus;
 
-    my $plus = Git::Wrapper::Plus->new( '.' );
-    $plus->refs     # Git::Wrapper::Plus::Refs
-    $plus->branches # Git::Wrapper::Plus::Branches
-    $plus->tags     # Git::Wrapper::Plus::Tags
+    my $plus = Git::Wrapper::Plus->new('.');
+    $plus->refs        # Git::Wrapper::Plus::Refs
+    $plus->branches    # Git::Wrapper::Plus::Branches
+    $plus->tags        # Git::Wrapper::Plus::Tags
+    $plus->versions    # Git::Wrapper::Plus::Versions
 
 =cut
 
@@ -85,6 +107,12 @@ sub BUILDARGS {
   return {@args};
 }
 
+=attr C<git>
+
+=attr C<refs>
+
+=cut
+
 has git => ( is => ro =>, required => 1 );
 
 has refs => ( is => ro =>, lazy => 1, builder => 1 );
@@ -95,6 +123,10 @@ sub _build_refs {
   return Git::Wrapper::Plus::Refs->new( git => $self->git );
 }
 
+=attr C<tags>
+
+=cut
+
 has tags => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_tags {
@@ -103,12 +135,28 @@ sub _build_tags {
   return Git::Wrapper::Plus::Tags->new( git => $self->git );
 }
 
+=attr C<branches>
+
+=cut
+
 has branches => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_branches {
   my ( $self, @args ) = @_;
   require Git::Wrapper::Plus::Branches;
   return Git::Wrapper::Plus::Branches->new( git => $self->git );
+}
+
+=attr C<versions>
+
+=cut
+
+has versions => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_versions {
+  my ( $self, @args ) = @_;
+  require Git::Wrapper::Plus::Versions;
+  return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
 
 1;
