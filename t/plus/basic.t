@@ -58,6 +58,14 @@ $t->run_env(
       'No exceptions from ->refs'
     );
 
+    is(
+      exception {
+        $plus->versions;
+      },
+      undef,
+      'No exceptions from ->versions'
+    );
+
   }
 );
 
