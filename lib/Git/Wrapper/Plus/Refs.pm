@@ -130,6 +130,17 @@ Though reminder, if you're working with branches or tags, use the relevant modul
 
 B<REQUIRED>: A Git::Wrapper compatible object
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Refs",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentfredric@gmail.com>

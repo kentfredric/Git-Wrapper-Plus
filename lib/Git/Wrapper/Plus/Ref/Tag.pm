@@ -17,6 +17,7 @@ use Moo;
 extends 'Git::Wrapper::Plus::Ref';
 
 
+
 sub new_from_Ref {
   my ( $class, $object ) = @_;
   if ( not $object->can('name') ) {
@@ -71,6 +72,18 @@ Git::Wrapper::Plus::Ref::Tag - A single tag object
 
 version 0.001000
 
+=head1 SYNOPSIS
+
+    use Git::Wrapper::Plus::Ref::Tag;
+    my $t = Git::Wrapper::Plus::Ref::Tag->new(
+        git => $git,
+        name => '1.2',
+    );
+    $t->name # '1.2'
+    $t->refname # 'refs/tags/1.2'
+    $t->verify # git tag -v 1.2
+    $t->delete # git tag -d 1.2
+
 =head1 METHODS
 
 =head2 C<new_from_Ref>
@@ -78,6 +91,10 @@ version 0.001000
 Convert a Plus::Ref to a Plus::Ref::Tag
 
     my $tag = $class->new_from_Ref( $ref );
+
+=head2 C<refname>
+
+Returns C<name>, in the form C<< refs/tags/B<< <name> >> >>
 
 =head2 C<verify>
 

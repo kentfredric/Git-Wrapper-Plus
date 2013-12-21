@@ -12,20 +12,26 @@ BEGIN {
 
 # ABSTRACT: Analyze and compare git versions
 
+
 use Moo;
 use Sort::Versions;
 
+
+
 has git => required => 1, is => ro =>;
+
 
 sub current_version {
   my ($self) = @_;
   return $self->git->version;
 }
 
+
 sub newer_than {
   my ( $self, $v ) = @_;
   return versioncmp( $self->current_version, $v ) >= 0;
 }
+
 
 sub older_than {
   my ( $self, $v ) = @_;
@@ -48,6 +54,64 @@ Git::Wrapper::Plus::Versions - Analyze and compare git versions
 =head1 VERSION
 
 version 0.001000
+
+=head1 SYNOPSIS
+
+    use Git::Wrapper::Plus::Versions;
+    my $v = Git::Wrapper::Plus::Versions->new(
+        git => $git_wrapper
+    );
+
+    print $v->current_version; # Current V String.
+
+    # Larger or equal to 1.5
+    if ( $v->newer_than('1.5') ) {
+
+    }
+
+    # Lesser than 1.5
+    if ( $v->older_than('1.5') ) {
+
+    }
+
+=head1 METHODS
+
+=head2 C<current_version>
+
+Reports the current C<git> version.
+
+=head2 C<newer_than>
+
+    if ( $v->newer_than('1.5') ) {
+
+    }
+
+Reports if git is 1.5 or larger.
+
+=head2 C<older_than>
+
+    if ( $v->older_than('1.5') ) {
+
+    }
+
+Reports if git is C<< <1.5 >>
+
+=head1 ATTRIBUTES
+
+=head2 C<git>
+
+B<REQUIRED>: A Git::Wrapper compatible object.
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Versions",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
