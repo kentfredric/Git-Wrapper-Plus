@@ -7,6 +7,12 @@ package Git::Wrapper::Plus::Refs;
 
 use Moo;
 
+=attr C<git>
+
+B<REQUIRED>: A Git::Wrapper compatible object
+
+=cut
+
 has git => required => 1, is => ro =>;
 
 =head1 SYNOPSIS
@@ -51,11 +57,15 @@ sub _for_each_ref {
 
 Lists all C<refs> in the C<refs/> C<namespace>.
 
-    my (@refs) = $reffer->refs();
+    for my $ref ( $reffer->refs() ) {
+        $ref # A Git::Wrapper::Plus::Ref
+    }
 
 Shorthand for
 
-    my (@refs) = $reffer->get_ref('refs/**');
+    for my $ref ( $reffer->get_ref('refs/**') ) {
+
+    }
 
 =cut
 
