@@ -5,6 +5,16 @@ package Git::Wrapper::Plus::Branches;
 
 # ABSTRACT: Extract branches from Git
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Branches",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
 This module aims to do what you want when you think you want to parse the output of
@@ -17,12 +27,21 @@ Except it works the right way, and uses
 
 So
 
-    use Dist::Zilla::Util::Git::Branches;
+    use Git::Wrapper::Plus::Branches;
 
-    my $branches = Dist::Zilla::Util::Git::Branches->new(
-        zilla => $self->zilla
+    my $branches = Git::Wrapper::Plus::Branches->new(
+        git => $git_wrapper
     );
+    # Show details of every local branch
     for my $branch ( $branches->branches ) {
+        printf "%s %s", $branch->name, $branch->sha1;
+    }
+    # Show details of all branches starting with master
+    for my $branch ( $branches->get_branch("master*") ) {
+        printf "%s %s", $branch->name, $branch->sha1;
+    }
+    # Show details of current branch
+    for my $branch ( $branches->current_branch ) {
         printf "%s %s", $branch->name, $branch->sha1;
     }
 
@@ -31,6 +50,16 @@ So
 use Moo;
 use Scalar::Util qw(blessed);
 use Try::Tiny qw( try catch );
+
+=attr C<git>
+
+B<REQUIRED>: A C<Git::Wrapper> Compatible object.
+
+=attr C<refs>
+
+B<OPTIONAL>: A C<Git::Wrapper::Plus::Refs> Compatible object ( mostly for plumbing )
+
+=cut
 
 has 'git' => ( is => ro =>, required => 1 );
 has 'refs' => ( is => ro =>, lazy => 1, builder => 1 );
@@ -62,6 +91,10 @@ sub _to_branches {
 
 Returns a C<::Branch> object for each local branch.
 
+    for my $branch ( $b->branches ) {
+        $branch # isa Git::Wrapper::Plus::Branch
+    }
+
 =cut
 
 sub branches {
@@ -73,7 +106,7 @@ sub branches {
 
 Get branch info about master
 
-    my $branch = $branches->get_branch('master');
+    my ($branch,) = $branches->get_branch('master');
 
 Note: This can easily return multiple values.
 
