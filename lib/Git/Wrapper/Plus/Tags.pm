@@ -112,7 +112,7 @@ sub _grep_commit_pointers {
 
 =method C<tags>
 
-A C<List> of L<< C<::Tags::Tag> objects|Dist::Zilla::Util::Git::Tags::Tag >>
+A C<List> of L<< C<::Ref::Tag> objects|Git::Wrapper::Plus::Ref::Tag >>
 
     for my $tag ( $tag_finder->tags() ) {
 
@@ -156,7 +156,7 @@ sub get_tag {
 
 =method C<tag_sha1_map>
 
-A C<HashRef> of C<< sha1 => [ L<< tag|Dist::Zilla::Util::Git::Tags::Tag >>,  L<< tag|Dist::Zilla::Util::Git::Tags::Tag >> ] >> entries.
+A C<HashRef> of C<< sha1 => [ L<< tag|Git::Wrapper::Plus::Ref::Tag >>,  L<< tag|Git::Wrapper::Plus::Ref::Tag >> ] >> entries.
 
     my $hash = $tag_finder->tag_sha1_map();
     for my $sha ( keys %{$hash} ) {
@@ -183,7 +183,7 @@ sub tag_sha1_map {
 =method C<tags_for_rev>
 
 
-A C<List> of L<< C<::Tags::Tag> objects|Dist::Zilla::Util::Git::Tags::Tag >> that point to the given C<SHA1>.
+A C<List> of L<< C<::Ref::Tag> objects|Git::Wrapper::Plus::Ref::Tag >> that point to the given C<SHA1>.
 
 
     for my $tag ( $tag_finder->tags_for_rev( $sha1_or_commitish_etc ) ) {

@@ -18,9 +18,9 @@ package Git::Wrapper::Plus::Ref::Branch;
 
 =head1 SYNOPSIS
 
-    use Git::Wrapper::Plus::Branch;
+    use Git::Wrapper::Plus::Ref::Branch;
 
-    my $branch = Git::Wrapper::Plus::Branch->new(
+    my $branch = Git::Wrapper::Plus::Ref::Branch->new(
         git => $git_wrapper,
         name => 'master'
     );
@@ -40,7 +40,7 @@ our @CARP_NOT;
 
 =method C<new_from_Ref>
 
-Convert a Plus::Ref to a Plus::Branch
+Convert a Plus::Ref to a Plus::Ref::Branch
 
     my $branch_object = $class->new_from_Ref( $ref_object );
 

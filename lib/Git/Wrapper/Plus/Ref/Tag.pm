@@ -23,7 +23,7 @@ extends 'Git::Wrapper::Plus::Ref';
 
 =method C<new_from_Ref>
 
-Convert a Git::Refs::Ref to a Git::Tags::Tag
+Convert a Plus::Ref to a Plus::Ref::Tag
 
     my $tag = $class->new_from_Ref( $ref );
 
