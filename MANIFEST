@@ -9,6 +9,8 @@ META.json
 META.yml
 README
 dist.ini
+layout/self_structure.dot
+layout/self_structure.png
 lib/Git/Wrapper/Plus.pm
 lib/Git/Wrapper/Plus/Branches.pm
 lib/Git/Wrapper/Plus/Ref.pm
