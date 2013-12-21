@@ -147,7 +147,16 @@ So
     my $branches = Git::Wrapper::Plus::Branches->new(
         git => $git_wrapper
     );
+    # Show details of every local branch
     for my $branch ( $branches->branches ) {
+        printf "%s %s", $branch->name, $branch->sha1;
+    }
+    # Show details of all branches starting with master
+    for my $branch ( $branches->get_branch("master*") ) {
+        printf "%s %s", $branch->name, $branch->sha1;
+    }
+    # Show details of current branch
+    for my $branch ( $branches->current_branch ) {
         printf "%s %s", $branch->name, $branch->sha1;
     }
 
