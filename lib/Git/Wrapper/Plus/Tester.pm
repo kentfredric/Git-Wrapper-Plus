@@ -14,6 +14,11 @@ has home_dir => is => ro =>, lazy => 1, builder => 1;
 has repo_dir => is => ro =>, lazy => 1, builder => 1;
 has git      => is => ro =>, lazy => 1, builder => 1;
 
+has committer_name  => is => ro =>, lazy => 1, builder => 1;
+has committer_email => is => ro =>, lazy => 1, builder => 1;
+has author_name     => is => ro =>, lazy => 1, builder => 1;
+has author_email    => is => ro =>, lazy => 1, builder => 1;
+
 sub _build_temp_dir {
   return Path::Tiny->tempdir;
 }
@@ -38,13 +43,32 @@ sub _build_git {
   return Git::Wrapper->new( $self->repo_dir->absolute->stringify );
 }
 
+sub _build_committer_name {
+  return 'A. U. Thor';
+}
+
+sub _build_committer_email {
+  return 'author@example.org';
+}
+
+sub _build_author_name {
+  my ( $self, ) = @_;
+  return $self->committer_name;
+}
+
+sub _build_author_email {
+  my ( $self, ) = @_;
+  return $self->committer_email;
+
+}
+
 sub run_env {
   my ( $self, $code ) = @_;
   local $ENV{HOME}                = $self->home_dir->absolute->stringify;
-  local $ENV{GIT_AUTHOR_NAME}     = 'A. U. Thor';
-  local $ENV{GIT_AUTHOR_EMAIL}    = 'author@example.org';
-  local $ENV{GIT_COMMITTER_NAME}  = 'A. U. Thor';
-  local $ENV{GIT_COMMITTER_EMAIL} = 'author@example.org';
+  local $ENV{GIT_AUTHOR_NAME}     = $self->author_name;
+  local $ENV{GIT_AUTHOR_EMAIL}    = $self->author_email;
+  local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+  local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_email;
   return $code->( $self, );
 }
 
