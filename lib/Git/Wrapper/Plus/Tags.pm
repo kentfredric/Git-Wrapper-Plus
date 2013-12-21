@@ -5,6 +5,18 @@ package Git::Wrapper::Plus::Tags;
 
 # ABSTRACT: Extract all tags from a repository
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Tags",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+=end MetaPOD::JSON
+
+=cut
+
 use Moo;
 
 =head1 SYNOPSIS
@@ -15,15 +27,34 @@ This tool basically gives a more useful interface around
 
 Namely, each tag returned is a tag object, and you can view tag properties with it.
 
-    use Dist::Zilla::Util::Git::Tags;
+    use Git::Wrapper::Plus::Tags;
 
-    my $tags_finder = Dist::Zilla::Util::Git::Tags->new(
-        zilla => $self->zilla
+    my $tags_finder = Git::Wrapper::Plus::Tags->new(
+        git => $wrapper
     );
 
+    # All tags
     for my $tag ( $tags_finder->tags ) {
         printf "%s - %s\n", $tag->name, $tag->sha1;
     }
+    # Tag 1.1
+    for my $tag ( $tags_finder->get_tag('1.1') ) {
+        ...
+    }
+    # All tags starting with 1.1
+    for my $tag ( $tags_finder->get_tag('1.*') ) {
+        ...
+    }
+    # All tags that point directly to the SHA1 for current master
+    for my $tag ( $tags_finder->tags_for_rev('master') ) {
+        ...
+    }
+
+=cut
+
+=attr C<git>
+
+B<REQUIRED>: A Git::Wrapper compatible object.
 
 =cut
 
@@ -31,7 +62,7 @@ has git => is => ro =>, required => 1;
 
 =attr C<refs>
 
-A Dist::Zilla::Util::Git::Refs instance, auto-built if not specified.
+B<OPTIONAL>: Git::Wrapper::Plus::Refs instance, auto-built if not specified.
 
 =cut
 
@@ -83,7 +114,9 @@ sub _grep_commit_pointers {
 
 A C<List> of L<< C<::Tags::Tag> objects|Dist::Zilla::Util::Git::Tags::Tag >>
 
-    my @tags = $tag_finder->tags();
+    for my $tag ( $tag_finder->tags() ) {
+
+    }
 
 =cut
 
@@ -94,14 +127,19 @@ sub tags {
 
 =method C<get_tag>
 
-    my ($first_matching) = $tags->get_tag('1.000');
-    my (@all_matching) = $tags->get_tag('1.*');
+    for my $tag ( $tags->get_tag('1.000') ) {
+
+    }
+
+    for my $tag ( $tags->get_tag('1.*') ) {
+
+    }
 
 Note: This can easily return multiple values.
 
 For instance, C<tags> is implemented as
 
-    my ( @tags ) = $branches->get_tag('*');
+    my ( @tags ) = $branches->get_tag('**');
 
 Mostly, because the underlying mechanism is implemented in terms of L<< C<fnmatch(3)>|fnmatch(3) >>
 
@@ -121,6 +159,10 @@ sub get_tag {
 A C<HashRef> of C<< sha1 => [ L<< tag|Dist::Zilla::Util::Git::Tags::Tag >>,  L<< tag|Dist::Zilla::Util::Git::Tags::Tag >> ] >> entries.
 
     my $hash = $tag_finder->tag_sha1_map();
+    for my $sha ( keys %{$hash} ) {
+        my (@tags) = @{ $hash->{ $sha } };
+        ...
+    }
 
 =cut
 
@@ -144,7 +186,9 @@ sub tag_sha1_map {
 A C<List> of L<< C<::Tags::Tag> objects|Dist::Zilla::Util::Git::Tags::Tag >> that point to the given C<SHA1>.
 
 
-    $tag_finder->tags_for_rev( $sha1_or_commitish_etc );
+    for my $tag ( $tag_finder->tags_for_rev( $sha1_or_commitish_etc ) ) {
+        ...
+    }
 
 =cut
 
