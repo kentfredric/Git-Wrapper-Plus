@@ -41,21 +41,6 @@ DESCRIPTION
     And there's more common failures, like some commands simply don't exist
     on old gits.
 
-METHODS
-  "BUILDARGS"
-    Construction takes 4 Forms:
-
-        ->new( $string ) # Shorthand for ->new( { git => Git::Wrapper->new( $string ) } );
-        ->new( blessed ) # Shorthand for ->new( { git => blessed } );
-        ->new( @list   ) # Shorthand for ->new( { @list } );
-        ->new( { key => value } ); # Final form.
-
-ATTRIBUTES
-  "git"
-  "refs"
-  "tags"
-  "branches"
-  "versions"
 MODULES
   "Git::Wrapper::Plus::Refs"
     "Git::Wrapper::Plus::Refs" is a low level interface to refs.
@@ -93,6 +78,21 @@ COMMON INTERFACE
         $plus->tags        # Git::Wrapper::Plus::Tags
         $plus->versions    # Git::Wrapper::Plus::Versions
 
+METHODS
+  "BUILDARGS"
+    Construction takes 4 Forms:
+
+        ->new( $string ) # Shorthand for ->new( { git => Git::Wrapper->new( $string ) } );
+        ->new( blessed ) # Shorthand for ->new( { git => blessed } );
+        ->new( @list   ) # Shorthand for ->new( { @list } );
+        ->new( { key => value } ); # Final form.
+
+ATTRIBUTES
+  "git"
+  "refs"
+  "tags"
+  "branches"
+  "versions"
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 

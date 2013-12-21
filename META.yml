@@ -315,6 +315,14 @@ x_Dist_Zilla:
               name: OVERVIEW
               version: 4.004
             -
+              class: Pod::Weaver::Section::Generic
+              name: MODULES
+              version: 4.004
+            -
+              class: Pod::Weaver::Section::Generic
+              name: 'COMMON INTERFACE'
+              version: 4.004
+            -
               class: Pod::Weaver::Section::Collect
               name: METHODS
               version: 4.004

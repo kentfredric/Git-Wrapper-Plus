@@ -115,40 +115,6 @@ And you'd have probably not realized this till you had a few smoke reports back 
 
 And there's more common failures, like some commands simply don't exist on old gits.
 
-=head1 METHODS
-
-=head2 C<BUILDARGS>
-
-Construction takes 4 Forms:
-
-    ->new( $string ) # Shorthand for ->new( { git => Git::Wrapper->new( $string ) } );
-    ->new( blessed ) # Shorthand for ->new( { git => blessed } );
-    ->new( @list   ) # Shorthand for ->new( { @list } );
-    ->new( { key => value } ); # Final form.
-
-=head1 ATTRIBUTES
-
-=head2 C<git>
-
-=head2 C<refs>
-
-=head2 C<tags>
-
-=head2 C<branches>
-
-=head2 C<versions>
-
-=begin MetaPOD::JSON v1.1.0
-
-{
-    "namespace":"Git::Wrapper::Plus",
-    "interface":"class",
-    "inherits":"Moo::Object"
-}
-
-
-=end MetaPOD::JSON
-
 =head1 MODULES
 
 =head2 C<Git::Wrapper::Plus::Refs>
@@ -188,6 +154,40 @@ of the contained tools without having to pass C<Git::Wrapper> instances everywhe
     $plus->branches    # Git::Wrapper::Plus::Branches
     $plus->tags        # Git::Wrapper::Plus::Tags
     $plus->versions    # Git::Wrapper::Plus::Versions
+
+=head1 METHODS
+
+=head2 C<BUILDARGS>
+
+Construction takes 4 Forms:
+
+    ->new( $string ) # Shorthand for ->new( { git => Git::Wrapper->new( $string ) } );
+    ->new( blessed ) # Shorthand for ->new( { git => blessed } );
+    ->new( @list   ) # Shorthand for ->new( { @list } );
+    ->new( { key => value } ); # Final form.
+
+=head1 ATTRIBUTES
+
+=head2 C<git>
+
+=head2 C<refs>
+
+=head2 C<tags>
+
+=head2 C<branches>
+
+=head2 C<versions>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
