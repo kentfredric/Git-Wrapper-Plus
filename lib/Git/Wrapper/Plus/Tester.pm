@@ -9,10 +9,99 @@ package Git::Wrapper::Plus::Tester;
 use Moo;
 use Path::Tiny qw(path);
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Tester",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+=end MetaPOD::JSON
+
+=head1 DESCRIPTION
+
+This module solves the problem of the tedious amount of leg work you need to do
+to simply execute a test with Git.
+
+Namely:
+
+=over 4
+
+=item * Creating a scratch directory
+
+=item * Creating a fake home directory in that scratch directory
+
+=item * Setting C<HOME> to that fake home
+
+=item * Setting valid, but bogus values for C<GIT_(COMMITTER|AUTHOR)_(NAME|EMAIL)>
+
+=item * Creating a directory for the repository to work with in the scratch directory
+
+=item * Creating a Git::Wrapper instance with that repository path
+
+=back
+
+This module does all of the above for you, and makes some of them flexible via attributes.
+
+=cut
+
+=head1 SYNOPSIS
+
+    use Git::Wrapper::Plus::Tester;
+
+    my $t = Git::Wrapper::Plus::Tester->new();
+
+    $t->run_env( sub {
+
+        my $wrapper = $t->git;
+
+        $wrapper->init_db(); # ETC.
+
+    } );
+
+=cut
+
+=attr C<temp_dir>
+
+B<OPTIONAL>
+
+=attr C<home_dir>
+
+B<OPTIONAL>
+
+=attr C<repo_dir>
+
+B<OPTIONAL>
+
+=attr C<git>
+
+B<OPTIONAL>
+
+=cut
+
 has temp_dir => is => ro =>, lazy => 1, builder => 1;
 has home_dir => is => ro =>, lazy => 1, builder => 1;
 has repo_dir => is => ro =>, lazy => 1, builder => 1;
 has git      => is => ro =>, lazy => 1, builder => 1;
+
+=attr C<committer_name>
+
+B<OPTIONAL>. Defaults to C<A. U. Thor>
+
+=attr C<committer_email>
+
+B<OPTIONAL>. Defaults to C<author@example.org>
+
+=attr C<author_name>
+
+B<OPTIONAL>. Defaults to C<< ->committer_name >>
+
+=attr C<author_email>
+
+B<OPTIONAL>. Defaults to C<< ->committer_email >>
+
+=cut
 
 has committer_name  => is => ro =>, lazy => 1, builder => 1;
 has committer_email => is => ro =>, lazy => 1, builder => 1;
@@ -61,6 +150,17 @@ sub _build_author_email {
   return $self->committer_email;
 
 }
+
+=method C<run_env>
+
+Sets up basic environment, and runs code, reverting environment when done.
+
+    $o->run_env(sub {
+        my $wrapper = $o->git;
+
+    });
+
+=cut
 
 sub run_env {
   my ( $self, $code ) = @_;
