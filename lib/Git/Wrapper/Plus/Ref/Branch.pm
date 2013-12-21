@@ -2,12 +2,12 @@ use strict;
 use warnings;
 use utf8;
 
-package Git::Wrapper::Plus::Branch;
+package Git::Wrapper::Plus::Ref::Branch;
 BEGIN {
-  $Git::Wrapper::Plus::Branch::AUTHORITY = 'cpan:KENTNL';
+  $Git::Wrapper::Plus::Ref::Branch::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Git::Wrapper::Plus::Branch::VERSION = '0.001000';
+  $Git::Wrapper::Plus::Ref::Branch::VERSION = '0.001000';
 }
 
 # ABSTRACT: A Branch object
@@ -81,7 +81,7 @@ __END__
 
 =head1 NAME
 
-Git::Wrapper::Plus::Branch - A Branch object
+Git::Wrapper::Plus::Ref::Branch - A Branch object
 
 =head1 VERSION
 
@@ -89,9 +89,9 @@ version 0.001000
 
 =head1 SYNOPSIS
 
-    use Git::Wrapper::Plus::Branch;
+    use Git::Wrapper::Plus::Ref::Branch;
 
-    my $branch = Git::Wrapper::Plus::Branch->new(
+    my $branch = Git::Wrapper::Plus::Ref::Branch->new(
         git => $git_wrapper,
         name => 'master'
     );
@@ -106,7 +106,7 @@ version 0.001000
 
 =head2 C<new_from_Ref>
 
-Convert a Plus::Ref to a Plus::Branch
+Convert a Plus::Ref to a Plus::Ref::Branch
 
     my $branch_object = $class->new_from_Ref( $ref_object );
 
@@ -137,7 +137,7 @@ Note: C<$branch> will of course, still exist after this step
 =begin MetaPOD::JSON v1.1.0
 
 {
-    "namespace":"Git::Wrapper::Plus::Branch",
+    "namespace":"Git::Wrapper::Plus::Ref::Branch",
     "interface":"class",
     "inherits":"Git::Wrapper::Plus::Ref"
 }

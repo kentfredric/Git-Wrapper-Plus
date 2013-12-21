@@ -107,10 +107,6 @@
          "file" : "lib/Git/Wrapper/Plus.pm",
          "version" : "0.001000"
       },
-      "Git::Wrapper::Plus::Branch" : {
-         "file" : "lib/Git/Wrapper/Plus/Branch.pm",
-         "version" : "0.001000"
-      },
       "Git::Wrapper::Plus::Branches" : {
          "file" : "lib/Git/Wrapper/Plus/Branches.pm",
          "version" : "0.001000"
@@ -119,12 +115,16 @@
          "file" : "lib/Git/Wrapper/Plus/Ref.pm",
          "version" : "0.001000"
       },
-      "Git::Wrapper::Plus::Refs" : {
-         "file" : "lib/Git/Wrapper/Plus/Refs.pm",
+      "Git::Wrapper::Plus::Ref::Branch" : {
+         "file" : "lib/Git/Wrapper/Plus/Ref/Branch.pm",
          "version" : "0.001000"
       },
-      "Git::Wrapper::Plus::Tag" : {
-         "file" : "lib/Git/Wrapper/Plus/Tag.pm",
+      "Git::Wrapper::Plus::Ref::Tag" : {
+         "file" : "lib/Git/Wrapper/Plus/Ref/Tag.pm",
+         "version" : "0.001000"
+      },
+      "Git::Wrapper::Plus::Refs" : {
+         "file" : "lib/Git/Wrapper/Plus/Refs.pm",
          "version" : "0.001000"
       },
       "Git::Wrapper::Plus::Tags" : {
@@ -362,11 +362,11 @@
                "Dist::Zilla::Plugin::Test::Compile::PerFile" : {
                   "file" : [
                      "lib/Git/Wrapper/Plus.pm",
-                     "lib/Git/Wrapper/Plus/Branch.pm",
                      "lib/Git/Wrapper/Plus/Branches.pm",
                      "lib/Git/Wrapper/Plus/Ref.pm",
+                     "lib/Git/Wrapper/Plus/Ref/Branch.pm",
+                     "lib/Git/Wrapper/Plus/Ref/Tag.pm",
                      "lib/Git/Wrapper/Plus/Refs.pm",
-                     "lib/Git/Wrapper/Plus/Tag.pm",
                      "lib/Git/Wrapper/Plus/Tags.pm",
                      "lib/Git/Wrapper/Plus/Tester.pm",
                      "lib/Git/Wrapper/Plus/Versions.pm"

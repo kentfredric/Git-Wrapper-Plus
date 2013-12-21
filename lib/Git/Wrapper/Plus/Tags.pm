@@ -29,8 +29,8 @@ sub _build_refs {
 
 sub _to_tag {
   my ( $self, $ref ) = @_;
-  require Git::Wrapper::Plus::Tag;
-  return Git::Wrapper::Plus::Tag->new_from_Ref($ref);
+  require Git::Wrapper::Plus::Ref::Tag;
+  return Git::Wrapper::Plus::Ref::Tag->new_from_Ref($ref);
 }
 
 sub _to_tags {
@@ -157,7 +157,7 @@ Namely, each tag returned is a tag object, and you can view tag properties with 
 
 =head2 C<tags>
 
-A C<List> of L<< C<::Tags::Tag> objects|Dist::Zilla::Util::Git::Tags::Tag >>
+A C<List> of L<< C<::Ref::Tag> objects|Git::Wrapper::Plus::Ref::Tag >>
 
     for my $tag ( $tag_finder->tags() ) {
 
@@ -187,7 +187,7 @@ So in the top example, C<match> is C<undef> if C<1.000> does not exist.
 
 =head2 C<tag_sha1_map>
 
-A C<HashRef> of C<< sha1 => [ L<< tag|Dist::Zilla::Util::Git::Tags::Tag >>,  L<< tag|Dist::Zilla::Util::Git::Tags::Tag >> ] >> entries.
+A C<HashRef> of C<< sha1 => [ L<< tag|Git::Wrapper::Plus::Ref::Tag >>,  L<< tag|Git::Wrapper::Plus::Ref::Tag >> ] >> entries.
 
     my $hash = $tag_finder->tag_sha1_map();
     for my $sha ( keys %{$hash} ) {
@@ -197,7 +197,7 @@ A C<HashRef> of C<< sha1 => [ L<< tag|Dist::Zilla::Util::Git::Tags::Tag >>,  L<<
 
 =head2 C<tags_for_rev>
 
-A C<List> of L<< C<::Tags::Tag> objects|Dist::Zilla::Util::Git::Tags::Tag >> that point to the given C<SHA1>.
+A C<List> of L<< C<::Ref::Tag> objects|Git::Wrapper::Plus::Ref::Tag >> that point to the given C<SHA1>.
 
     for my $tag ( $tag_finder->tags_for_rev( $sha1_or_commitish_etc ) ) {
         ...

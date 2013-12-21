@@ -2,15 +2,16 @@ use strict;
 use warnings;
 use utf8;
 
-package Git::Wrapper::Plus::Tag;
+package Git::Wrapper::Plus::Ref::Tag;
 BEGIN {
-  $Git::Wrapper::Plus::Tag::AUTHORITY = 'cpan:KENTNL';
+  $Git::Wrapper::Plus::Ref::Tag::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Git::Wrapper::Plus::Tag::VERSION = '0.001000';
+  $Git::Wrapper::Plus::Ref::Tag::VERSION = '0.001000';
 }
 
 # ABSTRACT: A single tag object
+
 
 use Moo;
 extends 'Git::Wrapper::Plus::Ref';
@@ -64,7 +65,7 @@ __END__
 
 =head1 NAME
 
-Git::Wrapper::Plus::Tag - A single tag object
+Git::Wrapper::Plus::Ref::Tag - A single tag object
 
 =head1 VERSION
 
@@ -74,7 +75,7 @@ version 0.001000
 
 =head2 C<new_from_Ref>
 
-Convert a Git::Refs::Ref to a Git::Tags::Tag
+Convert a Plus::Ref to a Plus::Ref::Tag
 
     my $tag = $class->new_from_Ref( $ref );
 
@@ -87,6 +88,17 @@ Convert a Git::Refs::Ref to a Git::Tags::Tag
 =head2 C<name>
 
 =head2 C<git>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Ref::Tag",
+    "interface":"class",
+    "inherits":"Git::Wrapper::Plus::Ref"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
