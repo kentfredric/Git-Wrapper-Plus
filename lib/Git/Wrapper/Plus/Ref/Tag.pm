@@ -2,9 +2,21 @@ use strict;
 use warnings;
 use utf8;
 
-package Git::Wrapper::Plus::Tag;
+package Git::Wrapper::Plus::Ref::Tag;
 
 # ABSTRACT: A single tag object
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Ref::Tag",
+    "interface":"class",
+    "inherits":"Git::Wrapper::Plus::Ref"
+}
+
+=end MetaPOD::JSON
+
+=cut
 
 use Moo;
 extends 'Git::Wrapper::Plus::Ref';

@@ -2,14 +2,14 @@ use strict;
 use warnings;
 use utf8;
 
-package Git::Wrapper::Plus::Branch;
+package Git::Wrapper::Plus::Ref::Branch;
 
 # ABSTRACT: A Branch object
 
 =begin MetaPOD::JSON v1.1.0
 
 {
-    "namespace":"Git::Wrapper::Plus::Branch",
+    "namespace":"Git::Wrapper::Plus::Ref::Branch",
     "interface":"class",
     "inherits":"Git::Wrapper::Plus::Ref"
 }

@@ -76,8 +76,8 @@ sub _build_refs {
 
 sub _to_tag {
   my ( $self, $ref ) = @_;
-  require Git::Wrapper::Plus::Tag;
-  return Git::Wrapper::Plus::Tag->new_from_Ref($ref);
+  require Git::Wrapper::Plus::Ref::Tag;
+  return Git::Wrapper::Plus::Ref::Tag->new_from_Ref($ref);
 }
 
 sub _to_tags {

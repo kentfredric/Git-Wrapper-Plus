@@ -78,8 +78,8 @@ sub _build_versions {
 
 sub _to_branch {
   my ( $self, $ref ) = @_;
-  require Git::Wrapper::Plus::Branch;
-  return Git::Wrapper::Plus::Branch->new_from_Ref($ref);
+  require Git::Wrapper::Plus::Ref::Branch;
+  return Git::Wrapper::Plus::Ref::Branch->new_from_Ref($ref);
 }
 
 sub _to_branches {
