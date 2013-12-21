@@ -16,6 +16,7 @@ BEGIN {
 use Moo;
 use Scalar::Util qw( blessed );
 
+
 sub BUILDARGS {
   my ( $class, @args ) = @_;
   if ( @args == 1 ) {
@@ -113,6 +114,17 @@ Is how it works there.
 And you'd have probably not realized this till you had a few smoke reports back with failures on old Gits.
 
 And there's more common failures, like some commands simply don't exist on old gits.
+
+=head1 METHODS
+
+=head2 C<BUILDARGS>
+
+Construction takes 4 Forms:
+
+    ->new( $string ) # Shorthand for ->new( { git => Git::Wrapper->new( $string ) } );
+    ->new( blessed ) # Shorthand for ->new( { git => blessed } );
+    ->new( @list   ) # Shorthand for ->new( { @list } );
+    ->new( { key => value } ); # Final form.
 
 =head1 ATTRIBUTES
 
