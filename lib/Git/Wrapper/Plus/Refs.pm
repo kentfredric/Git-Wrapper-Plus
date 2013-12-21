@@ -13,6 +13,7 @@ BEGIN {
 
 use Moo;
 
+
 has git => required => 1, is => ro =>;
 
 
@@ -103,11 +104,15 @@ Note: You probably shouldn't use this module directly.
 
 Lists all C<refs> in the C<refs/> C<namespace>.
 
-    my (@refs) = $reffer->refs();
+    for my $ref ( $reffer->refs() ) {
+        $ref # A Git::Wrapper::Plus::Ref
+    }
 
 Shorthand for
 
-    my (@refs) = $reffer->get_ref('refs/**');
+    for my $ref ( $reffer->get_ref('refs/**') ) {
+
+    }
 
 =head2 C<get_ref>
 
@@ -118,6 +123,12 @@ Fetch a given C<ref>, or collection of C<ref>s, matching a specification.
     my (@tags)   = $reffer->get_ref('refs/tags/**');
 
 Though reminder, if you're working with branches or tags, use the relevant modules =).
+
+=head1 ATTRIBUTES
+
+=head2 C<git>
+
+B<REQUIRED>: A Git::Wrapper compatible object
 
 =head1 AUTHOR
 
