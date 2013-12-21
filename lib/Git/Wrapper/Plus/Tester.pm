@@ -54,21 +54,23 @@ sub _build_git {
 }
 
 sub _build_committer_name {
-    return 'A. U. Thor';
+  return 'A. U. Thor';
 }
+
 sub _build_committer_email {
-    return  'author@example.org';
+  return 'author@example.org';
 }
+
 sub _build_author_name {
-    my ( $self, ) = @_;
-    return $self->committer_name;
+  my ( $self, ) = @_;
+  return $self->committer_name;
 }
+
 sub _build_author_email {
-    my ( $self, ) = @_;
-    return $self->committer_email;
+  my ( $self, ) = @_;
+  return $self->committer_email;
 
 }
-
 
 
 sub run_env {
