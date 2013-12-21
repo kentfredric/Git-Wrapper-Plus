@@ -16,6 +16,7 @@ use Moo;
 use Scalar::Util qw(blessed);
 use Try::Tiny qw( try catch );
 
+
 has 'git' => ( is => ro =>, required => 1 );
 has 'refs' => ( is => ro =>, lazy => 1, builder => 1 );
 
@@ -141,10 +142,10 @@ Except it works the right way, and uses
 
 So
 
-    use Dist::Zilla::Util::Git::Branches;
+    use Git::Wrapper::Plus::Branches;
 
-    my $branches = Dist::Zilla::Util::Git::Branches->new(
-        zilla => $self->zilla
+    my $branches = Git::Wrapper::Plus::Branches->new(
+        git => $git_wrapper
     );
     for my $branch ( $branches->branches ) {
         printf "%s %s", $branch->name, $branch->sha1;
@@ -156,11 +157,15 @@ So
 
 Returns a C<::Branch> object for each local branch.
 
+    for my $branch ( $b->branches ) {
+        $branch # isa Git::Wrapper::Plus::Branch
+    }
+
 =head2 get_branch
 
 Get branch info about master
 
-    my $branch = $branches->get_branch('master');
+    my ($branch,) = $branches->get_branch('master');
 
 Note: This can easily return multiple values.
 
@@ -184,6 +189,27 @@ Returns a C<::Branch> object if currently on a C<branch>, C<undef> otherwise.
     } else {
         print "Detached HEAD";
     }
+
+=head1 ATTRIBUTES
+
+=head2 C<git>
+
+B<REQUIRED>: A C<Git::Wrapper> Compatible object.
+
+=head2 C<refs>
+
+B<OPTIONAL>: A C<Git::Wrapper::Plus::Refs> Compatible object ( mostly for plumbing )
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Branches",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
