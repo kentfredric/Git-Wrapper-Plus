@@ -141,6 +141,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/Git-Wrapper-Plus/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/Git-Wrapper-Plus",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/Git-Wrapper-Plus.git",
+         "web" : "https://github.com/kentfredric/Git-Wrapper-Plus"
+      }
+   },
    "version" : "0.001000",
    "x_BuiltWith" : {
       "modules" : {
