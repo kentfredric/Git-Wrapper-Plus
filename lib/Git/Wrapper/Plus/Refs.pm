@@ -7,6 +7,16 @@ package Git::Wrapper::Plus::Refs;
 
 use Moo;
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Refs",
+    "interface":"class",
+    "inherits":"Moo::Object"
+}
+
+=end MetaPOD::JSON
+
 =attr C<git>
 
 B<REQUIRED>: A Git::Wrapper compatible object

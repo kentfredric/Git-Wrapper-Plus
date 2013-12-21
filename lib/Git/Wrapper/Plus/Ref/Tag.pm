@@ -21,6 +21,22 @@ package Git::Wrapper::Plus::Ref::Tag;
 use Moo;
 extends 'Git::Wrapper::Plus::Ref';
 
+=head1 SYNOPSIS
+
+
+    use Git::Wrapper::Plus::Ref::Tag;
+    my $t = Git::Wrapper::Plus::Ref::Tag->new(
+        git => $git,
+        name => '1.2',
+    );
+    $t->name # '1.2'
+    $t->refname # 'refs/tags/1.2'
+    $t->verify # git tag -v 1.2
+    $t->delete # git tag -d 1.2
+
+
+=cut
+
 =method C<new_from_Ref>
 
 Convert a Plus::Ref to a Plus::Ref::Tag
@@ -49,6 +65,10 @@ sub new_from_Ref {
 =attr C<name>
 
 =attr C<git>
+
+=method C<refname>
+
+Returns C<name>, in the form C<< refs/tags/B<< <name> >> >>
 
 =cut
 

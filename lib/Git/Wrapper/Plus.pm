@@ -94,6 +94,17 @@ of the contained tools without having to pass C<Git::Wrapper> instances everywhe
 use Moo;
 use Scalar::Util qw( blessed );
 
+=method C<BUILDARGS>
+
+Construction takes 4 Forms:
+
+    ->new( $string ) # Shorthand for ->new( { git => Git::Wrapper->new( $string ) } );
+    ->new( blessed ) # Shorthand for ->new( { git => blessed } );
+    ->new( @list   ) # Shorthand for ->new( { @list } );
+    ->new( { key => value } ); # Final form.
+
+=cut
+
 sub BUILDARGS {
   my ( $class, @args ) = @_;
   if ( @args == 1 ) {
