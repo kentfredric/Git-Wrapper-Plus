@@ -114,7 +114,7 @@ version 0.001000
 
 =head1 DESCRIPTION
 
-This module solves the problem of the tedius amount of leg work you need to do
+This module solves the problem of the tedious amount of leg work you need to do
 to simply execute a test with Git.
 
 Namely:
