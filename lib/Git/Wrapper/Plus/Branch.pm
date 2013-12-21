@@ -6,6 +6,33 @@ package Git::Wrapper::Plus::Branch;
 
 # ABSTRACT: A Branch object
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Git::Wrapper::Plus::Branch",
+    "interface":"class",
+    "inherits":"Git::Wrapper::Plus::Ref"
+}
+
+=end MetaPOD::JSON
+
+=head1 SYNOPSIS
+
+    use Git::Wrapper::Plus::Branch;
+
+    my $branch = Git::Wrapper::Plus::Branch->new(
+        git => $git_wrapper,
+        name => 'master'
+    );
+    $branch->refname                                 # refs/heads/master
+    $branch->sha1                                    # deadbeefbadf00da55c0ffee
+    $branch->delete                                  # git branch -d master
+    $branch->delete({ force => 1 });                 # git branch -D master
+    $branch->move('alternative');                    # git branch -m master alternative
+    $branch->move('alternative', { force => 1 });    # git branch -M master alternative
+
+=cut
+
 use Moo;
 extends 'Git::Wrapper::Plus::Ref';
 
@@ -15,7 +42,7 @@ our @CARP_NOT;
 
 Convert a Plus::Ref to a Plus::Branch
 
-    my $branch = $class->new_from_Ref( $ref );
+    my $branch_object = $class->new_from_Ref( $ref_object );
 
 =cut
 
@@ -35,6 +62,12 @@ sub new_from_Ref {
   require Carp;
   Carp::croak("Path $name is not in refs/heads/*, cannot convert to Branch object");
 }
+
+=method C<refname>
+
+Returns C<name>, in the form C<< refs/heads/B<< <name> >> >>
+
+=cut
 
 sub refname {
   my ($self) = @_;
