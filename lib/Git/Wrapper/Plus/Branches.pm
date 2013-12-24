@@ -48,8 +48,7 @@ So
 =cut
 
 use Moo;
-use Scalar::Util qw(blessed);
-use Try::Tiny qw( try catch );
+use Git::Wrapper::Plus::Util qw(exit_status_handler);
 
 =attr C<git>
 
@@ -140,35 +139,18 @@ sub _current_sha1 {
 sub _current_branch_name {
   my ($self) = @_;
   my (@current_names);
-  my $ok;
-  try {
-    (@current_names) = $self->git->symbolic_ref('HEAD');
-    $ok = 1;
+  return unless exit_status_handler(
+    sub {
+      (@current_names) = $self->git->symbolic_ref('HEAD');
+    },
+    {
+      128 => sub { return }
+    }
+  );
+  for (@current_names) {
+    $_ =~ s{\A refs/heads/ }{}msx;
   }
-  catch {
-    my $e = $_;
-    if ( not ref $e ) {
-      die $e;
-    }
-    if ( not blessed $e ) {
-      die $e;
-    }
-    if ( not $e->isa('Git::Wrapper::Exception') ) {
-      die $e;
-    }
-    if ( $e->status == 128 ) {
-      undef $ok;
-      return;
-    }
-    die $e;
-  };
-  if ($ok) {
-    for (@current_names) {
-      $_ =~ s{\A refs/heads/ }{}msx;
-    }
-    return @current_names;
-  }
-  return;
+  return @current_names;
 
 }
 
