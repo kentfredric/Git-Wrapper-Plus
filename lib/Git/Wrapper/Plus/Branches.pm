@@ -69,12 +69,6 @@ sub _build_refs {
   return Git::Wrapper::Plus::Refs->new( git => $self->git );
 }
 
-sub _build_versions {
-  my ($self) = @_;
-  require Git::Wrapper::Plus::Versions;
-  return Git::Wrapper::Plus::Versions->new( git => $self->git );
-}
-
 sub _to_branch {
   my ( $self, $ref ) = @_;
   require Git::Wrapper::Plus::Ref::Branch;
@@ -126,16 +120,6 @@ sub get_branch {
   return $self->_to_branches( $self->refs->get_ref( 'refs/heads/' . $name ) );
 }
 
-sub _current_sha1 {
-  my ($self)          = @_;
-  my (@current_sha1s) = $self->git->rev_parse('HEAD');
-  if ( scalar @current_sha1s != 1 ) {
-    require Carp;
-    Carp::confess('Fatal: rev_parse HEAD returned != 1 values');
-  }
-  return shift @current_sha1s;
-}
-
 sub _current_branch_name {
   my ($self) = @_;
   my (@current_names);
@@ -171,7 +155,6 @@ sub current_branch {
   my ( $self, ) = @_;
   my ($ref) = $self->_current_branch_name;
   return if not $ref;
-  return if $ref eq 'HEAD';    # Weird special case.
   my (@items) = $self->get_branch($ref);
   return shift @items if @items == 1;
   require Carp;
