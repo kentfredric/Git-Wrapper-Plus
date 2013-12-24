@@ -40,17 +40,21 @@ provides:
   Git::Wrapper::Plus::Tester:
     file: lib/Git/Wrapper/Plus/Tester.pm
     version: 0.001001
+  Git::Wrapper::Plus::Util:
+    file: lib/Git/Wrapper/Plus/Util.pm
+    version: 0.001001
   Git::Wrapper::Plus::Versions:
     file: lib/Git/Wrapper/Plus/Versions.pm
     version: 0.001001
 requires:
   Carp: 0
   Git::Wrapper: 0
-  Git::Wrapper::Plus::Util: 0
   Moo: 0
   Path::Tiny: 0
   Scalar::Util: 0
   Sort::Versions: 0
+  Sub::Exporter::Progressive: 0
+  Try::Tiny: 0
   perl: 5.008
   strict: 0
   utf8: 0
@@ -61,8 +65,6 @@ resources:
   repository: https://github.com/kentfredric/Git-Wrapper-Plus.git
 version: 0.001001
 x_BuiltWith:
-  failures:
-    Git::Wrapper::Plus::Util: 'module was not found in INC'
   modules:
     Carp: 1.32
     Dist::Zilla::Plugin::Authority: 1.006
@@ -115,6 +117,7 @@ x_BuiltWith:
     Pod::Coverage::TrustPod: 0.100003
     Scalar::Util: 1.35
     Sort::Versions: 1.5
+    Sub::Exporter::Progressive: 0.001011
     Test::CPAN::Changes: 0.27
     Test::CPAN::Meta: 0.23
     Test::Fatal: 0.013
@@ -122,6 +125,7 @@ x_BuiltWith:
     Test::More: 1.001002
     Test::Pod: 1.48
     Test::Pod::Coverage: 1.08
+    Try::Tiny: 0.18
     strict: 1.08
     utf8: 1.13
     version: 0.9904
@@ -255,6 +259,7 @@ x_Dist_Zilla:
             - lib/Git/Wrapper/Plus/Refs.pm
             - lib/Git/Wrapper/Plus/Tags.pm
             - lib/Git/Wrapper/Plus/Tester.pm
+            - lib/Git/Wrapper/Plus/Util.pm
             - lib/Git/Wrapper/Plus/Versions.pm
           path_translator: base64_filter
           prefix: t/00-compile
