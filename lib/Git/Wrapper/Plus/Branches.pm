@@ -6,15 +6,14 @@ BEGIN {
   $Git::Wrapper::Plus::Branches::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Git::Wrapper::Plus::Branches::VERSION = '0.001000';
+  $Git::Wrapper::Plus::Branches::VERSION = '0.001001';
 }
 
 # ABSTRACT: Extract branches from Git
 
 
 use Moo;
-use Scalar::Util qw(blessed);
-use Try::Tiny qw( try catch );
+use Git::Wrapper::Plus::Util qw(exit_status_handler);
 
 
 has 'git' => ( is => ro =>, required => 1 );
@@ -68,35 +67,15 @@ sub _current_sha1 {
 sub _current_branch_name {
   my ($self) = @_;
   my (@current_names);
-  my $ok;
-  try {
+  return unless exit_status_handler (sub {
     (@current_names) = $self->git->symbolic_ref('HEAD');
-    $ok = 1;
-  }
-  catch {
-    my $e = $_;
-    if ( not ref $e ) {
-      die $e;
-    }
-    if ( not blessed $e ) {
-      die $e;
-    }
-    if ( not $e->isa('Git::Wrapper::Exception') ) {
-      die $e;
-    }
-    if ( $e->status == 128 ) {
-      undef $ok;
-      return;
-    }
-    die $e;
-  };
-  if ($ok) {
-    for (@current_names) {
+  }, {
+      128 => sub { return }
+  });
+  for (@current_names) {
       $_ =~ s{\A refs/heads/ }{}msx;
-    }
-    return @current_names;
   }
-  return;
+  return @current_names;
 
 }
 
@@ -128,7 +107,7 @@ Git::Wrapper::Plus::Branches - Extract branches from Git
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 SYNOPSIS
 

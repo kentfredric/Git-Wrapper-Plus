@@ -50,6 +50,7 @@ sub pmver {
 
 eval { $v .= pmver('Carp','any version') };
 eval { $v .= pmver('Git::Wrapper','any version') };
+eval { $v .= pmver('Git::Wrapper::Plus::Util','any version') };
 eval { $v .= pmver('Module::Build','0.4203') };
 eval { $v .= pmver('Moo','any version') };
 eval { $v .= pmver('Path::Tiny','any version') };
@@ -57,7 +58,6 @@ eval { $v .= pmver('Scalar::Util','any version') };
 eval { $v .= pmver('Sort::Versions','any version') };
 eval { $v .= pmver('Test::Fatal','any version') };
 eval { $v .= pmver('Test::More','1.001002') };
-eval { $v .= pmver('Try::Tiny','any version') };
 eval { $v .= pmver('strict','any version') };
 eval { $v .= pmver('utf8','any version') };
 eval { $v .= pmver('warnings','any version') };

@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Git-Wrapper-Plus",
-  "dist_version" => "0.001000",
+  "dist_version" => "0.001001",
   "license" => "perl",
   "module_name" => "Git::Wrapper::Plus",
   "recommends" => {},
@@ -25,11 +25,11 @@ my %module_build_args = (
   "requires" => {
     "Carp" => 0,
     "Git::Wrapper" => 0,
+    "Git::Wrapper::Plus::Util" => 0,
     "Moo" => 0,
     "Path::Tiny" => 0,
     "Scalar::Util" => 0,
     "Sort::Versions" => 0,
-    "Try::Tiny" => 0,
     "perl" => "5.008",
     "strict" => 0,
     "utf8" => 0,
