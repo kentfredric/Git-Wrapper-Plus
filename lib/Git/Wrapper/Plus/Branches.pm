@@ -71,7 +71,7 @@ sub current_branch {
     my ( $self, ) = @_;
     my ($ref) = $self->_current_branch_name;
     return if not $ref;
-    return $self->get_branch($ref);
+    return ( my @foo = $self->get_branch($ref) );
 }
 
 no Moo;
