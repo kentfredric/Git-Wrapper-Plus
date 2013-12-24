@@ -20,75 +20,58 @@ has 'git' => ( is => ro =>, required => 1 );
 has 'refs' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_refs {
-  my ($self) = @_;
-  require Git::Wrapper::Plus::Refs;
-  return Git::Wrapper::Plus::Refs->new( git => $self->git );
-}
-
-sub _build_versions {
-  my ($self) = @_;
-  require Git::Wrapper::Plus::Versions;
-  return Git::Wrapper::Plus::Versions->new( git => $self->git );
+    my ($self) = @_;
+    require Git::Wrapper::Plus::Refs;
+    return Git::Wrapper::Plus::Refs->new( git => $self->git );
 }
 
 sub _to_branch {
-  my ( $self, $ref ) = @_;
-  require Git::Wrapper::Plus::Ref::Branch;
-  return Git::Wrapper::Plus::Ref::Branch->new_from_Ref($ref);
+    my ( $self, $ref ) = @_;
+    require Git::Wrapper::Plus::Ref::Branch;
+    return Git::Wrapper::Plus::Ref::Branch->new_from_Ref($ref);
 }
 
 sub _to_branches {
-  my ( $self, @refs ) = @_;
-  return map { $self->_to_branch($_) } @refs;
+    my ( $self, @refs ) = @_;
+    return map { $self->_to_branch($_) } @refs;
 }
 
 
 sub branches {
-  my ( $self, ) = @_;
-  return $self->get_branch(q[**]);
+    my ( $self, ) = @_;
+    return $self->get_branch(q[**]);
 }
 
 
 sub get_branch {
-  my ( $self, $name ) = @_;
-  return $self->_to_branches( $self->refs->get_ref( 'refs/heads/' . $name ) );
-}
-
-sub _current_sha1 {
-  my ($self)          = @_;
-  my (@current_sha1s) = $self->git->rev_parse('HEAD');
-  if ( scalar @current_sha1s != 1 ) {
-    require Carp;
-    Carp::confess('Fatal: rev_parse HEAD returned != 1 values');
-  }
-  return shift @current_sha1s;
+    my ( $self, $name ) = @_;
+    return $self->_to_branches( $self->refs->get_ref( 'refs/heads/' . $name ) );
 }
 
 sub _current_branch_name {
-  my ($self) = @_;
-  my (@current_names);
-  return unless exit_status_handler (sub {
-    (@current_names) = $self->git->symbolic_ref('HEAD');
-  }, {
-      128 => sub { return }
-  });
-  for (@current_names) {
-      $_ =~ s{\A refs/heads/ }{}msx;
-  }
-  return @current_names;
+    my ($self) = @_;
+    my (@current_names);
+    return unless exit_status_handler(
+        sub {
+            (@current_names) = $self->git->symbolic_ref('HEAD');
+        },
+        {
+            128 => sub { return }
+        }
+    );
+    for (@current_names) {
+        $_ =~ s{\A refs/heads/ }{}msx;
+    }
+    return @current_names;
 
 }
 
 
 sub current_branch {
-  my ( $self, ) = @_;
-  my ($ref) = $self->_current_branch_name;
-  return if not $ref;
-  return if $ref eq 'HEAD';    # Weird special case.
-  my (@items) = $self->get_branch($ref);
-  return shift @items if @items == 1;
-  require Carp;
-  Carp::confess( 'get_branch(' . $ref . ') returned multiple values. Cannot determine current branch' );
+    my ( $self, ) = @_;
+    my ($ref) = $self->_current_branch_name;
+    return if not $ref;
+    return $self->get_branch($ref);
 }
 
 no Moo;
