@@ -54,25 +54,24 @@ sub exit_status_handler {
   try {
     $callback->();
   }
-    catch {
-      undef $return;
-      if ( not ref $_ ) {
-        die $_;
-      }
-      if ( not blessed $_ ) {
-        die $_;
-      }
-      if ( not $_->isa('Git::Wrapper::Exception') ) {
-        die $_;
-      }
-      for my $status ( sort keys %{$status_map} ) {
-        if ( $status == $_->status ) {
-          $return = $status_map->{$status}->($_);
-          return;
-        }
-      }
+  catch {
+    undef $return;
+    if ( not ref $_ ) {
       die $_;
     }
+    if ( not blessed $_ ) {
+      die $_;
+    }
+    if ( not $_->isa('Git::Wrapper::Exception') ) {
+      die $_;
+    }
+    for my $status ( sort keys %{$status_map} ) {
+      if ( $status == $_->status ) {
+        $return = $status_map->{$status}->($_);
+        return;
+      }
+    }
+    die $_;
   };
   return 1 if $return;
   return;
