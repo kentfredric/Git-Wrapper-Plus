@@ -1,6 +1,8 @@
 Release history for Git-Wrapper-Plus
 
 {{$NEXT}}
+
+0.002000 2013-12-25T13:48:24Z
  - Add Git::Wrapper::Plus::Util for exit_status_handler
 
  [Dependencies::Stats]
