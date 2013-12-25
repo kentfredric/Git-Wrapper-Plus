@@ -30,7 +30,7 @@ sub sha1 {
   my ($self)    = @_;
   my ($refname) = $self->refname;
   my (@sha1s)   = $self->git->rev_parse($refname);
-  if ( $sha1s[1] ) {
+  if ( scalar @sha1s > 1 ) {
     require Carp;
     return Carp::confess( q[Fatal: rev-parse ] . $refname . q[ returned multiple values] );
   }

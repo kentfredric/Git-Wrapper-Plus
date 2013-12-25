@@ -71,8 +71,8 @@ sub current_branch {
   my ( $self, ) = @_;
   my ($ref) = $self->_current_branch_name;
   return if not $ref;
-  my @items = $self->get_branch($ref);
-  return $items[0] if @items == 1;
+  my (@items) = $self->get_branch($ref);
+  return shift @items if @items == 1;
   require Carp;
   Carp::confess( 'get_branch(' . $ref . ') returned multiple values. Cannot determine current branch' );
 }
