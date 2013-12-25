@@ -51,8 +51,9 @@ Any other circumstances ( like a status code not existing in the map ) are simpl
 sub exit_status_handler {
   my ( $callback, $status_map ) = @_;
   my $return = 1;
-  &try(
-    $callback,
+  try {
+    $callback->();
+  }
     catch {
       undef $return;
       if ( not ref $_ ) {
@@ -72,7 +73,7 @@ sub exit_status_handler {
       }
       die $_;
     }
-  );
+  };
   return 1 if $return;
   return;
 }
