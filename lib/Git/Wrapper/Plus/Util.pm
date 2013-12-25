@@ -7,7 +7,7 @@ BEGIN {
   $Git::Wrapper::Plus::Util::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Git::Wrapper::Plus::Util::VERSION = '0.001001';
+  $Git::Wrapper::Plus::Util::VERSION = '0.002000';
 }
 
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
@@ -66,7 +66,7 @@ Git::Wrapper::Plus::Util - Misc plumbing tools for Git::Wrapper::Plus
 
 =head1 VERSION
 
-version 0.001001
+version 0.002000
 
 =head1 FUNCTIONS
 
