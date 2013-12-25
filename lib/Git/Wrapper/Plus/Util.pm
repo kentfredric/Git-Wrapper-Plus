@@ -68,7 +68,9 @@ Git::Wrapper::Plus::Util - Misc plumbing tools for Git::Wrapper::Plus
 
 version 0.001001
 
-=func C<exit_status_handler>
+=head1 FUNCTIONS
+
+=head2 C<exit_status_handler>
 
 C<Git::Wrapper> throws exceptions in a few cases, and some of these
 cases are considered normal flow control for C<Git::Wrapper::Plus>.

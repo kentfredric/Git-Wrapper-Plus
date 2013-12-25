@@ -334,6 +334,10 @@ x_Dist_Zilla:
               version: 4.005
             -
               class: Pod::Weaver::Section::Collect
+              name: FUNCTIONS
+              version: 4.005
+            -
+              class: Pod::Weaver::Section::Collect
               name: METHODS
               version: 4.005
             -
