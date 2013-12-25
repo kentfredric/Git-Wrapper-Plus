@@ -80,8 +80,8 @@ For instance, some functions in C<git> emit no output, and return an exit code.
 C<Git::Wrapper> treats that circumstance as a fatal exception!.
 
 Its messy getting all the right C<try/catch> stuff going, and checking
-for the object type, and then checking if the exception type is recognised or not,
-and only then determining if the status was whitelisted.
+for the object type, and then checking if the exception type is recognized or not,
+and only then determining if the status was white-listed.
 
 So:
 
@@ -93,12 +93,12 @@ So:
 
 The above code normally executes C<$code>, and returns C<1> if no exception occurred.
 
-If an exception occurred, and it is not a C<Git::Wrapper::Exception>, it is simply rethrown.
+If an exception occurred, and it is not a C<Git::Wrapper::Exception>, it is simply re-thrown.
 
 And for any status codes listed in the map, the attached C<sub> is executed, and C<exit_status_handler>
 propagates its return value.
 
-Any other circumstances ( like a status code not existing in the map ) are simply rethrown.
+Any other circumstances ( like a status code not existing in the map ) are simply re-thrown.
 
 =head1 AUTHOR
 
