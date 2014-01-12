@@ -7,7 +7,7 @@ package Git::Wrapper::Plus::Refs;
 
 # ABSTRACT: Work with refs
 
-use Moo;
+use Moo qw( has );
 
 =begin MetaPOD::JSON v1.1.0
 

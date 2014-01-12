@@ -19,8 +19,8 @@ package Git::Wrapper::Plus::Versions;
 
 =cut
 
-use Moo;
-use Sort::Versions;
+use Moo qw( has );
+use Sort::Versions qw( versioncmp );
 
 =head1 SYNOPSIS
 

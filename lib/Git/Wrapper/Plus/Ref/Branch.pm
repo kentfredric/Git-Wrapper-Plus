@@ -34,7 +34,7 @@ package Git::Wrapper::Plus::Ref::Branch;
 
 =cut
 
-use Moo;
+use Moo qw( extends );
 extends 'Git::Wrapper::Plus::Ref';
 
 our @CARP_NOT;

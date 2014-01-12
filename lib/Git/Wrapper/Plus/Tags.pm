@@ -19,7 +19,7 @@ package Git::Wrapper::Plus::Tags;
 
 =cut
 
-use Moo;
+use Moo qw( has );
 
 =head1 SYNOPSIS
 

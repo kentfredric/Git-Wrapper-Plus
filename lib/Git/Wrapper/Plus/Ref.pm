@@ -31,7 +31,7 @@ package Git::Wrapper::Plus::Ref;
 
 =cut
 
-use Moo;
+use Moo qw( has );
 
 =attr C<name>
 

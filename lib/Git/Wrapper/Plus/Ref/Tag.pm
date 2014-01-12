@@ -19,7 +19,7 @@ package Git::Wrapper::Plus::Ref::Tag;
 
 =cut
 
-use Moo;
+use Moo qw( extends );
 extends 'Git::Wrapper::Plus::Ref';
 
 =head1 SYNOPSIS

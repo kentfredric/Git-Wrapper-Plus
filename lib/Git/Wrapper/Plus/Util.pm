@@ -11,10 +11,10 @@ use Sub::Exporter::Progressive -setup => {
   exports => [qw( exit_status_handler )],
   groups  => {
     default => [qw( exit_status_handler )],
-  }
+  },
 };
 
-use Try::Tiny;
+use Try::Tiny qw( try catch );
 use Scalar::Util qw(blessed);
 
 =func C<exit_status_handler>

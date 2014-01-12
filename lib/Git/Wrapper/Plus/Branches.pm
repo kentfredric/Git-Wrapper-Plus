@@ -49,7 +49,7 @@ So
 
 =cut
 
-use Moo;
+use Moo qw( has );
 use Git::Wrapper::Plus::Util qw(exit_status_handler);
 
 =attr C<git>

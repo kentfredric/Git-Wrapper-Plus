@@ -98,7 +98,7 @@ of the contained tools without having to pass C<Git::Wrapper> instances everywhe
 
 =cut
 
-use Moo;
+use Moo qw( has );
 use Scalar::Util qw( blessed );
 
 =method C<BUILDARGS>

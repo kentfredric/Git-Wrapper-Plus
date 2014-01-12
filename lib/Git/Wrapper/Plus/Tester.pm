@@ -7,7 +7,7 @@ package Git::Wrapper::Plus::Tester;
 
 # ABSTRACT: Utility for testing things with a git repository
 
-use Moo;
+use Moo qw( has );
 use Path::Tiny qw(path);
 
 =begin MetaPOD::JSON v1.1.0
