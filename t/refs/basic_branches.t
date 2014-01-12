@@ -40,7 +40,7 @@ $t->run_env(
       note 'git checkout -b';
       $wrapper->checkout( '-b', 'master_2' );
       $file->spew('New Content');
-      if ( $s->supports_behaviour('add-updates-index') ) {
+      if ( $s->supports_behavior('add-updates-index') ) {
         note 'git add ' . $rfile;
         $wrapper->add($rfile);
       }
