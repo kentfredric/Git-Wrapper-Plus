@@ -20,7 +20,7 @@ $t->run_env(
   sub {
     subtest 'commands' => sub {
       note "\nCommands:";
-      for my $command ( keys %{$Git::Wrapper::Plus::Support::command_db} ) {
+      for my $command ( sort keys %{$Git::Wrapper::Plus::Support::command_db} ) {
         my $msg = '- ' . $command . ' ';
         if ( $s->supports_command($command) ) {
           $msg .= "supported";
@@ -38,7 +38,7 @@ $t->run_env(
     subtest 'behaviours' => sub {
       note "\nBehaviours:";
 
-      for my $behaviour ( keys %{$Git::Wrapper::Plus::Support::behaviour_db} ) {
+      for my $behaviour ( sort keys %{$Git::Wrapper::Plus::Support::behaviour_db} ) {
         my $msg = '- ' . $behaviour . ' ';
         if ( $s->supports_behaviour($behaviour) ) {
           $msg .= "supported";
