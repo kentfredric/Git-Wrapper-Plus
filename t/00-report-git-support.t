@@ -13,7 +13,7 @@ my $s = Git::Wrapper::Plus::Support->new( git => $t->git );
 
 my $data = {
   commands   => {},
-  behaviours => {},
+  behaviors => {},
 };
 
 $t->run_env(
@@ -35,17 +35,17 @@ $t->run_env(
       }
       pass("Commands reporting ok");
     };
-    subtest 'behaviours' => sub {
+    subtest 'behaviors' => sub {
       note "\nBehaviours:";
 
-      for my $behaviour ( sort keys %{$Git::Wrapper::Plus::Support::behaviour_db} ) {
-        my $msg = '- ' . $behaviour . ' ';
-        if ( $s->supports_behaviour($behaviour) ) {
+      for my $behavior ( sort keys %{$Git::Wrapper::Plus::Support::behavior_db} ) {
+        my $msg = '- ' . $behavior . ' ';
+        if ( $s->supports_behavior($behavior) ) {
           $msg .= "supported";
-          push @{ $data->{behaviours}->{supported} }, $behaviour;
+          push @{ $data->{behaviors}->{supported} }, $behavior;
         }
         else {
-          push @{ $data->{behaviours}->{unsupported} }, $behaviour;
+          push @{ $data->{behaviors}->{unsupported} }, $behavior;
           $msg .= "UNSUPPORTED";
         }
         note $msg;

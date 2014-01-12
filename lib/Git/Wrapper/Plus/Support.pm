@@ -19,7 +19,7 @@ use Moo qw( has );
     if ( $support->supports_command( 'for-each-ref' ) ) {
 
     }
-    if ( $support->supports_behaviour('add-updates-index') ) {
+    if ( $support->supports_behavior('add-updates-index') ) {
 
     }
 
@@ -147,23 +147,23 @@ sub supports_command {
   return 0;
 }
 
-=method C<supports_behaviour>
+=method C<supports_behavior>
 
-Incidates if a given command behaves in a certain way
+Indicates if a given command behaves in a certain way
 
 This works by using a hand-coded table for interesting values
 by processing C<git log> for git itself.
 
-Returns C<undef> if the status of a commands behaviour is unknown ( that is, has not been added
+Returns C<undef> if the status of a commands behavior is unknown ( that is, has not been added
 to the map yet ), C<0> if it is not supported, and C<1> if it is.
 
-    if ( $supporter->supports_behaviour('add-updates-index') ) ) {
+    if ( $supporter->supports_behavior('add-updates-index') ) ) {
         ...
     } else {
         ...
     }
 
-B<Current behaviours>
+B<Current behaviors>
 
 =head4 C<add-updates-index>
 
@@ -183,7 +183,7 @@ Not all versions of Git can checkout a detached head.
 
 =cut
 
-our $behaviour_db = {
+our $behavior_db = {
   'add-updates-index' => [
     {
       'min'      => '1.5.0',
@@ -207,12 +207,12 @@ our $behaviour_db = {
   ],
 };
 
-sub supports_behaviour {
+sub supports_behavior {
   my ( $self, $beh ) = @_;
-  if ( not exists $behaviour_db->{$beh} ) {
-    return undef;
+  if ( not exists $behavior_db->{$beh} ) {
+    return;
   }
-  for my $pair ( @{ $behaviour_db->{$beh} } ) {
+  for my $pair ( @{ $behavior_db->{$beh} } ) {
     if ( exists $pair->{min} and not exists $pair->{max} ) {
       if ( $self->versions->newer_than( $pair->{min} ) ) {
         return 1;
@@ -226,7 +226,7 @@ sub supports_behaviour {
       return 0;
     }
     if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn "Bad quality behaviour db entry with no range control";
+      warn 'Bad quality behavior db entry with no range control';
       next;
     }
     next unless $self->versions->newer_than( $pair->{min} );

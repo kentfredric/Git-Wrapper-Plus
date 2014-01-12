@@ -34,7 +34,7 @@ $t->run_env(
       $wrapper->commit( '-m', 'Test Commit' );
       $wrapper->checkout( '-b', 'master_2' );
       $file->spew('New Content');
-      if ( $s->supports_behaviour('add-updates-index') ) {
+      if ( $s->supports_behavior('add-updates-index') ) {
         note 'git add ' . $rfile;
         $wrapper->add($rfile);
       }
@@ -62,7 +62,7 @@ $t->run_env(
     ok( exists $branches->{master_2}, 'master_2 branch found' );
     ok( exists $branches->{master_3}, 'master_3 branch found' );
     is( $branches->{master_2}->sha1, $branches->{master_3}->sha1, 'master_2 and master_3 have the same sha1' );
-    if ( $s->supports_behaviour('can-checkout-detached') ) {
+    if ( $s->supports_behavior('can-checkout-detached') ) {
       subtest 'Detached head test' => sub {
         $wrapper->checkout('master_3^');
         $excp = exception {
