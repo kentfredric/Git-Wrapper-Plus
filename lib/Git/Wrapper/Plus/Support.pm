@@ -123,7 +123,7 @@ B<Currently indexed commands>
 sub supports_command {
   my ( $self, $command ) = @_;
   if ( not exists $command_db->{$command} ) {
-    return undef;
+    return;
   }
   for my $pair ( @{ $command_db->{$command} } ) {
     if ( exists $pair->{min} and not exists $pair->{max} ) {
