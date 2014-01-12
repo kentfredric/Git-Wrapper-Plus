@@ -95,7 +95,7 @@ Fetch a given C<ref>, or collection of C<ref>s, matching a specification.
     my (@branches) = $reffer->get_ref('refs/heads/**');
     my (@tags)   = $reffer->get_ref('refs/tags/**');
 
-Though reminder, if you're working with branches or tags, use the relevant modules =).
+Though reminder, if you're working with branches or tags, use the relevant modules ☺.
 
 =cut
 

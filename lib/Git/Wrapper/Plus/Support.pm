@@ -100,7 +100,7 @@ for my $cmd (@GIT_ZERO_LIST) {
 
 =method C<supports_command>
 
-Determines if a given command is suppported on the current git.
+Determines if a given command is supported on the current git.
 
 This works by using a hand-coded table for interesting values
 by processing C<git log> for git itself.
