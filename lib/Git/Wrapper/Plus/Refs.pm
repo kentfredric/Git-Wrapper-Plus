@@ -111,7 +111,7 @@ sub get_ref {
 }
 
 sub _mk_ref {
-  my ( $self, $sha1, $name ) = @_;
+  my ( $self, undef, $name ) = @_;
   require Git::Wrapper::Plus::Ref;
   return Git::Wrapper::Plus::Ref->new(
     git  => $self->git,

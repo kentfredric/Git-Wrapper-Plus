@@ -115,7 +115,7 @@ Construction takes 4 Forms:
 =cut
 
 sub BUILDARGS {
-  my ( $class, @args ) = @_;
+  my ( undef, @args ) = @_;
   if ( @args == 1 ) {
   blesscheck: {
       if ( blessed $args[0] ) {
@@ -153,7 +153,7 @@ has git => ( is => ro =>, required => 1 );
 has refs => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_refs {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Refs;
   return Git::Wrapper::Plus::Refs->new( git => $self->git );
 }
@@ -165,7 +165,7 @@ sub _build_refs {
 has tags => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_tags {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Tags;
   return Git::Wrapper::Plus::Tags->new( git => $self->git );
 }
@@ -177,7 +177,7 @@ sub _build_tags {
 has branches => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_branches {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Branches;
   return Git::Wrapper::Plus::Branches->new( git => $self->git );
 }
@@ -189,7 +189,7 @@ sub _build_branches {
 has versions => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_versions {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Versions;
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }

@@ -77,7 +77,7 @@ sub _build_refs {
 }
 
 sub _to_tag {
-  my ( $self, $ref ) = @_;
+  my ( undef, $ref ) = @_;
   require Git::Wrapper::Plus::Ref::Tag;
   return Git::Wrapper::Plus::Ref::Tag->new_from_Ref($ref);
 }
@@ -103,7 +103,7 @@ sub _to_tags {
 # However, we don't really care about the second half of the latter kind.
 #
 sub _grep_commit_pointers {
-  my ( $self, @refs ) = @_;
+  my ( undef, @refs ) = @_;
   my (@out);
   for my $ref (@refs) {
     next if $ref->name =~ /[^][{][}]\z/msx;

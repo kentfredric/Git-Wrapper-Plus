@@ -114,21 +114,21 @@ sub _build_temp_dir {
 }
 
 sub _build_home_dir {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   my $d = $self->temp_dir->child('homedir');
   $d->mkpath;
   return $d;
 }
 
 sub _build_repo_dir {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   my $d = $self->temp_dir->child('repodir');
   $d->mkpath;
   return $d;
 }
 
 sub _build_git {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper;
   return Git::Wrapper->new( $self->repo_dir->absolute->stringify );
 }
