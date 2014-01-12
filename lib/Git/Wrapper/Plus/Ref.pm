@@ -6,7 +6,7 @@ package Git::Wrapper::Plus::Ref;
 BEGIN {
   $Git::Wrapper::Plus::Ref::AUTHORITY = 'cpan:KENTNL';
 }
-$Git::Wrapper::Plus::Ref::VERSION = '0.002001';
+$Git::Wrapper::Plus::Ref::VERSION = '0.003000';
 # ABSTRACT: An Abstract REF node
 
 
@@ -97,7 +97,7 @@ Git::Wrapper::Plus::Ref - An Abstract REF node
 
 =head1 VERSION
 
-version 0.002001
+version 0.003000
 
 =head1 SYNOPSIS
 

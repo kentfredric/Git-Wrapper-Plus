@@ -6,7 +6,7 @@ package Git::Wrapper::Plus::Versions;
 BEGIN {
   $Git::Wrapper::Plus::Versions::AUTHORITY = 'cpan:KENTNL';
 }
-$Git::Wrapper::Plus::Versions::VERSION = '0.002001';
+$Git::Wrapper::Plus::Versions::VERSION = '0.003000';
 # ABSTRACT: Analyze and compare git versions
 
 
@@ -109,7 +109,7 @@ Git::Wrapper::Plus::Versions - Analyze and compare git versions
 
 =head1 VERSION
 
-version 0.002001
+version 0.003000
 
 =head1 SYNOPSIS
 

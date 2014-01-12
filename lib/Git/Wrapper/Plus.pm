@@ -5,7 +5,7 @@ package Git::Wrapper::Plus;
 BEGIN {
   $Git::Wrapper::Plus::AUTHORITY = 'cpan:KENTNL';
 }
-$Git::Wrapper::Plus::VERSION = '0.002001';
+$Git::Wrapper::Plus::VERSION = '0.003000';
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
 
@@ -116,8 +116,23 @@ use Scalar::Util qw( blessed );
 sub BUILDARGS {
   my ( $class, @args ) = @_;
   if ( @args == 1 ) {
-
-    return { git => $args[0] } if blessed $args[0];
+  blesscheck: {
+      if ( blessed $args[0] ) {
+        if ( $args[0]->isa('Path::Tiny') ) {
+          $args[0] = q[] . $args[0];
+          last blesscheck;
+        }
+        if ( $args[0]->isa('Path::Class::Dir') ) {
+          $args[0] = q[] . $args[0];
+          last blesscheck;
+        }
+        if ( $args[0]->isa('Path::Class::File') ) {
+          $args[0] = q[] . $args[0];
+          last blesscheck;
+        }
+        return { git => $args[0] };
+      }
+    }
     return $args[0] if ref $args[0];
 
     require Git::Wrapper;
@@ -204,7 +219,7 @@ Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an Object Orient
 
 =head1 VERSION
 
-version 0.002001
+version 0.003000
 
 =head1 DESCRIPTION
 

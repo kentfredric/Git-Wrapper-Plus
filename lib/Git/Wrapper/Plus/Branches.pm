@@ -5,7 +5,7 @@ package Git::Wrapper::Plus::Branches;
 BEGIN {
   $Git::Wrapper::Plus::Branches::AUTHORITY = 'cpan:KENTNL';
 }
-$Git::Wrapper::Plus::Branches::VERSION = '0.002001';
+$Git::Wrapper::Plus::Branches::VERSION = '0.003000';
 # ABSTRACT: Extract branches from Git
 
 
@@ -180,7 +180,7 @@ Git::Wrapper::Plus::Branches - Extract branches from Git
 
 =head1 VERSION
 
-version 0.002001
+version 0.003000
 
 =head1 SYNOPSIS
 

@@ -18,7 +18,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Git-Wrapper-Plus",
-  "dist_version" => "0.002001",
+  "dist_version" => "0.003000",
   "license" => "perl",
   "module_name" => "Git::Wrapper::Plus",
   "recommends" => {},
@@ -27,7 +27,6 @@ my %module_build_args = (
     "Carp" => 0,
     "Git::Wrapper" => 0,
     "Moo" => 0,
-    "Moose" => 0,
     "Path::Tiny" => 0,
     "Scalar::Util" => 0,
     "Sort::Versions" => 0,
@@ -41,7 +40,8 @@ my %module_build_args = (
   "script_files" => [],
   "test_requires" => {
     "Test::Fatal" => 0,
-    "Test::More" => "1.001002"
+    "Test::More" => "1.001002",
+    "Test::Requires" => 0
   }
 );
 
@@ -49,7 +49,8 @@ my %module_build_args = (
 my %fallback_build_requires = (
   "Module::Build" => "0.4204",
   "Test::Fatal" => 0,
-  "Test::More" => "1.001002"
+  "Test::More" => "1.001002",
+  "Test::Requires" => 0
 );
 
 

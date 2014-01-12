@@ -85,7 +85,6 @@
             "Carp" : "0",
             "Git::Wrapper" : "0",
             "Moo" : "0",
-            "Moose" : "0",
             "Path::Tiny" : "0",
             "Scalar::Util" : "0",
             "Sort::Versions" : "0",
@@ -100,54 +99,55 @@
       "test" : {
          "requires" : {
             "Test::Fatal" : "0",
-            "Test::More" : "1.001002"
+            "Test::More" : "1.001002",
+            "Test::Requires" : "0"
          }
       }
    },
    "provides" : {
       "Git::Wrapper::Plus" : {
          "file" : "lib/Git/Wrapper/Plus.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Branches" : {
          "file" : "lib/Git/Wrapper/Plus/Branches.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Ref" : {
          "file" : "lib/Git/Wrapper/Plus/Ref.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Ref::Branch" : {
          "file" : "lib/Git/Wrapper/Plus/Ref/Branch.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Ref::Tag" : {
          "file" : "lib/Git/Wrapper/Plus/Ref/Tag.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Refs" : {
          "file" : "lib/Git/Wrapper/Plus/Refs.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Support" : {
          "file" : "lib/Git/Wrapper/Plus/Support.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Tags" : {
          "file" : "lib/Git/Wrapper/Plus/Tags.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Tester" : {
          "file" : "lib/Git/Wrapper/Plus/Tester.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Util" : {
          "file" : "lib/Git/Wrapper/Plus/Util.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       },
       "Git::Wrapper::Plus::Versions" : {
          "file" : "lib/Git/Wrapper/Plus/Versions.pm",
-         "version" : "0.002001"
+         "version" : "0.003000"
       }
    },
    "release_status" : "stable",
@@ -162,7 +162,7 @@
          "web" : "https://github.com/kentfredric/Git-Wrapper-Plus"
       }
    },
-   "version" : "0.002001",
+   "version" : "0.003000",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.32",
@@ -212,7 +212,6 @@
          "Git::Wrapper" : "0.030",
          "Module::Build" : "0.4204",
          "Moo" : "1.004002",
-         "Moose" : "2.1201",
          "Path::Tiny" : "0.051",
          "Pod::Coverage::TrustPod" : "0.100003",
          "Scalar::Util" : "1.35",
@@ -225,6 +224,7 @@
          "Test::More" : "1.001002",
          "Test::Pod" : "1.48",
          "Test::Pod::Coverage" : "1.08",
+         "Test::Requires" : "0.07",
          "Try::Tiny" : "0.18",
          "strict" : "1.08",
          "utf8" : "1.13",

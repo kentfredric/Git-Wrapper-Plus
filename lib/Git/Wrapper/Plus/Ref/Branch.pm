@@ -6,7 +6,7 @@ package Git::Wrapper::Plus::Ref::Branch;
 BEGIN {
   $Git::Wrapper::Plus::Ref::Branch::AUTHORITY = 'cpan:KENTNL';
 }
-$Git::Wrapper::Plus::Ref::Branch::VERSION = '0.002001';
+$Git::Wrapper::Plus::Ref::Branch::VERSION = '0.003000';
 # ABSTRACT: A Branch object
 
 
@@ -143,7 +143,7 @@ Git::Wrapper::Plus::Ref::Branch - A Branch object
 
 =head1 VERSION
 
-version 0.002001
+version 0.003000
 
 =head1 SYNOPSIS
 
