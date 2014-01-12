@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -33,7 +34,7 @@ $Git::Wrapper::Plus::Ref::VERSION = '0.003000';
 
 
 
-use Moo;
+use Moo qw( has );
 
 
 
@@ -45,8 +46,8 @@ use Moo;
 
 
 
-has name => is => ro =>, required => 1;
-has git  => is => ro =>, required => 1;
+has 'name' => ( is => ro =>, required => 1 );
+has 'git'  => ( is => ro =>, required => 1 );
 
 
 

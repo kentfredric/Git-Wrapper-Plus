@@ -1,5 +1,7 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Git::Wrapper::Plus::Branches;
 BEGIN {
@@ -50,7 +52,7 @@ $Git::Wrapper::Plus::Branches::VERSION = '0.003000';
 
 
 
-use Moo;
+use Moo qw( has );
 use Git::Wrapper::Plus::Util qw(exit_status_handler);
 
 
@@ -73,7 +75,7 @@ sub _build_refs {
 }
 
 sub _to_branch {
-  my ( $self, $ref ) = @_;
+  my ( undef, $ref ) = @_;
   require Git::Wrapper::Plus::Ref::Branch;
   return Git::Wrapper::Plus::Ref::Branch->new_from_Ref($ref);
 }
@@ -131,8 +133,8 @@ sub _current_branch_name {
       (@current_names) = $self->git->symbolic_ref('HEAD');
     },
     {
-      128 => sub { return }
-    }
+      128 => sub { return },
+    },
   );
   for (@current_names) {
     $_ =~ s{\A refs/heads/ }{}msx;
@@ -159,7 +161,7 @@ sub current_branch {
   my ($ref) = $self->_current_branch_name;
   return if not $ref;
   my (@items) = $self->get_branch($ref);
-  return shift @items if @items == 1;
+  return shift @items if 1 == @items;
   require Carp;
   Carp::confess( 'get_branch(' . $ref . ') returned multiple values. Cannot determine current branch' );
 }

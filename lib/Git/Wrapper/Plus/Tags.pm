@@ -1,5 +1,7 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Git::Wrapper::Plus::Tags;
 BEGIN {
@@ -20,7 +22,7 @@ $Git::Wrapper::Plus::Tags::VERSION = '0.003000';
 
 
 
-use Moo;
+use Moo qw( has );
 
 
 
@@ -61,7 +63,7 @@ use Moo;
 
 
 
-has git => is => ro =>, required => 1;
+has 'git' => ( is => ro =>, required => 1 );
 
 
 
@@ -69,7 +71,7 @@ has git => is => ro =>, required => 1;
 
 
 
-has 'refs' => is => ro =>, lazy => 1, builder => 1;
+has 'refs' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_refs {
   my ($self) = @_;
@@ -78,7 +80,7 @@ sub _build_refs {
 }
 
 sub _to_tag {
-  my ( $self, $ref ) = @_;
+  my ( undef, $ref ) = @_;
   require Git::Wrapper::Plus::Ref::Tag;
   return Git::Wrapper::Plus::Ref::Tag->new_from_Ref($ref);
 }
@@ -104,7 +106,7 @@ sub _to_tags {
 # However, we don't really care about the second half of the latter kind.
 #
 sub _grep_commit_pointers {
-  my ( $self, @refs ) = @_;
+  my ( undef, @refs ) = @_;
   my (@out);
   for my $ref (@refs) {
     next if $ref->name =~ /[^][{][}]\z/msx;
@@ -174,11 +176,11 @@ sub tag_sha1_map {
 
   my %hash;
   for my $tag ( $self->tags ) {
-    my $sha1 = $tag->sha1;
-    if ( not exists $hash{$sha1} ) {
-      $hash{$sha1} = [];
+    my $sha_one = $tag->sha1;
+    if ( not exists $hash{$sha_one} ) {
+      $hash{$sha_one} = [];
     }
-    push @{ $hash{$sha1} }, $tag;
+    push @{ $hash{$sha_one} }, $tag;
   }
   return \%hash;
 }

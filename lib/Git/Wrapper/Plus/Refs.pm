@@ -1,5 +1,7 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Git::Wrapper::Plus::Refs;
 BEGIN {
@@ -8,7 +10,7 @@ BEGIN {
 $Git::Wrapper::Plus::Refs::VERSION = '0.003000';
 # ABSTRACT: Work with refs
 
-use Moo;
+use Moo qw( has );
 
 
 
@@ -56,6 +58,7 @@ sub _for_each_ref {
 
   my $git_dir = $self->git->dir;
   for my $line ( $self->git->ls_remote( $git_dir, $refspec ) ) {
+    ## no critic (Compatibility::PerlMinimumVersionAndWhy)
     if ( $line =~ qr{ \A ([^\t]+) \t ( .+ ) \z }msx ) {
       $callback->( $1, $2 );
       next;
@@ -104,15 +107,15 @@ sub get_ref {
   my @out;
   $self->_for_each_ref(
     $refspec => sub {
-      my ( $sha1, $refname ) = @_;
-      push @out, $self->_mk_ref( $sha1, $refname );
-    }
+      my ( $sha_one, $refname ) = @_;
+      push @out, $self->_mk_ref( $sha_one, $refname );
+    },
   );
   return @out;
 }
 
 sub _mk_ref {
-  my ( $self, $sha1, $name ) = @_;
+  my ( $self, undef, $name ) = @_;
   require Git::Wrapper::Plus::Ref;
   return Git::Wrapper::Plus::Ref->new(
     git  => $self->git,
@@ -182,7 +185,7 @@ Fetch a given C<ref>, or collection of C<ref>s, matching a specification.
     my (@branches) = $reffer->get_ref('refs/heads/**');
     my (@tags)   = $reffer->get_ref('refs/tags/**');
 
-Though reminder, if you're working with branches or tags, use the relevant modules =).
+Though reminder, if you're working with branches or tags, use the relevant modules ☺.
 
 =head1 ATTRIBUTES
 

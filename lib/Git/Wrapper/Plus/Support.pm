@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -9,7 +10,7 @@ BEGIN {
 $Git::Wrapper::Plus::Support::VERSION = '0.003000';
 # ABSTRACT: Determine what versions of things support what
 
-use Moo;
+use Moo qw( has );
 
 
 
@@ -38,6 +39,8 @@ sub _build_versions {
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
 
+## no critic (ProhibitPackageVars)
+
 our $command_db = {
   'for-each-ref' => [
     {
@@ -60,29 +63,29 @@ our $command_db = {
       'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
       'max'      => '1.0.0',
       'max_tag'  => '1.0.0',
-      'max_sha1' => 'ba922ccee7565c949b4db318e5c27997cbdbfdba'
-    }
+      'max_sha1' => 'ba922ccee7565c949b4db318e5c27997cbdbfdba',
+    },
   ],
   'update-index' => [
     {
       'min'      => '0.99.7',
       'min_tag'  => '0.99.7',
-      'min_sha1' => '215a7ad1ef790467a4cd3f0dcffbd6e5f04c38f7'
-    }
+      'min_sha1' => '215a7ad1ef790467a4cd3f0dcffbd6e5f04c38f7',
+    },
   ],
   'ls-remote' => [
     {
       'min'      => '0.99.2',
       'min_tag'  => '0.99.2',
-      'min_sha1' => '0fec0822721cc18d6a62ab78da1ebf87914d4921'
-    }
+      'min_sha1' => '0fec0822721cc18d6a62ab78da1ebf87914d4921',
+    },
   ],
   'peek-remote' => [
     {
       'min'      => '0.99.2',
       'min_tag'  => '0.99.2',
       'min_sha1' => '18705953af75aed190badfccdc107ad0c2f36c93',
-    }
+    },
   ],
 };
 
@@ -94,7 +97,7 @@ for my $cmd (@GIT_ZERO_LIST) {
       'min'      => '0.99',
       'min_tag'  => '0.99',
       'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
-    }
+    },
   ];
 }
 
@@ -185,7 +188,7 @@ sub supports_command {
 
 
 
-our $behaviour_db = {
+our $behavior_db = {
   'add-updates-index' => [
     {
       'min'      => '1.5.0',
@@ -197,24 +200,24 @@ our $behaviour_db = {
     {
       'min'      => '1.5.0',
       'min_tag'  => '1.5.0-rc1',
-      'min_sha1' => 'c847f537125ceab3425205721fdaaa834e6d8a83'
-    }
+      'min_sha1' => 'c847f537125ceab3425205721fdaaa834e6d8a83',
+    },
   ],
   '2-arg-cat-file' => [
     {
       'min_sha1' => 'bf0c6e839c692142784caf07b523cd69442e57a5',
       'min_tag'  => '0.99',
       'min'      => '0.99',
-    }
+    },
   ],
 };
 
-sub supports_behaviour {
+sub supports_behavior {
   my ( $self, $beh ) = @_;
-  if ( not exists $behaviour_db->{$beh} ) {
-    return undef;
+  if ( not exists $behavior_db->{$beh} ) {
+    return;
   }
-  for my $pair ( @{ $behaviour_db->{$beh} } ) {
+  for my $pair ( @{ $behavior_db->{$beh} } ) {
     if ( exists $pair->{min} and not exists $pair->{max} ) {
       if ( $self->versions->newer_than( $pair->{min} ) ) {
         return 1;
@@ -228,7 +231,7 @@ sub supports_behaviour {
       return 0;
     }
     if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn "Bad quality behaviour db entry with no range control";
+      warn 'Bad quality behavior db entry with no range control';
       next;
     }
     next unless $self->versions->newer_than( $pair->{min} );
@@ -265,7 +268,7 @@ version 0.003000
     if ( $support->supports_command( 'for-each-ref' ) ) {
 
     }
-    if ( $support->supports_behaviour('add-updates-index') ) {
+    if ( $support->supports_behavior('add-updates-index') ) {
 
     }
 
@@ -273,7 +276,7 @@ version 0.003000
 
 =head2 C<supports_command>
 
-Determines if a given command is suppported on the current git.
+Determines if a given command is supported on the current git.
 
 This works by using a hand-coded table for interesting values
 by processing C<git log> for git itself.
@@ -291,23 +294,23 @@ B<Currently indexed commands>
 
     for-each-ref init init-db
 
-=head2 C<supports_behaviour>
+=head2 C<supports_behavior>
 
-Incidates if a given command behaves in a certain way
+Indicates if a given command behaves in a certain way
 
 This works by using a hand-coded table for interesting values
 by processing C<git log> for git itself.
 
-Returns C<undef> if the status of a commands behaviour is unknown ( that is, has not been added
+Returns C<undef> if the status of a commands behavior is unknown ( that is, has not been added
 to the map yet ), C<0> if it is not supported, and C<1> if it is.
 
-    if ( $supporter->supports_behaviour('add-updates-index') ) ) {
+    if ( $supporter->supports_behavior('add-updates-index') ) ) {
         ...
     } else {
         ...
     }
 
-B<Current behaviours>
+B<Current behaviors>
 
 =head4 C<add-updates-index>
 
