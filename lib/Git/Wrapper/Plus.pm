@@ -116,7 +116,7 @@ Construction takes 4 Forms:
 
 sub BUILDARGS {
   my ( undef, @args ) = @_;
-  if ( @args == 1 ) {
+  if ( 1 == @args ) {
   blesscheck: {
       if ( blessed $args[0] ) {
         if ( $args[0]->isa('Path::Tiny') ) {
