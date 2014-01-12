@@ -113,8 +113,23 @@ Construction takes 4 Forms:
 sub BUILDARGS {
   my ( $class, @args ) = @_;
   if ( @args == 1 ) {
-
-    return { git => $args[0] } if blessed $args[0];
+  blesscheck: {
+      if ( blessed $args[0] ) {
+        if ( $args[0]->isa('Path::Tiny') ) {
+          $args[0] = q[] . $args[0];
+          last blesscheck;
+        }
+        if ( $args[0]->isa('Path::Class::Dir') ) {
+          $args[0] = q[] . $args[0];
+          last blesscheck;
+        }
+        if ( $args[0]->isa('Path::Class::File') ) {
+          $args[0] = q[] . $args[0];
+          last blesscheck;
+        }
+        return { git => $args[0] };
+      }
+    }
     return $args[0] if ref $args[0];
 
     require Git::Wrapper;
