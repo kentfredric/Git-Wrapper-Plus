@@ -36,6 +36,8 @@ sub _build_versions {
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
 
+## no critic (ProhibitPackageVars)
+
 our $command_db = {
   'for-each-ref' => [
     {

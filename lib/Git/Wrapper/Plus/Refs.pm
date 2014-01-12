@@ -55,6 +55,7 @@ sub _for_each_ref {
 
   my $git_dir = $self->git->dir;
   for my $line ( $self->git->ls_remote( $git_dir, $refspec ) ) {
+    ## no critic (Compatibility::PerlMinimumVersionAndWhy)
     if ( $line =~ qr{ \A ([^\t]+) \t ( .+ ) \z }msx ) {
       $callback->( $1, $2 );
       next;

@@ -56,6 +56,7 @@ sub exit_status_handler {
     $callback->();
   }
   catch {
+    ## no critic (ErrorHandling::RequireUseOfExceptions)
     undef $return;
     if ( not ref $_ ) {
       die $_;
