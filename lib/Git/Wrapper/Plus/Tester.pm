@@ -81,10 +81,10 @@ B<OPTIONAL>
 
 =cut
 
-has temp_dir => is => ro =>, lazy => 1, builder => 1;
-has home_dir => is => ro =>, lazy => 1, builder => 1;
-has repo_dir => is => ro =>, lazy => 1, builder => 1;
-has git      => is => ro =>, lazy => 1, builder => 1;
+has 'temp_dir' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'home_dir' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'repo_dir' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'git'      => ( is => ro =>, lazy => 1, builder => 1 );
 
 =attr C<committer_name>
 
@@ -104,10 +104,10 @@ B<OPTIONAL>. Defaults to C<< ->committer_email >>
 
 =cut
 
-has committer_name  => is => ro =>, lazy => 1, builder => 1;
-has committer_email => is => ro =>, lazy => 1, builder => 1;
-has author_name     => is => ro =>, lazy => 1, builder => 1;
-has author_email    => is => ro =>, lazy => 1, builder => 1;
+has 'committer_name'  => ( is => ro =>, lazy => 1, builder => 1 );
+has 'committer_email' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'author_name'     => ( is => ro =>, lazy => 1, builder => 1 );
+has 'author_email'    => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_temp_dir {
   return Path::Tiny->tempdir;

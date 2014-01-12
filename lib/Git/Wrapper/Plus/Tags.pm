@@ -60,7 +60,7 @@ B<REQUIRED>: A Git::Wrapper compatible object.
 
 =cut
 
-has git => is => ro =>, required => 1;
+has 'git' => ( is => ro =>, required => 1 );
 
 =attr C<refs>
 
@@ -68,7 +68,7 @@ B<OPTIONAL>: Git::Wrapper::Plus::Refs instance, auto-built if not specified.
 
 =cut
 
-has 'refs' => is => ro =>, lazy => 1, builder => 1;
+has 'refs' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_refs {
   my ($self) = @_;

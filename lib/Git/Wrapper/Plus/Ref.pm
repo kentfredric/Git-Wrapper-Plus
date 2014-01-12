@@ -43,8 +43,8 @@ B<REQUIRED>: A C<Git::Wrapper> compatible object for resolving C<sha1> internals
 
 =cut
 
-has name => is => ro =>, required => 1;
-has git  => is => ro =>, required => 1;
+has 'name' => ( is => ro =>, required => 1 );
+has 'git'  => ( is => ro =>, required => 1 );
 
 =method C<refname>
 
