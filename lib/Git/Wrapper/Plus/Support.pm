@@ -49,7 +49,6 @@ our $command_db = {
       'min_tag'  => '1.5.0-rc1',
       'min_sha1' => '515377ea9ec6192f82a2fa5c5b5b7651d9d6cf6c',
     },
-
   ],
   'update-cache' => [
     {
