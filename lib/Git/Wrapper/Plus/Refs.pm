@@ -73,6 +73,7 @@ sub _for_each_ref {
   #     ls-remote     refs/heads/*
   #
   if ( $self->support->supports_command('for-each-ref') ) {
+    ## no critic (Compatibility::PerlMinimumVersionAndWhy)
     if ( $refspec =~ qr{\A(.*)/[*]{1,2}\z}msx ) {
       $refspec = $1;
     }

@@ -1,6 +1,6 @@
 Release history for Git-Wrapper-Plus
 
-0.003100 2014-01-12T19:50:38Z
+0.003100 2014-01-12T19:51:57Z
  [00 Substantial bugfix]
  - Fixed borked changelog.
  - Use Support indication to use for-each-ref where its supported, so that
