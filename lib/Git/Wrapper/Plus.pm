@@ -1,5 +1,7 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
+use utf8;
 
 package Git::Wrapper::Plus;
 BEGIN {
@@ -99,7 +101,9 @@ $Git::Wrapper::Plus::VERSION = '0.003000';
 
 
 
-use Moo;
+
+
+use Moo qw( has );
 use Scalar::Util qw( blessed );
 
 
@@ -114,8 +118,8 @@ use Scalar::Util qw( blessed );
 
 
 sub BUILDARGS {
-  my ( $class, @args ) = @_;
-  if ( @args == 1 ) {
+  my ( undef, @args ) = @_;
+  if ( 1 == @args ) {
   blesscheck: {
       if ( blessed $args[0] ) {
         if ( $args[0]->isa('Path::Tiny') ) {
@@ -152,7 +156,7 @@ has git => ( is => ro =>, required => 1 );
 has refs => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_refs {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Refs;
   return Git::Wrapper::Plus::Refs->new( git => $self->git );
 }
@@ -164,7 +168,7 @@ sub _build_refs {
 has tags => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_tags {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Tags;
   return Git::Wrapper::Plus::Tags->new( git => $self->git );
 }
@@ -176,7 +180,7 @@ sub _build_tags {
 has branches => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_branches {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Branches;
   return Git::Wrapper::Plus::Branches->new( git => $self->git );
 }
@@ -188,7 +192,7 @@ sub _build_branches {
 has versions => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_versions {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper::Plus::Versions;
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
@@ -226,7 +230,8 @@ version 0.003000
 Initially, I started off with C<Dist::Zilla::Util::> and friends, but I soon discovered so many quirks
 in C<git>, especially multiple-version support, and that such a toolkit would be more useful independent.
 
-So C<Git::Wrapper::Plus> is a collection of tools for using C<Git::Wrapper>, aiming to work on all versions of Git since at least Git C<1.3>.
+So C<Git::Wrapper::Plus> is a collection of tools for using C<Git::Wrapper>, aiming to work on all versions of Git since at least
+Git C<1.3>.
 
 For instance, you probably don't realize this, but on older C<git>'s,
 
@@ -278,7 +283,8 @@ L<< C<Git::Wrapper::Plus::Versions>|Git::Wrapper::Plus::Versions >> is a simple 
 
 =head2 C<Git::Wrapper::Plus::Support>
 
-L<< C<Git::Wrapper::Plus::Support>|Git::Wrapper::Plus::Support >> uses the C<::Versions> interface and combines it with a table of known good version ranges to provide a basic summary of supported features on different git versions.
+L<< C<Git::Wrapper::Plus::Support>|Git::Wrapper::Plus::Support >> uses the C<::Versions> interface and combines it with a table
+of known good version ranges to provide a basic summary of supported features on different git versions.
 
 =head1 COMMON INTERFACE
 
