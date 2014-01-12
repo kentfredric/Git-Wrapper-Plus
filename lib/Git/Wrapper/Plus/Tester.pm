@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -9,7 +10,7 @@ BEGIN {
 $Git::Wrapper::Plus::Tester::VERSION = '0.003000';
 # ABSTRACT: Utility for testing things with a git repository
 
-use Moo;
+use Moo qw( has );
 use Path::Tiny qw(path);
 
 
@@ -83,10 +84,10 @@ use Path::Tiny qw(path);
 
 
 
-has temp_dir => is => ro =>, lazy => 1, builder => 1;
-has home_dir => is => ro =>, lazy => 1, builder => 1;
-has repo_dir => is => ro =>, lazy => 1, builder => 1;
-has git      => is => ro =>, lazy => 1, builder => 1;
+has 'temp_dir' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'home_dir' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'repo_dir' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'git'      => ( is => ro =>, lazy => 1, builder => 1 );
 
 
 
@@ -106,31 +107,31 @@ has git      => is => ro =>, lazy => 1, builder => 1;
 
 
 
-has committer_name  => is => ro =>, lazy => 1, builder => 1;
-has committer_email => is => ro =>, lazy => 1, builder => 1;
-has author_name     => is => ro =>, lazy => 1, builder => 1;
-has author_email    => is => ro =>, lazy => 1, builder => 1;
+has 'committer_name'  => ( is => ro =>, lazy => 1, builder => 1 );
+has 'committer_email' => ( is => ro =>, lazy => 1, builder => 1 );
+has 'author_name'     => ( is => ro =>, lazy => 1, builder => 1 );
+has 'author_email'    => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_temp_dir {
   return Path::Tiny->tempdir;
 }
 
 sub _build_home_dir {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   my $d = $self->temp_dir->child('homedir');
   $d->mkpath;
   return $d;
 }
 
 sub _build_repo_dir {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   my $d = $self->temp_dir->child('repodir');
   $d->mkpath;
   return $d;
 }
 
 sub _build_git {
-  my ( $self, @args ) = @_;
+  my ( $self, ) = @_;
   require Git::Wrapper;
   return Git::Wrapper->new( $self->repo_dir->absolute->stringify );
 }

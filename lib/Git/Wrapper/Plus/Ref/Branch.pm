@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -36,7 +37,7 @@ $Git::Wrapper::Plus::Ref::Branch::VERSION = '0.003000';
 
 
 
-use Moo;
+use Moo qw( extends );
 extends 'Git::Wrapper::Plus::Ref';
 
 our @CARP_NOT;
@@ -50,15 +51,16 @@ our @CARP_NOT;
 
 
 sub new_from_Ref {
-  my ( $class, $object ) = @_;
-  if ( not $object->can('name') ) {
+  my ( $class, $source_object ) = @_;
+  if ( not $source_object->can('name') ) {
     require Carp;
-    return Carp::croak("Object $object does not respond to ->name, cannot Ref -> Branch");
+    return Carp::croak("Object $source_object does not respond to ->name, cannot Ref -> Branch");
   }
   my $name = $object->name;
+  ## no critic ( Compatibility::PerlMinimumVersionAndWhy )
   if ( $name =~ qr{\Arefs/heads/(.+\z)}msx ) {
     return $class->new(
-      git  => $object->git,
+      git  => $source_object->git,
       name => $1,
     );
   }

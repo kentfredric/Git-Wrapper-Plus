@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -21,8 +22,8 @@ $Git::Wrapper::Plus::Versions::VERSION = '0.003000';
 
 
 
-use Moo;
-use Sort::Versions;
+use Moo qw( has );
+use Sort::Versions qw( versioncmp );
 
 
 

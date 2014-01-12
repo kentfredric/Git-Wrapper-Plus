@@ -1,3 +1,4 @@
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -13,10 +14,10 @@ use Sub::Exporter::Progressive -setup => {
   exports => [qw( exit_status_handler )],
   groups  => {
     default => [qw( exit_status_handler )],
-  }
+  },
 };
 
-use Try::Tiny;
+use Try::Tiny qw( try catch );
 use Scalar::Util qw(blessed);
 
 
@@ -58,6 +59,7 @@ sub exit_status_handler {
     $callback->();
   }
   catch {
+    ## no critic (ErrorHandling::RequireUseOfExceptions)
     undef $return;
     if ( not ref $_ ) {
       die $_;

@@ -126,7 +126,7 @@ for my $cmd (@GIT_ZERO_LIST) {
 sub supports_command {
   my ( $self, $command ) = @_;
   if ( not exists $command_db->{$command} ) {
-    return undef;
+    return;
   }
   for my $pair ( @{ $command_db->{$command} } ) {
     if ( exists $pair->{min} and not exists $pair->{max} ) {
@@ -142,7 +142,7 @@ sub supports_command {
       return 0;
     }
     if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn "Bad quality command db entry with no range control";
+      warn 'Bad quality command db entry with no range control';
       next;
     }
     next unless $self->versions->newer_than( $pair->{min} );
