@@ -22,7 +22,8 @@ package Git::Wrapper::Plus;
 Initially, I started off with C<Dist::Zilla::Util::> and friends, but I soon discovered so many quirks
 in C<git>, especially multiple-version support, and that such a toolkit would be more useful independent.
 
-So C<Git::Wrapper::Plus> is a collection of tools for using C<Git::Wrapper>, aiming to work on all versions of Git since at least Git C<1.3>.
+So C<Git::Wrapper::Plus> is a collection of tools for using C<Git::Wrapper>, aiming to work on all versions of Git since at least
+Git C<1.3>.
 
 For instance, you probably don't realize this, but on older C<git>'s,
 
@@ -76,7 +77,8 @@ L<< C<Git::Wrapper::Plus::Versions>|Git::Wrapper::Plus::Versions >> is a simple 
 
 =head2 C<Git::Wrapper::Plus::Support>
 
-L<< C<Git::Wrapper::Plus::Support>|Git::Wrapper::Plus::Support >> uses the C<::Versions> interface and combines it with a table of known good version ranges to provide a basic summary of supported features on different git versions.
+L<< C<Git::Wrapper::Plus::Support>|Git::Wrapper::Plus::Support >> uses the C<::Versions> interface and combines it with a table
+of known good version ranges to provide a basic summary of supported features on different git versions.
 
 =head1 COMMON INTERFACE
 

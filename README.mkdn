@@ -11,7 +11,8 @@ version 0.003000
 Initially, I started off with `Dist::Zilla::Util::` and friends, but I soon discovered so many quirks
 in `git`, especially multiple-version support, and that such a toolkit would be more useful independent.
 
-So `Git::Wrapper::Plus` is a collection of tools for using `Git::Wrapper`, aiming to work on all versions of Git since at least Git `1.3`.
+So `Git::Wrapper::Plus` is a collection of tools for using `Git::Wrapper`, aiming to work on all versions of Git since at least
+Git `1.3`.
 
 For instance, you probably don't realize this, but on older `git`'s,
 
@@ -63,7 +64,8 @@ This builds upon `::Refs`
 
 ## `Git::Wrapper::Plus::Support`
 
-[`Git::Wrapper::Plus::Support`](https://metacpan.org/pod/Git::Wrapper::Plus::Support) uses the `::Versions` interface and combines it with a table of known good version ranges to provide a basic summary of supported features on different git versions.
+[`Git::Wrapper::Plus::Support`](https://metacpan.org/pod/Git::Wrapper::Plus::Support) uses the `::Versions` interface and combines it with a table
+of known good version ranges to provide a basic summary of supported features on different git versions.
 
 # COMMON INTERFACE
 
