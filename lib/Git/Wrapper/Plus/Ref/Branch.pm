@@ -6,17 +6,47 @@ package Git::Wrapper::Plus::Ref::Branch;
 BEGIN {
   $Git::Wrapper::Plus::Ref::Branch::AUTHORITY = 'cpan:KENTNL';
 }
-{
-  $Git::Wrapper::Plus::Ref::Branch::VERSION = '0.002000';
-}
-
+$Git::Wrapper::Plus::Ref::Branch::VERSION = '0.002001';
 # ABSTRACT: A Branch object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 use Moo;
 extends 'Git::Wrapper::Plus::Ref';
 
 our @CARP_NOT;
+
+
+
+
+
+
+
 
 
 sub new_from_Ref {
@@ -37,10 +67,29 @@ sub new_from_Ref {
 }
 
 
+
+
+
+
+
 sub refname {
   my ($self) = @_;
   return 'refs/heads/' . $self->name;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -54,6 +103,15 @@ sub delete {
   return $self->git->branch( '-d', $self->name );
 
 }
+
+
+
+
+
+
+
+
+
 
 
 sub move {
@@ -85,7 +143,7 @@ Git::Wrapper::Plus::Ref::Branch - A Branch object
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 SYNOPSIS
 
@@ -151,7 +209,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

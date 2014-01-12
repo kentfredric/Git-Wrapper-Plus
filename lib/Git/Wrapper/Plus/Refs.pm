@@ -5,16 +5,50 @@ package Git::Wrapper::Plus::Refs;
 BEGIN {
   $Git::Wrapper::Plus::Refs::AUTHORITY = 'cpan:KENTNL';
 }
-{
-  $Git::Wrapper::Plus::Refs::VERSION = '0.002000';
-}
-
+$Git::Wrapper::Plus::Refs::VERSION = '0.002001';
 # ABSTRACT: Work with refs
 
 use Moo;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 has git => required => 1, is => ro =>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub _for_each_ref {
@@ -33,10 +67,36 @@ sub _for_each_ref {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub refs {
   my ($self) = @_;
   return $self->get_ref('refs/**');
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub get_ref {
@@ -75,7 +135,7 @@ Git::Wrapper::Plus::Refs - Work with refs
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 SYNOPSIS
 
@@ -147,7 +207,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

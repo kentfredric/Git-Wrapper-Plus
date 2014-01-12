@@ -5,18 +5,68 @@ package Git::Wrapper::Plus::Tags;
 BEGIN {
   $Git::Wrapper::Plus::Tags::AUTHORITY = 'cpan:KENTNL';
 }
-{
-  $Git::Wrapper::Plus::Tags::VERSION = '0.002000';
-}
-
+$Git::Wrapper::Plus::Tags::VERSION = '0.002001';
 # ABSTRACT: Extract all tags from a repository
+
+
+
+
+
+
+
+
+
+
+
 
 
 use Moo;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 has git => is => ro =>, required => 1;
+
+
+
+
+
 
 
 has 'refs' => is => ro =>, lazy => 1, builder => 1;
@@ -64,16 +114,59 @@ sub _grep_commit_pointers {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub tags {
   my ($self) = @_;
   return $self->get_tag(q[**]);
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub get_tag {
   my ( $self, $name ) = @_;
   return $self->_to_tags( $self->_grep_commit_pointers( $self->refs->get_ref( 'refs/tags/' . $name ) ) );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub tag_sha1_map {
@@ -89,6 +182,17 @@ sub tag_sha1_map {
   }
   return \%hash;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub tags_for_rev {
@@ -120,7 +224,7 @@ Git::Wrapper::Plus::Tags - Extract all tags from a repository
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 SYNOPSIS
 
@@ -230,7 +334,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

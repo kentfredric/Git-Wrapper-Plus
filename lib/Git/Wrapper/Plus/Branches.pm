@@ -5,15 +5,62 @@ package Git::Wrapper::Plus::Branches;
 BEGIN {
   $Git::Wrapper::Plus::Branches::AUTHORITY = 'cpan:KENTNL';
 }
-{
-  $Git::Wrapper::Plus::Branches::VERSION = '0.002000';
-}
-
+$Git::Wrapper::Plus::Branches::VERSION = '0.002001';
 # ABSTRACT: Extract branches from Git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 use Moo;
 use Git::Wrapper::Plus::Util qw(exit_status_handler);
+
+
+
+
+
+
+
+
+
 
 
 has 'git' => ( is => ro =>, required => 1 );
@@ -37,10 +84,38 @@ sub _to_branches {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub branches {
   my ( $self, ) = @_;
   return $self->get_branch(q[**]);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub get_branch {
@@ -65,6 +140,18 @@ sub _current_branch_name {
   return @current_names;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub current_branch {
@@ -93,7 +180,7 @@ Git::Wrapper::Plus::Branches - Extract branches from Git
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 SYNOPSIS
 
@@ -191,7 +278,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

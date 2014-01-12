@@ -6,10 +6,7 @@ package Git::Wrapper::Plus::Tester;
 BEGIN {
   $Git::Wrapper::Plus::Tester::AUTHORITY = 'cpan:KENTNL';
 }
-{
-  $Git::Wrapper::Plus::Tester::VERSION = '0.002000';
-}
-
+$Git::Wrapper::Plus::Tester::VERSION = '0.002001';
 # ABSTRACT: Utility for testing things with a git repository
 
 use Moo;
@@ -18,10 +15,95 @@ use Path::Tiny qw(path);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 has temp_dir => is => ro =>, lazy => 1, builder => 1;
 has home_dir => is => ro =>, lazy => 1, builder => 1;
 has repo_dir => is => ro =>, lazy => 1, builder => 1;
 has git      => is => ro =>, lazy => 1, builder => 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 has committer_name  => is => ro =>, lazy => 1, builder => 1;
@@ -73,6 +155,16 @@ sub _build_author_email {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 sub run_env {
   my ( $self, $code ) = @_;
   local $ENV{HOME}                = $self->home_dir->absolute->stringify;
@@ -98,7 +190,7 @@ Git::Wrapper::Plus::Tester - Utility for testing things with a git repository
 
 =head1 VERSION
 
-version 0.002000
+version 0.002001
 
 =head1 SYNOPSIS
 
@@ -201,7 +293,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
