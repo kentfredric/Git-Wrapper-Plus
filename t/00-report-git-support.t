@@ -59,8 +59,24 @@ $t->run_env(
 diag "\n";
 for my $level ( sort keys %{$data} ) {
   for my $grade ( sort keys %{ $data->{$level} } ) {
-    my $prefix = sprintf "%25s", "$level $grade";
-    diag "$prefix | " . join q[, ], @{ $data->{$level}->{$grade} };
+    my $prefix = sprintf "%14s %-11s", $level, $grade;
+    my @all = @{ $data->{$level}->{$grade} };
+    my @this;
+    while (@all) {
+      push @this, shift @all;
+      my $mesg = "$prefix | " . ( join q[, ], @this );
+      if ( length $mesg > 110 ) {
+        diag $mesg;
+        $prefix = sprintf "%14s %-11s", q[], q[];
+        @this = ();
+      }
+      if ( not @all ) {
+        diag $mesg if @this;
+        last;
+      }
+    }
+
+    #diag "$prefix | " . join q[, ], @{ $data->{$level}->{$grade} };
   }
 }
 
