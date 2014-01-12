@@ -173,11 +173,11 @@ sub tag_sha1_map {
 
   my %hash;
   for my $tag ( $self->tags ) {
-    my $sha1 = $tag->sha1;
-    if ( not exists $hash{$sha1} ) {
-      $hash{$sha1} = [];
+    my $sha_one = $tag->sha1;
+    if ( not exists $hash{$sha_one} ) {
+      $hash{$sha_one} = [];
     }
-    push @{ $hash{$sha1} }, $tag;
+    push @{ $hash{$sha_one} }, $tag;
   }
   return \%hash;
 }

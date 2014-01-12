@@ -47,15 +47,16 @@ Convert a Plus::Ref to a Plus::Ref::Tag
 =cut
 
 sub new_from_Ref {
-  my ( $class, $object ) = @_;
-  if ( not $object->can('name') ) {
+  my ( $class, $source_object ) = @_;
+  if ( not $source_object->can('name') ) {
     require Carp;
-    return Carp::croak("Object $object does not respond to ->name, cannot Ref -> Tag");
+    return Carp::croak("Object $source_object does not respond to ->name, cannot Ref -> Tag");
   }
-  my $name = $object->name;
+  my $name = $source_object->name;
+  ## no critic ( Compatibility::PerlMinimumVersionAndWhy )
   if ( $name =~ qr{\Arefs/tags/(.+\z)}msx ) {
     return $class->new(
-      git  => $object->git,
+      git  => $source_object->git,
       name => $1,
     );
   }

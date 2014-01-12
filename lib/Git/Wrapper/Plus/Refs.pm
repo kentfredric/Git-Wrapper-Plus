@@ -103,8 +103,8 @@ sub get_ref {
   my @out;
   $self->_for_each_ref(
     $refspec => sub {
-      my ( $sha1, $refname ) = @_;
-      push @out, $self->_mk_ref( $sha1, $refname );
+      my ( $sha_one, $refname ) = @_;
+      push @out, $self->_mk_ref( $sha_one, $refname );
     },
   );
   return @out;
