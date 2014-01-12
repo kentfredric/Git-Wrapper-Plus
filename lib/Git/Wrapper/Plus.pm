@@ -72,6 +72,10 @@ This builds upon C<::Refs>
 
 L<< C<Git::Wrapper::Plus::Versions>|Git::Wrapper::Plus::Versions >> is a simple interface for comparing git versions.
 
+=head2 C<Git::Wrapper::Plus::Support>
+
+L<< C<Git::Wrapper::Plus::Support>|Git::Wrapper::Plus::Support >> uses the C<::Versions> interface and combines it with a table of known good version ranges to provide a basic summary of supported features on different git versions.
+
 =head1 COMMON INTERFACE
 
 You don't have to use this interface, and its probably more convenient
@@ -88,6 +92,7 @@ of the contained tools without having to pass C<Git::Wrapper> instances everywhe
     $plus->branches    # Git::Wrapper::Plus::Branches
     $plus->tags        # Git::Wrapper::Plus::Tags
     $plus->versions    # Git::Wrapper::Plus::Versions
+    $plus->support     # Git::Wrapper::Plus::Support
 
 =cut
 
@@ -168,6 +173,18 @@ sub _build_versions {
   my ( $self, @args ) = @_;
   require Git::Wrapper::Plus::Versions;
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
+}
+
+=attr C<support>
+
+=cut
+
+has support => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_support {
+  my ( $self, ) = @_;
+  require Git::Wrapper::Plus::Support;
+  return Git::Wrapper::Plus::Support->new( git => $self->git );
 }
 
 1;

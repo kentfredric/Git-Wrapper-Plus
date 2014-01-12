@@ -61,6 +61,10 @@ This builds upon `::Refs`
 
 [`Git::Wrapper::Plus::Versions`](https://metacpan.org/pod/Git::Wrapper::Plus::Versions) is a simple interface for comparing git versions.
 
+## `Git::Wrapper::Plus::Support`
+
+[`Git::Wrapper::Plus::Support`](https://metacpan.org/pod/Git::Wrapper::Plus::Support) uses the `::Versions` interface and combines it with a table of known good version ranges to provide a basic summary of supported features on different git versions.
+
 # COMMON INTERFACE
 
 You don't have to use this interface, and its probably more convenient
@@ -76,6 +80,7 @@ of the contained tools without having to pass `Git::Wrapper` instances everywher
     $plus->branches    # Git::Wrapper::Plus::Branches
     $plus->tags        # Git::Wrapper::Plus::Tags
     $plus->versions    # Git::Wrapper::Plus::Versions
+    $plus->support     # Git::Wrapper::Plus::Support
 
 # METHODS
 
@@ -99,6 +104,8 @@ Construction takes 4 Forms:
 ## `branches`
 
 ## `versions`
+
+## `support`
 
 {
     "namespace":"Git::Wrapper::Plus",
