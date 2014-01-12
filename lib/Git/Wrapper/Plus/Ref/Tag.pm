@@ -59,7 +59,7 @@ sub new_from_Ref {
   ## no critic ( Compatibility::PerlMinimumVersionAndWhy )
   if ( $name =~ qr{\Arefs/tags/(.+\z)}msx ) {
     return $class->new(
-      git  => $object->git,
+      git  => $source_object->git,
       name => $1,
     );
   }

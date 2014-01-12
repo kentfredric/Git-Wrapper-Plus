@@ -56,7 +56,7 @@ sub new_from_Ref {
     require Carp;
     return Carp::croak("Object $source_object does not respond to ->name, cannot Ref -> Branch");
   }
-  my $name = $object->name;
+  my $name = $source_object->name;
   ## no critic ( Compatibility::PerlMinimumVersionAndWhy )
   if ( $name =~ qr{\Arefs/heads/(.+\z)}msx ) {
     return $class->new(
