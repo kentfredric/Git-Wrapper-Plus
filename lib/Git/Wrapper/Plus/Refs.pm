@@ -105,7 +105,7 @@ sub get_ref {
     $refspec => sub {
       my ( $sha1, $refname ) = @_;
       push @out, $self->_mk_ref( $sha1, $refname );
-    }
+    },
   );
   return @out;
 }

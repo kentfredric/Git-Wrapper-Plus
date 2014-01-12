@@ -58,29 +58,29 @@ our $command_db = {
       'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
       'max'      => '1.0.0',
       'max_tag'  => '1.0.0',
-      'max_sha1' => 'ba922ccee7565c949b4db318e5c27997cbdbfdba'
-    }
+      'max_sha1' => 'ba922ccee7565c949b4db318e5c27997cbdbfdba',
+    },
   ],
   'update-index' => [
     {
       'min'      => '0.99.7',
       'min_tag'  => '0.99.7',
-      'min_sha1' => '215a7ad1ef790467a4cd3f0dcffbd6e5f04c38f7'
-    }
+      'min_sha1' => '215a7ad1ef790467a4cd3f0dcffbd6e5f04c38f7',
+    },
   ],
   'ls-remote' => [
     {
       'min'      => '0.99.2',
       'min_tag'  => '0.99.2',
-      'min_sha1' => '0fec0822721cc18d6a62ab78da1ebf87914d4921'
-    }
+      'min_sha1' => '0fec0822721cc18d6a62ab78da1ebf87914d4921',
+    },
   ],
   'peek-remote' => [
     {
       'min'      => '0.99.2',
       'min_tag'  => '0.99.2',
       'min_sha1' => '18705953af75aed190badfccdc107ad0c2f36c93',
-    }
+    },
   ],
 };
 
@@ -92,7 +92,7 @@ for my $cmd (@GIT_ZERO_LIST) {
       'min'      => '0.99',
       'min_tag'  => '0.99',
       'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
-    }
+    },
   ];
 }
 
@@ -195,15 +195,15 @@ our $behaviour_db = {
     {
       'min'      => '1.5.0',
       'min_tag'  => '1.5.0-rc1',
-      'min_sha1' => 'c847f537125ceab3425205721fdaaa834e6d8a83'
-    }
+      'min_sha1' => 'c847f537125ceab3425205721fdaaa834e6d8a83',
+    },
   ],
   '2-arg-cat-file' => [
     {
       'min_sha1' => 'bf0c6e839c692142784caf07b523cd69442e57a5',
       'min_tag'  => '0.99',
       'min'      => '0.99',
-    }
+    },
   ],
 };
 

@@ -130,8 +130,8 @@ sub _current_branch_name {
       (@current_names) = $self->git->symbolic_ref('HEAD');
     },
     {
-      128 => sub { return }
-    }
+      128 => sub { return },
+    },
   );
   for (@current_names) {
     $_ =~ s{\A refs/heads/ }{}msx;
