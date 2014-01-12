@@ -139,7 +139,7 @@ sub supports_command {
       return 0;
     }
     if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn "Bad quality command db entry with no range control";
+      warn 'Bad quality command db entry with no range control';
       next;
     }
     next unless $self->versions->newer_than( $pair->{min} );
