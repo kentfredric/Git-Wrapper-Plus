@@ -36,9 +36,28 @@ sub _build_versions {
 }
 
 our $command_db = {
-  'for-each-ref' => [ { 'min' => '1.4.4' }, ],
-  'init'         => [ { 'min' => '1.5.0' }, ],
-  'init-db'      => [ { 'min' => '0.99' }, ],
+  'for-each-ref' => [
+    {
+      'min'      => '1.4.4',
+      'min_tag'  => '1.4.4-rc1',
+      'min_sha1' => '9f613ddd21cbd05bfc139d9b1551b5780aa171f6',
+    },
+  ],
+  'init' => [
+    {
+      'min'      => '1.5.0',
+      'min_tag'  => '1.5.0-rc1',
+      'min_sha1' => '515377ea9ec6192f82a2fa5c5b5b7651d9d6cf6c',
+    },
+
+  ],
+  'init-db' => [
+    {
+      'min'      => '0.99',
+      'min_tag'  => '0.99',
+      'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
+    },
+  ],
 };
 
 =method C<supports_command>
