@@ -4,10 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Tester;
-BEGIN {
-  $Git::Wrapper::Plus::Tester::AUTHORITY = 'cpan:KENTNL';
-}
-$Git::Wrapper::Plus::Tester::VERSION = '0.003100';
+$Git::Wrapper::Plus::Tester::VERSION = '0.003101';
 # ABSTRACT: Utility for testing things with a git repository
 
 use Moo qw( has );
@@ -191,7 +188,7 @@ Git::Wrapper::Plus::Tester - Utility for testing things with a git repository
 
 =head1 VERSION
 
-version 0.003100
+version 0.003101
 
 =head1 SYNOPSIS
 

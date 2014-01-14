@@ -4,10 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus;
-BEGIN {
-  $Git::Wrapper::Plus::AUTHORITY = 'cpan:KENTNL';
-}
-$Git::Wrapper::Plus::VERSION = '0.003100';
+$Git::Wrapper::Plus::VERSION = '0.003101';
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
 
@@ -223,7 +220,7 @@ Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an Object Orient
 
 =head1 VERSION
 
-version 0.003100
+version 0.003101
 
 =head1 DESCRIPTION
 

@@ -4,10 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Versions;
-BEGIN {
-  $Git::Wrapper::Plus::Versions::AUTHORITY = 'cpan:KENTNL';
-}
-$Git::Wrapper::Plus::Versions::VERSION = '0.003100';
+$Git::Wrapper::Plus::Versions::VERSION = '0.003101';
 # ABSTRACT: Analyze and compare git versions
 
 
@@ -110,7 +107,7 @@ Git::Wrapper::Plus::Versions - Analyze and compare git versions
 
 =head1 VERSION
 
-version 0.003100
+version 0.003101
 
 =head1 SYNOPSIS
 
