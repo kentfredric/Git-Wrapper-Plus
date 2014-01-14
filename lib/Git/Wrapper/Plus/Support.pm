@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support;
-$Git::Wrapper::Plus::Support::VERSION = '0.003101';
+$Git::Wrapper::Plus::Support::VERSION = '0.003102';
 # ABSTRACT: Determine what versions of things support what
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -30,7 +30,6 @@ use Moo qw( has );
 has 'git' => ( is => ro =>, required => 1 );
 
 has 'versions' => ( is => ro =>, lazy => 1, builder => 1 );
-has 'version'  => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_versions {
   my ( $self, ) = @_;
@@ -38,66 +37,25 @@ sub _build_versions {
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
 
-## no critic (ProhibitPackageVars)
+has 'commands' => ( is => ro =>, lazy => 1, builder => 1 );
 
-our $command_db = {
-  'for-each-ref' => [
-    {
-      'min'      => '1.4.4',
-      'min_tag'  => '1.4.4-rc1',
-      'min_sha1' => '9f613ddd21cbd05bfc139d9b1551b5780aa171f6',
-    },
-  ],
-  'init' => [
-    {
-      'min'      => '1.5.0',
-      'min_tag'  => '1.5.0-rc1',
-      'min_sha1' => '515377ea9ec6192f82a2fa5c5b5b7651d9d6cf6c',
-    },
-  ],
-  'update-cache' => [
-    {
-      'min'      => '0.99',
-      'min_tag'  => '0.99',
-      'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
-      'max'      => '1.0.0',
-      'max_tag'  => '1.0.0',
-      'max_sha1' => 'ba922ccee7565c949b4db318e5c27997cbdbfdba',
-    },
-  ],
-  'update-index' => [
-    {
-      'min'      => '0.99.7',
-      'min_tag'  => '0.99.7',
-      'min_sha1' => '215a7ad1ef790467a4cd3f0dcffbd6e5f04c38f7',
-    },
-  ],
-  'ls-remote' => [
-    {
-      'min'      => '0.99.2',
-      'min_tag'  => '0.99.2',
-      'min_sha1' => '0fec0822721cc18d6a62ab78da1ebf87914d4921',
-    },
-  ],
-  'peek-remote' => [
-    {
-      'min'      => '0.99.2',
-      'min_tag'  => '0.99.2',
-      'min_sha1' => '18705953af75aed190badfccdc107ad0c2f36c93',
-    },
-  ],
-};
+sub _build_commands {
+  require Git::Wrapper::Plus::Support::Commands;
+  return Git::Wrapper::Plus::Support::Commands->new();
+}
 
-my (@GIT_ZERO_LIST) = qw( init-db cat-file show-diff write-tree read-tree commit-tree );
+has 'behaviors' => ( is => ro =>, lazy => 1, builder => 1 );
 
-for my $cmd (@GIT_ZERO_LIST) {
-  $command_db->{$cmd} = [
-    {
-      'min'      => '0.99',
-      'min_tag'  => '0.99',
-      'min_sha1' => 'e83c5163316f89bfbde7d9ab23ca2e25604af290',
-    },
-  ];
+sub _build_behaviors {
+  require Git::Wrapper::Plus::Support::Behaviors;
+  return Git::Wrapper::Plus::Support::Behaviors->new();
+}
+
+has 'arguments' => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_arguments {
+  require Git::Wrapper::Plus::Support::Arguments;
+  return Git::Wrapper::Plus::Support::Arguments->new();
 }
 
 
@@ -124,30 +82,8 @@ for my $cmd (@GIT_ZERO_LIST) {
 
 sub supports_command {
   my ( $self, $command ) = @_;
-  if ( not exists $command_db->{$command} ) {
-    return;
-  }
-  for my $pair ( @{ $command_db->{$command} } ) {
-    if ( exists $pair->{min} and not exists $pair->{max} ) {
-      if ( $self->versions->newer_than( $pair->{min} ) ) {
-        return 1;
-      }
-      return 0;
-    }
-    if ( exists $pair->{max} and not exists $pair->{min} ) {
-      if ( $self->versions->older_than( $pair->{max} ) ) {
-        return 1;
-      }
-      return 0;
-    }
-    if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn 'Bad quality command db entry with no range control';
-      next;
-    }
-    next unless $self->versions->newer_than( $pair->{min} );
-    next unless $self->versions->older_than( $pair->{max} );
-    return 1;
-  }
+  return unless $self->commands->has_entry($command);
+  return 1 if $self->commands->entry_supports( $command, $self->versions );
   return 0;
 }
 
@@ -195,57 +131,19 @@ sub supports_command {
 
 
 
-our $behavior_db = {
-  'add-updates-index' => [
-    {
-      'min'      => '1.5.0',
-      'min_tag'  => '1.5.0-rc0',
-      'min_sha1' => '366bfcb68f4d98a43faaf17893a1aa0a7a9e2c58',
-    },
-  ],
-  'can-checkout-detached' => [
-    {
-      'min'      => '1.5.0',
-      'min_tag'  => '1.5.0-rc1',
-      'min_sha1' => 'c847f537125ceab3425205721fdaaa834e6d8a83',
-    },
-  ],
-  '2-arg-cat-file' => [
-    {
-      'min_sha1' => 'bf0c6e839c692142784caf07b523cd69442e57a5',
-      'min_tag'  => '0.99',
-      'min'      => '0.99',
-    },
-  ],
-};
-
 sub supports_behavior {
   my ( $self, $beh ) = @_;
-  if ( not exists $behavior_db->{$beh} ) {
-    return;
-  }
-  for my $pair ( @{ $behavior_db->{$beh} } ) {
-    if ( exists $pair->{min} and not exists $pair->{max} ) {
-      if ( $self->versions->newer_than( $pair->{min} ) ) {
-        return 1;
-      }
-      return 0;
-    }
-    if ( exists $pair->{max} and not exists $pair->{min} ) {
-      if ( $self->versions->older_than( $pair->{max} ) ) {
-        return 1;
-      }
-      return 0;
-    }
-    if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn 'Bad quality behavior db entry with no range control';
-      next;
-    }
-    next unless $self->versions->newer_than( $pair->{min} );
-    next unless $self->versions->older_than( $pair->{max} );
-    return 1;
-  }
+  return unless $self->behaviors->has_entry($beh);
+  return 1 if $self->behaviors->entry_supports( $beh, $self->versions );
   return 0;
+}
+
+sub supports_argument {
+  my ( $self, $command, $argument ) = @_;
+  return unless $self->arguments->has_argument( $command, $argument );
+  return 1 if $self->arguments->argument_supports( $command, $argument, $self->versions );
+  return 0;
+
 }
 
 no Moo;
@@ -263,7 +161,7 @@ Git::Wrapper::Plus::Support - Determine what versions of things support what
 
 =head1 VERSION
 
-version 0.003101
+version 0.003102
 
 =head1 SYNOPSIS
 
