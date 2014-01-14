@@ -48,6 +48,7 @@ Convert a Plus::Ref to a Plus::Ref::Tag
 
 =cut
 
+## no critic(NamingConventions::ProhibitMixedCaseSubs)
 sub new_from_Ref {
   my ( $class, $source_object ) = @_;
   if ( not $source_object->can('name') ) {

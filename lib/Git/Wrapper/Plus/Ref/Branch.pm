@@ -49,6 +49,7 @@ Convert a Plus::Ref to a Plus::Ref::Branch
 
 =cut
 
+## no critic (ProhibitMixedCaseSubs)
 sub new_from_Ref {
   my ( $class, $source_object ) = @_;
   if ( not $source_object->can('name') ) {
