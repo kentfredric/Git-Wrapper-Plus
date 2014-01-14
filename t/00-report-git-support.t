@@ -14,6 +14,7 @@ my $s = Git::Wrapper::Plus::Support->new( git => $t->git );
 my $data = {
   commands  => {},
   behaviors => {},
+  arguments => {},
 };
 
 $t->run_env(
@@ -53,6 +54,27 @@ $t->run_env(
       pass("Behaviours reporting ok");
 
     };
+    subtest 'arguments' => sub {
+      note "\nArguments:";
+
+      for my $cmd ( $s->arguments->commands ) {
+        for my $arg ( $s->arguments->arguments($cmd) ) {
+          my $msg = '- ' . $cmd . ' ' . $arg . ' ';
+          if ( $s->supports_argument( $cmd, $arg ) ) {
+            $msg .= "supported";
+            push @{ $data->{arguments}->{supported} }, $cmd . ' ' . $arg;
+          }
+          else {
+            push @{ $data->{arguments}->{unsupported} }, $cmd . ' ' . $arg;
+            $msg .= "UNSUPPORTED";
+          }
+          note $msg;
+        }
+      }
+      pass("Arguments reporting ok");
+
+    };
+
   }
 );
 
