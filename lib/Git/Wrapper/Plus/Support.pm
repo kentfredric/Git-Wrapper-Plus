@@ -80,6 +80,8 @@ sub _build_arguments {
 
 
 
+
+
 sub supports_command {
   my ( $self, $command ) = @_;
   return unless $self->commands->has_entry($command);
@@ -138,6 +140,26 @@ sub supports_behavior {
   return 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub supports_argument {
   my ( $self, $command, $argument ) = @_;
   return unless $self->arguments->has_argument( $command, $argument );
@@ -195,6 +217,8 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
         ...
     }
 
+See L<< C<::Support::Commands>|Git::Wrapper::Plus::Support::Commands >> for details.
+
 B<Currently indexed commands>
 
     for-each-ref init init-db update-cache update-index ls-remote cat-file show-diff write-tree commit-tree
@@ -215,7 +239,7 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
         ...
     }
 
-B<Current behaviors>
+See L<< C<::Support::Behaviors>|Git::Wrapper::Plus::Support::Behaviors >> for details.
 
 =head4 C<add-updates-index>
 
@@ -240,6 +264,24 @@ The syntax:
     git cat-file <type> <commitish>
 
 Should be supported everywhere that matters ( since 0.99 ), but it was not always git syntax.
+
+=head2 C<supports_argument>
+
+Indicates if a given command accepts a specific argument.
+
+This works by using a hand-coded table for interesting values
+by processing C<git log> for git itself.
+
+Returns C<undef> if the status of a commands argument is unknown ( that is, has not been added
+to the map yet ), C<0> if it is not supported, and C<1> if it is.
+
+    if ( $supporter->supports_argument('cat-file','-e') ) ) {
+        ...
+    } else {
+        ...
+    }
+
+See L<< C<::Support::Arguments>|Git::Wrapper::Plus::Support::Arguments >> for details.
 
 =head1 AUTHOR
 

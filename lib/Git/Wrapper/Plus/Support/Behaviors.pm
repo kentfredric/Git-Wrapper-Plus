@@ -5,7 +5,7 @@ use utf8;
 
 package Git::Wrapper::Plus::Support::Behaviors;
 $Git::Wrapper::Plus::Support::Behaviors::VERSION = '0.004000';
-# ABSTRACT: Database of Git Behaviour Support
+# ABSTRACT: Database of Git Behavior Support
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -49,7 +49,7 @@ __END__
 
 =head1 NAME
 
-Git::Wrapper::Plus::Support::Behaviors - Database of Git Behaviour Support
+Git::Wrapper::Plus::Support::Behaviors - Database of Git Behavior Support
 
 =head1 VERSION
 
