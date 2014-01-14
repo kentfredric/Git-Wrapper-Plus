@@ -4,7 +4,7 @@ Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an Object Orient
 
 # VERSION
 
-version 0.003101
+version 0.004000
 
 # DESCRIPTION
 
