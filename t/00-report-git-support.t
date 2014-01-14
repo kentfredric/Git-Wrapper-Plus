@@ -20,7 +20,7 @@ $t->run_env(
   sub {
     subtest 'commands' => sub {
       note "\nCommands:";
-      for my $command ( sort keys %{$Git::Wrapper::Plus::Support::command_db} ) {
+      for my $command ( $s->commands->entries ) {
         my $msg = '- ' . $command . ' ';
         if ( $s->supports_command($command) ) {
           $msg .= "supported";
