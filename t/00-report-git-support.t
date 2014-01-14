@@ -38,7 +38,7 @@ $t->run_env(
     subtest 'behaviors' => sub {
       note "\nBehaviours:";
 
-      for my $behavior ( sort keys %{$Git::Wrapper::Plus::Support::behavior_db} ) {
+      for my $behavior ( $s->behaviors->entries ) {
         my $msg = '- ' . $behavior . ' ';
         if ( $s->supports_behavior($behavior) ) {
           $msg .= "supported";
