@@ -1135,7 +1135,7 @@ allowed_pragmata = diagnostics feature perlversion strict warnings utf8
 
 
 # Always make the `package' explicit.
-[Modules::RequireExplicitPackage]
+[-Modules::RequireExplicitPackage]
 # set_themes                         = bugs core
 # add_themes                         =
 # severity                           = 4
