@@ -19,9 +19,6 @@ verbose = 9
 # color-severity-lowest =
 # program-extensions =
 
-### Deprecated
-[-Miscellanea::RequireRcsKeywords]
-
 # Bitwise operators are usually accidentally used instead of logical boolean operators.
 [Bangs::ProhibitBitwiseOperators]
 # set_themes                         = bugs core
@@ -1180,6 +1177,41 @@ allow_import_of = __PACKAGE__
 # set_themes                         = core pbp readability
 # add_themes                         =
 # severity                           = 2
+# maximum_violations_per_document    = no_limit
+
+
+# Require role composition
+[Moose::ProhibitMultipleWiths]
+# set_themes                         = bugs moose roles
+# add_themes                         =
+# severity                           = 4
+# maximum_violations_per_document    = no_limit
+
+
+# Don't override Moose's standard constructors.
+[Moose::ProhibitNewMethod]
+# set_themes                         = bugs moose
+# add_themes                         =
+# severity                           = 4
+# maximum_violations_per_document    = no_limit
+
+
+# Require removing implementation details from you packages.
+[Moose::RequireCleanNamespace]
+# set_themes                         = maintenance moose
+# add_themes                         =
+# severity                           = 3
+# maximum_violations_per_document    = no_limit
+
+# The modules that need to be unimported.
+# modules = Moose Moose::Role Moose::Util::TypeConstraints
+
+
+# Make your Moose code fast.
+[Moose::RequireMakeImmutable]
+# set_themes                         = moose performance
+# add_themes                         =
+# severity                           = 3
 # maximum_violations_per_document    = no_limit
 
 
