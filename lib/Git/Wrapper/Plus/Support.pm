@@ -30,7 +30,6 @@ use Moo qw( has );
 has 'git' => ( is => ro =>, required => 1 );
 
 has 'versions' => ( is => ro =>, lazy => 1, builder => 1 );
-has 'version'  => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_versions {
   my ( $self, ) = @_;
