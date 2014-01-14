@@ -14,8 +14,8 @@ verbose = 9
 # theme =
 # color-severity-highest = bold red
 # color-severity-high = magenta
-# color-severity-medium =
-# color-severity-low =
+color-severity-medium = yellow
+color-severity-low = green
 # color-severity-lowest =
 # program-extensions =
 
@@ -957,7 +957,7 @@ allow_includes = 1
 # maximum_violations_per_document    = no_limit
 
 # Names of pragmata that are permitted before package declaration.
-# allowed_pragmata = diagnostics feature perlversion strict warnings
+allowed_pragmata = diagnostics feature perlversion strict warnings utf8
 
 # Don't require programs to have a package statement.
 # exempt_scripts = 1
@@ -1135,7 +1135,7 @@ allow_includes = 1
 
 
 # Always make the `package' explicit.
-[Modules::RequireExplicitPackage]
+[-Modules::RequireExplicitPackage]
 # set_themes                         = bugs core
 # add_themes                         =
 # severity                           = 4
@@ -1145,7 +1145,7 @@ allow_includes = 1
 # exempt_scripts = 1
 
 # Allow the specified modules to be imported outside a package.
-allow_import_of = __PACKAGE__
+allow_import_of = strict warnings 5.008 utf8
 
 
 # Package declaration must match filename.
