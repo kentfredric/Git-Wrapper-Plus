@@ -1145,7 +1145,7 @@ allow_includes = 1
 # exempt_scripts = 1
 
 # Allow the specified modules to be imported outside a package.
-allow_import_of = __PACKAGE__
+allow_import_of = strict warnings 5.008
 
 
 # Package declaration must match filename.
