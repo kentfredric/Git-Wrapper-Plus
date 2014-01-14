@@ -187,6 +187,14 @@ sub supports_command {
 
 
 
+
+
+
+
+
+
+
+
 our $behavior_db = {
   'add-updates-index' => [
     {
@@ -291,7 +299,7 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
 
 B<Currently indexed commands>
 
-    for-each-ref init init-db
+    for-each-ref init init-db update-cache update-index ls-remote cat-file show-diff write-tree commit-tree
 
 =head2 C<supports_behavior>
 
@@ -326,6 +334,14 @@ To update content.
 =head4 C<can-checkout-detached>
 
 Not all versions of Git can checkout a detached head.
+
+=head4 C<2-arg-cat-file>
+
+The syntax:
+
+    git cat-file <type> <commitish>
+
+Should be supported everywhere that matters ( since 0.99 ), but it was not always git sytnax.
 
 =head1 AUTHOR
 
