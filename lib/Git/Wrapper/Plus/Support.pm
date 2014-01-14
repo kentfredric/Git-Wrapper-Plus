@@ -51,6 +51,12 @@ sub _build_behaviors {
   return Git::Wrapper::Plus::Support::Behaviors->new();
 }
 
+has 'arguments' => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_arguments {
+  require Git::Wrapper::Plus::Support::Arguments;
+  return Git::Wrapper::Plus::Support::Arguments->new();
+}
 
 =method C<supports_command>
 
@@ -130,6 +136,14 @@ sub supports_behavior {
   return unless $self->behaviors->has_entry($beh);
   return 1 if $self->behaviors->entry_supports( $beh, $self->versions );
   return 0;
+}
+
+sub supports_argument {
+  my ( $self, $command, $argument ) = @_;
+  return unless $self->arguments->has_argument( $command, $argument );
+  return 1 if $self->arguments->argument_supports( $command, $argument, $self->versions );
+  return 0;
+
 }
 
 no Moo;
