@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Util;
 $Git::Wrapper::Plus::Util::VERSION = '0.003101';
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 use Sub::Exporter::Progressive -setup => {
   exports => [qw( exit_status_handler )],
   groups  => {
