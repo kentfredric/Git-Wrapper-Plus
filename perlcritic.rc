@@ -14,8 +14,8 @@ verbose = 9
 # theme =
 # color-severity-highest = bold red
 # color-severity-high = magenta
-# color-severity-medium =
-# color-severity-low =
+color-severity-medium = yellow
+color-severity-low = green
 # color-severity-lowest =
 # program-extensions =
 
