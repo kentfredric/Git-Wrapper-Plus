@@ -9,9 +9,53 @@ $Git::Wrapper::Plus::Support::Range::VERSION = '0.004000';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 use Moo qw( has );
 
 our @CARP_NOT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 has 'min' => ( is => ro =>, predicate => 'has_min' );
 has 'max' => ( is => ro =>, predicate => 'has_max' );
@@ -21,6 +65,11 @@ has 'max_tag' => ( is => ro =>, predicate => 'has_max_tag' );
 
 has 'min_sha1' => ( is => ro =>, predicate => 'has_min_sha1' );
 has 'max_sha1' => ( is => ro =>, predicate => 'has_max_sha1' );
+
+
+
+
+
 
 sub BUILD {
   my ($self) = @_;
@@ -77,6 +126,22 @@ Git::Wrapper::Plus::Support::Range - A record describing a range of supported ve
 
 version 0.004000
 
+=head1 SYNOPSIS
+
+    my $range = Git::Wrapper::Plus::Support::Range->new(
+        min => '1.5.0',
+        # min_sha1 => ...
+        # min_tag  => ...
+        max => '1.6.0',
+        # max_sha1 => ...
+        # max_tag  => ...
+    );
+    if ( $range->supports_version( $gwp->versions ) ) {
+        print "Some feature is supported!"
+    }
+
+B<NOTE:> Either C<min> or C<max> is mandatory, or both.
+
 =head1 METHODS
 
 =head2 C<supports_version>
@@ -88,6 +153,34 @@ Determines if the given range supports a version or not.
     if ( $range->supports_version( $gg->versions ) ) {
         $range is supported
     }
+
+=head1 ATTRIBUTES
+
+=head2 C<min>
+
+The minimum version this range supports
+
+=head2 C<max>
+
+The maximum version this range supports
+
+=head2 C<min_tag>
+
+The minimum tag that contained C<min_sha1>. Annotative only, not used.
+
+=head2 C<max_tag>
+
+The first tag that contained C<max_sha1>. Annotative only, not used.
+
+=head2 C<min_sha1>
+
+The C<sha1> this feature was added in. Annotative only, not used.
+
+=head2 C<max_sha1>
+
+The C<sha1> this feature was removed in. Annotative only, not used.
+
+=for Pod::Coverage::TrustPod BUILD
 
 =head1 AUTHOR
 
