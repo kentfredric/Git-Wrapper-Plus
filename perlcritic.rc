@@ -1,7 +1,7 @@
 # Globals
 severity = 1
 # force = 0
-# only = 0
+only = 1
 # allow-unsafe = 0
 profile-strictness = quiet
 color = 1
