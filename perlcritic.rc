@@ -998,6 +998,17 @@ allow_includes = 1
 # maximum_violations_per_document    = no_limit
 
 
+# Put source-control keywords in every file.
+[-Miscellanea::RequireRcsKeywords]
+# set_themes                         = cosmetic deprecated pbp
+# add_themes                         =
+# severity                           = 2
+# maximum_violations_per_document    = no_limit
+
+# The keywords to require in all files.
+# keywords =
+
+
 # check placeholder names in Locale::TextDomain calls
 [Miscellanea::TextDomainPlaceholders]
 # set_themes                         = bugs pulp
@@ -1237,6 +1248,22 @@ allow_import_of = __PACKAGE__
 
 # The variable names that are not to be allowed.
 # forbid = abstract bases close contract last left no record right second set
+
+
+# Write `sub my_function{}' instead of `sub MyFunction{}'.
+[NamingConventions::ProhibitMixedCaseSubs]
+# set_themes                         = cosmetic deprecated pbp
+# add_themes                         =
+# severity                           = 1
+# maximum_violations_per_document    = no_limit
+
+
+# Write `$my_variable = 42' instead of `$MyVariable = 42'.
+[NamingConventions::ProhibitMixedCaseVars]
+# set_themes                         = cosmetic deprecated pbp
+# add_themes                         =
+# severity                           = 1
+# maximum_violations_per_document    = no_limit
 
 
 # Prohibit indirect object call syntax.
