@@ -18,7 +18,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Git-Wrapper-Plus",
-  "dist_version" => "0.003102",
+  "dist_version" => "0.004000",
   "license" => "perl",
   "module_name" => "Git::Wrapper::Plus",
   "recommends" => {},

@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support::RangeSet;
-$Git::Wrapper::Plus::Support::RangeSet::VERSION = '0.003102';
+$Git::Wrapper::Plus::Support::RangeSet::VERSION = '0.004000';
 # ABSTRACT: A set of ranges of supported things
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -60,7 +60,7 @@ Git::Wrapper::Plus::Support::RangeSet - A set of ranges of supported things
 
 =head1 VERSION
 
-version 0.003102
+version 0.004000
 
 =head1 AUTHOR
 
