@@ -957,7 +957,7 @@ allow_includes = 1
 # maximum_violations_per_document    = no_limit
 
 # Names of pragmata that are permitted before package declaration.
-# allowed_pragmata = diagnostics feature perlversion strict warnings
+allowed_pragmata = diagnostics feature perlversion strict warnings utf8
 
 # Don't require programs to have a package statement.
 # exempt_scripts = 1
