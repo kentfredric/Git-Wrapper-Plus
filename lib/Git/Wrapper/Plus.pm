@@ -7,6 +7,8 @@ package Git::Wrapper::Plus;
 $Git::Wrapper::Plus::VERSION = '0.003101';
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

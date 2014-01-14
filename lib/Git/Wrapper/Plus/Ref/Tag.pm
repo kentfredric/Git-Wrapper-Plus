@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Ref::Tag;
 $Git::Wrapper::Plus::Ref::Tag::VERSION = '0.003101';
 # ABSTRACT: A single tag object
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

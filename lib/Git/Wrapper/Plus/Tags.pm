@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Tags;
 $Git::Wrapper::Plus::Tags::VERSION = '0.003101';
 # ABSTRACT: Extract all tags from a repository
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

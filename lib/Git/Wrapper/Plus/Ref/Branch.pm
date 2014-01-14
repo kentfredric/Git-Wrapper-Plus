@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Ref::Branch;
 $Git::Wrapper::Plus::Ref::Branch::VERSION = '0.003101';
 # ABSTRACT: A Branch object
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

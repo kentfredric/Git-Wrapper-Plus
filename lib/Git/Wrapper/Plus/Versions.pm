@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Versions;
 $Git::Wrapper::Plus::Versions::VERSION = '0.003101';
 # ABSTRACT: Analyze and compare git versions
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

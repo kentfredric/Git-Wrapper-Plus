@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Ref;
 $Git::Wrapper::Plus::Ref::VERSION = '0.003101';
 # ABSTRACT: An Abstract REF node
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 
