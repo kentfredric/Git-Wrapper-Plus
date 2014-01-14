@@ -5,12 +5,34 @@ use utf8;
 
 package Git::Wrapper::Plus::Support::Behaviors;
 
-# ABSTRACT: Database of Git Behaviour Support
+# ABSTRACT: Database of Git Behavior Support
 
 # AUTHORITY
 
 use Moo qw( extends );
 extends 'Git::Wrapper::Plus::Support::RangeDictionary';
+
+=head1 SUPPORTED BEHAVIORS
+
+=head2 C<add-updates-index>
+
+Prior to 1.5.0-rc0, git add did not update the index, and was only for the initial addition.
+
+Subsequent adds were done with C<git update-index>
+
+=head2 C<can-checkout-detached>
+
+Prior to 1.5.0-rc1, C<git checkout SHA1> simply failed, instead of giving a detached head.
+
+=head2 C<2-arg-cat-file>
+
+Very early on, C<git cat-file TYPE SHA1> was not supported, but this support was added
+between the initial commit, and 0.99
+
+=for Pod::Coverage::TrustPod
+BUILD
+
+=cut
 
 sub BUILD {
   my ($self) = @_;
