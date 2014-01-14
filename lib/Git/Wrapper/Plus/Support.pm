@@ -44,6 +44,13 @@ sub _build_commands {
   return Git::Wrapper::Plus::Support::Commands->new();
 }
 
+has 'behaviors' => ( is => ro =>, lazy => 1, builder => 1 );
+
+sub _build_behaviors {
+  require Git::Wrapper::Plus::Support::Behaviors;
+  return Git::Wrapper::Plus::Support::Behaviors->new();
+}
+
 
 =method C<supports_command>
 
@@ -118,56 +125,10 @@ Should be supported everywhere that matters ( since 0.99 ), but it was not alway
 
 =cut
 
-our $behavior_db = {
-  'add-updates-index' => [
-    {
-      'min'      => '1.5.0',
-      'min_tag'  => '1.5.0-rc0',
-      'min_sha1' => '366bfcb68f4d98a43faaf17893a1aa0a7a9e2c58',
-    },
-  ],
-  'can-checkout-detached' => [
-    {
-      'min'      => '1.5.0',
-      'min_tag'  => '1.5.0-rc1',
-      'min_sha1' => 'c847f537125ceab3425205721fdaaa834e6d8a83',
-    },
-  ],
-  '2-arg-cat-file' => [
-    {
-      'min_sha1' => 'bf0c6e839c692142784caf07b523cd69442e57a5',
-      'min_tag'  => '0.99',
-      'min'      => '0.99',
-    },
-  ],
-};
-
 sub supports_behavior {
   my ( $self, $beh ) = @_;
-  if ( not exists $behavior_db->{$beh} ) {
-    return;
-  }
-  for my $pair ( @{ $behavior_db->{$beh} } ) {
-    if ( exists $pair->{min} and not exists $pair->{max} ) {
-      if ( $self->versions->newer_than( $pair->{min} ) ) {
-        return 1;
-      }
-      return 0;
-    }
-    if ( exists $pair->{max} and not exists $pair->{min} ) {
-      if ( $self->versions->older_than( $pair->{max} ) ) {
-        return 1;
-      }
-      return 0;
-    }
-    if ( not exists $pair->{max} and not exists $pair->{min} ) {
-      warn 'Bad quality behavior db entry with no range control';
-      next;
-    }
-    next unless $self->versions->newer_than( $pair->{min} );
-    next unless $self->versions->older_than( $pair->{max} );
-    return 1;
-  }
+  return unless $self->behaviors->has_entry($beh);
+  return 1 if $self->behaviors->entry_supports( $beh, $self->versions );
   return 0;
 }
 
