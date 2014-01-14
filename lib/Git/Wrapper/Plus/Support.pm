@@ -341,7 +341,7 @@ The syntax:
 
     git cat-file <type> <commitish>
 
-Should be supported everywhere that matters ( since 0.99 ), but it was not always git sytnax.
+Should be supported everywhere that matters ( since 0.99 ), but it was not always git syntax.
 
 =head1 AUTHOR
 
