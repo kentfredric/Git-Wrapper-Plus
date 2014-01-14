@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Ref::Branch;
 
 # ABSTRACT: A Branch object
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

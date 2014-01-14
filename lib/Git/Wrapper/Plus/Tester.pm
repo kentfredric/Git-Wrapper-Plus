@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Tester;
 
 # ABSTRACT: Utility for testing things with a git repository
 
+# AUTHORITY
+
 use Moo qw( has );
 use Path::Tiny qw(path);
 

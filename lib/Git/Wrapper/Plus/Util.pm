@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Util;
 
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
 
+# AUTHORITY
+
 use Sub::Exporter::Progressive -setup => {
   exports => [qw( exit_status_handler )],
   groups  => {

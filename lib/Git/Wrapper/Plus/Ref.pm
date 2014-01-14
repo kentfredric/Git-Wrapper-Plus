@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Ref;
 
 # ABSTRACT: An Abstract REF node
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Versions;
 
 # ABSTRACT: Analyze and compare git versions
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

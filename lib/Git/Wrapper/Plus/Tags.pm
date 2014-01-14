@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Tags;
 
 # ABSTRACT: Extract all tags from a repository
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

@@ -7,6 +7,8 @@ package Git::Wrapper::Plus;
 
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

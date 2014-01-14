@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Branches;
 
 # ABSTRACT: Extract branches from Git
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Ref::Tag;
 
 # ABSTRACT: A single tag object
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

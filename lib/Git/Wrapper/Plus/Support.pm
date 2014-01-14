@@ -7,6 +7,8 @@ package Git::Wrapper::Plus::Support;
 
 # ABSTRACT: Determine what versions of things support what
 
+# AUTHORITY
+
 use Moo qw( has );
 
 =head1 SYNOPSIS
