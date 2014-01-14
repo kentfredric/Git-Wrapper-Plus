@@ -9,9 +9,53 @@ package Git::Wrapper::Plus::Support::Range;
 
 # AUTHORITY
 
+=head1 SYNOPSIS
+
+    my $range = Git::Wrapper::Plus::Support::Range->new(
+        min => '1.5.0',
+        # min_sha1 => ...
+        # min_tag  => ...
+        max => '1.6.0',
+        # max_sha1 => ...
+        # max_tag  => ...
+    );
+    if ( $range->supports_version( $gwp->versions ) ) {
+        print "Some feature is supported!"
+    }
+
+B<NOTE:> Either C<min> or C<max> is mandatory, or both.
+
+=cut
+
 use Moo qw( has );
 
 our @CARP_NOT;
+
+=attr C<min>
+
+The minimum version this range supports
+
+=attr C<max>
+
+The maximum version this range supports
+
+=attr C<min_tag>
+
+The minimum tag that contained C<min_sha1>. Annotative only, not used.
+
+=attr C<max_tag>
+
+The first tag that contained C<max_sha1>. Annotative only, not used.
+
+=attr C<min_sha1>
+
+The C<sha1> this feature was added in. Annotative only, not used.
+
+=attr C<max_sha1>
+
+The C<sha1> this feature was removed in. Annotative only, not used.
+
+=cut
 
 has 'min' => ( is => ro =>, predicate => 'has_min' );
 has 'max' => ( is => ro =>, predicate => 'has_max' );
@@ -21,6 +65,11 @@ has 'max_tag' => ( is => ro =>, predicate => 'has_max_tag' );
 
 has 'min_sha1' => ( is => ro =>, predicate => 'has_min_sha1' );
 has 'max_sha1' => ( is => ro =>, predicate => 'has_max_sha1' );
+
+=for Pod::Coverage::TrustPod
+BUILD
+
+=cut
 
 sub BUILD {
   my ($self) = @_;
