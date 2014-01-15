@@ -4,12 +4,18 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support;
-$Git::Wrapper::Plus::Support::VERSION = '0.004000';
+$Git::Wrapper::Plus::Support::VERSION = '0.003102';
 # ABSTRACT: Determine what versions of things support what
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moo qw( has );
+
+
+
+
+
+
 
 
 
@@ -37,6 +43,13 @@ sub _build_versions {
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
 
+
+
+
+
+
+
+
 has 'commands' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_commands {
@@ -44,12 +57,26 @@ sub _build_commands {
   return Git::Wrapper::Plus::Support::Commands->new();
 }
 
+
+
+
+
+
+
+
 has 'behaviors' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_behaviors {
   require Git::Wrapper::Plus::Support::Behaviors;
   return Git::Wrapper::Plus::Support::Behaviors->new();
 }
+
+
+
+
+
+
+
 
 has 'arguments' => ( is => ro =>, lazy => 1, builder => 1 );
 
@@ -78,40 +105,12 @@ sub _build_arguments {
 
 
 
-
-
-
-
 sub supports_command {
   my ( $self, $command ) = @_;
   return unless $self->commands->has_entry($command);
   return 1 if $self->commands->entry_supports( $command, $self->versions );
   return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -183,7 +182,7 @@ Git::Wrapper::Plus::Support - Determine what versions of things support what
 
 =head1 VERSION
 
-version 0.004000
+version 0.003102
 
 =head1 SYNOPSIS
 
@@ -219,10 +218,6 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
 
 See L<< C<::Support::Commands>|Git::Wrapper::Plus::Support::Commands >> for details.
 
-B<Currently indexed commands>
-
-    for-each-ref init init-db update-cache update-index ls-remote cat-file show-diff write-tree commit-tree
-
 =head2 C<supports_behavior>
 
 Indicates if a given command behaves in a certain way
@@ -241,30 +236,6 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
 
 See L<< C<::Support::Behaviors>|Git::Wrapper::Plus::Support::Behaviors >> for details.
 
-=head4 C<add-updates-index>
-
-Older versions of git required you to do:
-
-    git update-index $FILE
-
-Instead of
-
-    git add $FILE
-
-To update content.
-
-=head4 C<can-checkout-detached>
-
-Not all versions of Git can checkout a detached head.
-
-=head4 C<2-arg-cat-file>
-
-The syntax:
-
-    git cat-file <type> <commitish>
-
-Should be supported everywhere that matters ( since 0.99 ), but it was not always git syntax.
-
 =head2 C<supports_argument>
 
 Indicates if a given command accepts a specific argument.
@@ -282,6 +253,27 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
     }
 
 See L<< C<::Support::Arguments>|Git::Wrapper::Plus::Support::Arguments >> for details.
+
+=head1 ATTRIBUTES
+
+=head2 C<git>
+
+=head2 C<versions>
+
+=head2 C<commands>
+
+This attribute contains a L<< C<::Support::Commands>|Git::Wrapper::Plus::Support::Commands >>
+object for data on git command support.
+
+=head2 C<behaviors>
+
+This attribute contains a L<< C<::Support::Behaviors>|Git::Wrapper::Plus::Support::Behaviors >>
+object for data on git command behavior support.
+
+=head2 C<arguments>
+
+This attribute contains a L<< C<::Support::Arguments>|Git::Wrapper::Plus::Support::Arguments >>
+object for data on git command argument support.
 
 =head1 AUTHOR
 

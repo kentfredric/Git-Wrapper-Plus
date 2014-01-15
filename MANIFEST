@@ -68,7 +68,7 @@ t/00-compile/lib_Git_Wrapper_Plus_Versions_pm.t
 t/00-compile/lib_Git_Wrapper_Plus_pm.t
 t/00-report-git-support.t
 t/00-report-git-version.t
-t/000-report-versions-tiny.t
+t/00-report-prereqs.t
 t/branches/basic.t
 t/plus/basic.t
 t/plus/path-class-constructor.t

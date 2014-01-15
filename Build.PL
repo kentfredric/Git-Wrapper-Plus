@@ -18,7 +18,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Git-Wrapper-Plus",
-  "dist_version" => "0.004000",
+  "dist_version" => "0.003102",
   "license" => "perl",
   "module_name" => "Git::Wrapper::Plus",
   "recommends" => {},
@@ -39,6 +39,9 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
+    "ExtUtils::MakeMaker" => 0,
+    "File::Spec::Functions" => 0,
+    "List::Util" => 0,
     "Test::Fatal" => 0,
     "Test::More" => "1.001002",
     "Test::Requires" => 0
@@ -47,6 +50,9 @@ my %module_build_args = (
 
 
 my %fallback_build_requires = (
+  "ExtUtils::MakeMaker" => 0,
+  "File::Spec::Functions" => 0,
+  "List::Util" => 0,
   "Module::Build" => "0.4204",
   "Test::Fatal" => 0,
   "Test::More" => "1.001002",
