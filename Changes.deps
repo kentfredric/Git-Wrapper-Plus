@@ -1,4 +1,12 @@
 0.004000
+ [Added / test recommends]
+ - CPAN::Meta
+ - CPAN::Meta::Requirements
+
+ [Added / test requires]
+ - ExtUtils::MakeMaker
+ - File::Spec::Functions
+ - List::Util
 
 0.003101 2014-01-14T07:00:13Z
 
