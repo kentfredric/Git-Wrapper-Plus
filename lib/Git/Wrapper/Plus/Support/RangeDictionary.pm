@@ -11,6 +11,22 @@ package Git::Wrapper::Plus::Support::RangeDictionary;
 
 use Moo qw( has );
 
+=head1 SYNOPSIS
+
+The C<RangeDictionary> associates tokens with C<RangeSet>s of C<Range>s that support that token.
+
+    my $dict = Git::Wrapper::Plus::Support::RangeDictionary->new();
+    $dict->add_range('foo' => {
+        min => '1.0', max => '2.0'
+    });
+    $dict->add_range('bar' => {
+        min => '3.0', max => '4.0'
+    });
+    # Returns true on Git 3.5, False on 2.5
+    $dict->has_entry('bar') and $dict->entry_supports('bar', $version_object );
+
+=cut
+
 has 'dictionary' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_dictionary {
@@ -49,6 +65,25 @@ sub _dictionary_item_add_range_object {
   return;
 }
 
+=method C<add_range>
+
+    $dict->add_range( name => { min => 5, max => 6 });
+    $dict->add_range( name => { min => 7, max => 8 });
+
+Is equivalent to:
+
+    $dict->dictionary->{name} = ::RangeSet->new(
+        items => [
+            ::Range->new( min => 5, max => 6 ),
+            ::Range->new( min => 7, max => 8 ),
+        ],
+    );
+
+That is, this is a shorthand to say that for given token C<name>, that the given parameters
+define an I<additional> range of versions to incorporate as being considered "supported".
+
+=cut
+
 sub add_range {
   my ( $self, $name, @args ) = @_;
   $self->_dictionary_ensure_item($name);
@@ -56,16 +91,50 @@ sub add_range {
   return;
 }
 
+=method C<has_entry>
+
+Determines if a given C<name> has associated data or not.
+
+    $dict->has_entry('name')
+
+This method returning C<undef> should indicate that a features support status
+is either unknown, or undocumented, and you should proceed with caution, assuming
+either support, or non support, based on preference.
+
+=cut
+
 sub has_entry {
   my ( $self, $name ) = @_;
   return $self->_dictionary_exists($name);
 }
+
+=method C<entries>
+
+Returns the list of features that ranges exist for
+
+    for my $entry ( $dict->entries ) {
+
+    }
+
+=cut
 
 sub entries {
   my ($self)    = @_;
   my (@entries) = sort keys %{ $self->dictionary };
   return @entries;
 }
+
+=method C<entry_supports>
+
+Determine if a given feature supports a given version
+
+    $dict->entry_supports( $name, $version_object );
+
+For instance:
+
+    $dict->entry_supports('add', $gwp->versoins );
+
+=cut
 
 sub entry_supports {
   my ( $self, $name, $version_object ) = @_;
