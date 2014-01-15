@@ -163,6 +163,26 @@ sub supports_behavior {
   return 0;
 }
 
+=method C<supports_argument>
+
+Indicates if a given command accepts a specific argument.
+
+This works by using a hand-coded table for interesting values
+by processing C<git log> for git itself.
+
+Returns C<undef> if the status of a commands argument is unknown ( that is, has not been added
+to the map yet ), C<0> if it is not supported, and C<1> if it is.
+
+    if ( $supporter->supports_argument('cat-file','-e') ) ) {
+        ...
+    } else {
+        ...
+    }
+
+See L<< C<::Support::Arguments>|Git::Wrapper::Plus::Support::Arguments >> for details.
+
+=cut
+
 sub supports_argument {
   my ( $self, $command, $argument ) = @_;
   return unless $self->arguments->has_argument( $command, $argument );
