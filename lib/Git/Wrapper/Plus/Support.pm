@@ -128,31 +128,7 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
         ...
     }
 
-B<Current behaviors>
-
-=head4 C<add-updates-index>
-
-Older versions of git required you to do:
-
-    git update-index $FILE
-
-Instead of
-
-    git add $FILE
-
-To update content.
-
-=head4 C<can-checkout-detached>
-
-Not all versions of Git can checkout a detached head.
-
-=head4 C<2-arg-cat-file>
-
-The syntax:
-
-    git cat-file <type> <commitish>
-
-Should be supported everywhere that matters ( since 0.99 ), but it was not always git syntax.
+See L<< C<::Support::Behaviors>|Git::Wrapper::Plus::Support::Behaviors >> for details.
 
 =cut
 
