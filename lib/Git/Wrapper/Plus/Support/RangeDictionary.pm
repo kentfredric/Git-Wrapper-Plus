@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support::RangeDictionary;
-$Git::Wrapper::Plus::Support::RangeDictionary::VERSION = '0.003102';
+$Git::Wrapper::Plus::Support::RangeDictionary::VERSION = '0.004000';
 # ABSTRACT: A key -> range list mapping for support features
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -158,7 +158,7 @@ Git::Wrapper::Plus::Support::RangeDictionary - A key -> range list mapping for s
 
 =head1 VERSION
 
-version 0.003102
+version 0.004000
 
 =head1 SYNOPSIS
 

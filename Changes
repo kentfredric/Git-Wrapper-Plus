@@ -1,6 +1,6 @@
 Release history for Git-Wrapper-Plus
 
-0.003102 2014-01-15T19:03:05Z
+0.004000 2014-01-15T19:20:20Z
  [00 Major]
  - ::Support class broken into several components
  - Top level our variables in ::Support gone in favour of attributes
