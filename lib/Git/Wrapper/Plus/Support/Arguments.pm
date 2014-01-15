@@ -11,6 +11,33 @@ package Git::Wrapper::Plus::Support::Arguments;
 
 use Moo qw( has );
 
+=head1 SUPPORTED ARGUMENTS
+
+=head2 C<cat-file>
+
+=head3 C<-e>
+
+C<cat-file -e> Was added in Git 1.0.0
+
+=cut
+
+=attr C<entries>
+
+2D Hash of command/argument/ranges
+
+Though you never want to deal with this complex data directly...
+
+    cat-file => {
+        ::RangeDictionary->new( dictionary => {
+                '-e' => RangeSet->new(
+                            items => [  Range->new( min => '1.0.0' ) ]
+               )
+            },
+        ),
+    };
+
+=cut
+
 has 'entries' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_entries {
@@ -27,11 +54,31 @@ sub _build_entries {
   return $hash;
 }
 
+=method C<commands>
+
+Returns a list of C<git> commands we have support data for.
+
+    for my $cmd ( $arg->commands ) {
+
+    }
+
+=cut
+
 sub commands {
   my ($self)  = @_;
   my (@items) = sort keys %{ $self->entries };
   return @items;
 }
+
+=method C<arguments>
+
+Returns a list of argument names we have support data for, with the given command
+
+    for my $argument ( $arg->arguments('cat-file') ) {
+
+    }
+
+=cut
 
 sub arguments {
   my ( $self, $command ) = @_;
@@ -39,16 +86,44 @@ sub arguments {
   return $self->entries->{$command}->entries;
 }
 
+=method C<has_command>
+
+Determines if a given command is listed in the support data
+
+    if ( $arg->has_command('cat-file') ) {
+
+    }
+
+=cut
+
 sub has_command {
   my ( $self, $command ) = @_;
   return exists $self->entries->{$command};
 }
+
+=method C<has_argument>
+
+Determines if a given C<argument> is listed in the support data
+
+    if ( $arg->has_argument('cat-file', '-e' ) ) {
+
+    }
+
+=cut
 
 sub has_argument {
   my ( $self, $command, $argument ) = @_;
   return unless $self->has_command($command);
   return $self->entries->{$command}->has_entry($argument);
 }
+
+=method C<argument_supports>
+
+Determine if a given argument is supported by a given C<git> version
+
+    $arg->argument_support( 'cat-file', '-e', $GWP->versions );
+
+=cut
 
 sub argument_supports {
   my ( $self, $command, $argument, $version_object ) = @_;
