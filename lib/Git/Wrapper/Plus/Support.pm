@@ -101,9 +101,7 @@ to the map yet ), C<0> if it is not supported, and C<1> if it is.
         ...
     }
 
-B<Currently indexed commands>
-
-    for-each-ref init init-db update-cache update-index ls-remote cat-file show-diff write-tree commit-tree
+See L<< C<::Support::Commands>|Git::Wrapper::Plus::Support::Commands >> for details.
 
 =cut
 
