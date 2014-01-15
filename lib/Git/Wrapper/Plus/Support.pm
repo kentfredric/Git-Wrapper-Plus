@@ -27,6 +27,12 @@ use Moo qw( has );
 
 =cut
 
+=attr C<git>
+
+=attr C<versions>
+
+=cut
+
 has 'git' => ( is => ro =>, required => 1 );
 
 has 'versions' => ( is => ro =>, lazy => 1, builder => 1 );
@@ -37,6 +43,13 @@ sub _build_versions {
   return Git::Wrapper::Plus::Versions->new( git => $self->git );
 }
 
+=attr C<commands>
+
+This attribute contains a L<< C<::Support::Commands>|Git::Wrapper::Plus::Support::Commands >>
+object for data on git command support.
+
+=cut
+
 has 'commands' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_commands {
@@ -44,12 +57,26 @@ sub _build_commands {
   return Git::Wrapper::Plus::Support::Commands->new();
 }
 
+=attr C<behaviors>
+
+This attribute contains a L<< C<::Support::Behaviors>|Git::Wrapper::Plus::Support::Behaviors >>
+object for data on git command behavior support.
+
+=cut
+
 has 'behaviors' => ( is => ro =>, lazy => 1, builder => 1 );
 
 sub _build_behaviors {
   require Git::Wrapper::Plus::Support::Behaviors;
   return Git::Wrapper::Plus::Support::Behaviors->new();
 }
+
+=attr C<arguments>
+
+This attribute contains a L<< C<::Support::Arguments>|Git::Wrapper::Plus::Support::Arguments >>
+object for data on git command argument support.
+
+=cut
 
 has 'arguments' => ( is => ro =>, lazy => 1, builder => 1 );
 
