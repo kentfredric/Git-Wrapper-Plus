@@ -1,9 +1,16 @@
 Release history for Git-Wrapper-Plus
 
-0.004010 2014-01-31T02:31:17Z
+0.004010 2014-01-31T02:50:40Z
  [00 Minor]
  - Tooling switched to EUMM
  - Tooling hardness softened
+
+ [Dependencies::AggregateChange]
+ - 5.8 : Was 60 Dependencies - Still 60 Dependencies
+ - 5.19 : Was 31 Depedencies - Now 29 Dependencies
+ - Because...
+ - Git::Wrapper requires Path::Class
+ - Path::Class	requires Module::Build
 
  [Dependencies::Stats]
  - Dependencies changed since 0.004000, see Changes.deps{,.all,.dev} for
