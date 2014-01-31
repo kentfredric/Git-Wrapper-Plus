@@ -1,6 +1,8 @@
 Release history for Git-Wrapper-Plus
 
 {{$NEXT}}
+
+0.004010 2014-01-31T02:56:20Z
  [00 Minor]
  - Tooling switched to EUMM
  - Tooling hardness softened
