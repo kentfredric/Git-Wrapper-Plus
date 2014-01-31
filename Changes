@@ -1,9 +1,17 @@
 Release history for Git-Wrapper-Plus
 
-0.004001 2014-01-15T21:37:28Z
+0.004010 2014-01-31T02:30:27Z
  [00 Minor]
  - Tooling switched to EUMM
  - Tooling hardness softened
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.004000, see Changes.deps{,.all,.dev} for
+   details
+ - build: -1
+ - configure: +2 -1
+ - develop: +2 ↑1 -2
+ - test: +3 ↑1 ↓1
 
 0.004000 2014-01-15T19:32:07Z
  [00 Major]
