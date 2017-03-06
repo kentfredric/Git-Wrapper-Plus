@@ -76,7 +76,6 @@
       "Test::Requires" : "0.10",
       "Try::Tiny" : "0.28",
       "strict" : "1.11",
-      "utf8" : "1.19",
       "warnings" : "1.37"
    },
    "perl" : {

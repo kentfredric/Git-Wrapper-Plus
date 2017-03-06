@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.008;
+use 5.006;
 
 use ExtUtils::MakeMaker;
 
@@ -14,7 +14,7 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Git-Wrapper-Plus",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.008",
+  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "Git::Wrapper::Plus",
   "PREREQ_PM" => {
     "Carp" => 0,
@@ -26,7 +26,6 @@ my %WriteMakefileArgs = (
     "Sub::Exporter::Progressive" => 0,
     "Try::Tiny" => 0,
     "strict" => 0,
-    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -58,7 +57,6 @@ my %FallbackPrereqs = (
   "Test::Requires" => 0,
   "Try::Tiny" => 0,
   "strict" => 0,
-  "utf8" => 0,
   "warnings" => 0
 );
 

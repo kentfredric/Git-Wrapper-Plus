@@ -8,10 +8,10 @@ build_requires:
   Test::Fatal: '0'
   Test::More: '0'
   Test::Requires: '0'
-  perl: '5.008'
+  perl: '5.006'
 configure_requires:
   ExtUtils::MakeMaker: '0'
-  perl: '5.008'
+  perl: '5.006'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 6.009, CPAN::Meta::Converter version 2.150010'
 license: perl
@@ -83,9 +83,8 @@ requires:
   Sort::Versions: '0'
   Sub::Exporter::Progressive: '0'
   Try::Tiny: '0'
-  perl: '5.008'
+  perl: '5.006'
   strict: '0'
-  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/Git-Wrapper-Plus/issues
