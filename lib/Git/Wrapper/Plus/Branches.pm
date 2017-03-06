@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Branches;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Extract branches from Git
 
@@ -180,7 +180,7 @@ Git::Wrapper::Plus::Branches - Extract branches from Git
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 

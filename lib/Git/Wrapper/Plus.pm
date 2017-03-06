@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
@@ -223,7 +223,7 @@ Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an Object Orient
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 DESCRIPTION
 

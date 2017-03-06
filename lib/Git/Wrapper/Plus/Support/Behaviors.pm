@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support::Behaviors;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Database of Git Behavior Support
 
@@ -76,7 +76,7 @@ Git::Wrapper::Plus::Support::Behaviors - Database of Git Behavior Support
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SUPPORTED BEHAVIORS
 

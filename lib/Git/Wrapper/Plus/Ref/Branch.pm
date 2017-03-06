@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Ref::Branch;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: A Branch object
 
@@ -146,7 +146,7 @@ Git::Wrapper::Plus::Ref::Branch - A Branch object
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 

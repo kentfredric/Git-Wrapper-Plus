@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Util;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
 
@@ -90,7 +90,7 @@ Git::Wrapper::Plus::Util - Misc plumbing tools for Git::Wrapper::Plus
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 FUNCTIONS
 

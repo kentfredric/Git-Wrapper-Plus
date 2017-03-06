@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Ref::Tag;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: A single tag object
 
@@ -118,7 +118,7 @@ Git::Wrapper::Plus::Ref::Tag - A single tag object
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 

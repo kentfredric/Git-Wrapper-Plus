@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Ref;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: An Abstract REF node
 
@@ -98,7 +98,7 @@ Git::Wrapper::Plus::Ref - An Abstract REF node
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 

@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Tags;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Extract all tags from a repository
 
@@ -226,7 +226,7 @@ Git::Wrapper::Plus::Tags - Extract all tags from a repository
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 

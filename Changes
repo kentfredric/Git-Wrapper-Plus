@@ -1,5 +1,7 @@
 Release history for Git-Wrapper-Plus
 
+0.004012 2017-03-06T07:59:57Z 975bd7b
+
 0.004011 2017-03-06T07:51:10Z 10e5bc7
  [Bugfix]
  - Fix test issues with -Ddefault_inc_excludes_dot

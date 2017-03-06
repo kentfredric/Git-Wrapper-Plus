@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support::Commands;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Database of command support data
 
@@ -147,7 +147,7 @@ Git::Wrapper::Plus::Support::Commands - Database of command support data
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SUPPORTED COMMANDS
 

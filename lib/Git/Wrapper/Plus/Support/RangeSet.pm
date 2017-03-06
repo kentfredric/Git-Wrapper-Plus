@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support::RangeSet;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: A set of ranges of supported things
 
@@ -97,7 +97,7 @@ Git::Wrapper::Plus::Support::RangeSet - A set of ranges of supported things
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 METHODS
 

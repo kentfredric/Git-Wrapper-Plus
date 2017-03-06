@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Determine what versions of things support what
 
@@ -183,7 +183,7 @@ Git::Wrapper::Plus::Support - Determine what versions of things support what
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 

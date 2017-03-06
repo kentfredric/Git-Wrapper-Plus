@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support::RangeDictionary;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: A key -> range list mapping for support features
 
@@ -159,7 +159,7 @@ Git::Wrapper::Plus::Support::RangeDictionary - A key -> range list mapping for s
 
 =head1 VERSION
 
-version 0.004011
+version 0.004012
 
 =head1 SYNOPSIS
 
