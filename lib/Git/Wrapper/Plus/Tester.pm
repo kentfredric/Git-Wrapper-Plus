@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Tester;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Utility for testing things with a git repository
 

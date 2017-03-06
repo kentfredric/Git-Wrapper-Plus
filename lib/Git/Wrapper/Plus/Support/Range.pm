@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support::Range;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: A record describing a range of supported versions
 

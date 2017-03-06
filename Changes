@@ -1,6 +1,8 @@
 Release history for Git-Wrapper-Plus
 
 {{$NEXT}}
+
+0.004011 2017-03-06T07:51:10Z 10e5bc7
  [Bugfix]
  - Fix test issues with -Ddefault_inc_excludes_dot
  - Closes https://github.com/kentnl/Git-Wrapper-Plus/issues/1

@@ -4,7 +4,7 @@ use warnings;
 
 package Git::Wrapper::Plus::Support::Arguments;
 
-our $VERSION = '0.004011';
+our $VERSION = '0.004012';
 
 # ABSTRACT: Database of command argument support data
 
