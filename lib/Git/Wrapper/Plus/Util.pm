@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Util;
-$Git::Wrapper::Plus::Util::VERSION = '0.004010';
+$Git::Wrapper::Plus::Util::VERSION = '0.004011';
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -60,15 +60,9 @@ sub exit_status_handler {
   catch {
     ## no critic (ErrorHandling::RequireUseOfExceptions)
     undef $return;
-    if ( not ref $_ ) {
-      die $_;
-    }
-    if ( not blessed $_ ) {
-      die $_;
-    }
-    if ( not $_->isa('Git::Wrapper::Exception') ) {
-      die $_;
-    }
+    die $_ unless ref;
+    die $_ unless blessed $_;
+    die $_ unless $_->isa('Git::Wrapper::Exception');
     for my $status ( sort keys %{$status_map} ) {
       if ( $status == $_->status ) {
         $return = $status_map->{$status}->($_);
@@ -95,7 +89,7 @@ Git::Wrapper::Plus::Util - Misc plumbing tools for Git::Wrapper::Plus
 
 =head1 VERSION
 
-version 0.004010
+version 0.004011
 
 =head1 FUNCTIONS
 
@@ -131,11 +125,11 @@ Any other circumstances ( like a status code not existing in the map ) are simpl
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Tester;
-$Git::Wrapper::Plus::Tester::VERSION = '0.004010';
+$Git::Wrapper::Plus::Tester::VERSION = '0.004011';
 # ABSTRACT: Utility for testing things with a git repository
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -190,7 +190,7 @@ Git::Wrapper::Plus::Tester - Utility for testing things with a git repository
 
 =head1 VERSION
 
-version 0.004010
+version 0.004011
 
 =head1 SYNOPSIS
 
@@ -289,11 +289,11 @@ B<OPTIONAL>. Defaults to C<< ->committer_email >>
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

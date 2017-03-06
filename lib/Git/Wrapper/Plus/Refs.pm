@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Refs;
-$Git::Wrapper::Plus::Refs::VERSION = '0.004010';
+$Git::Wrapper::Plus::Refs::VERSION = '0.004011';
 # ABSTRACT: Work with refs
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -167,7 +167,7 @@ Git::Wrapper::Plus::Refs - Work with refs
 
 =head1 VERSION
 
-version 0.004010
+version 0.004011
 
 =head1 SYNOPSIS
 
@@ -235,11 +235,11 @@ B<REQUIRED>: A Git::Wrapper compatible object
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

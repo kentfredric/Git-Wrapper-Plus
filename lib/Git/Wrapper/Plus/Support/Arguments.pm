@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support::Arguments;
-$Git::Wrapper::Plus::Support::Arguments::VERSION = '0.004010';
+$Git::Wrapper::Plus::Support::Arguments::VERSION = '0.004011';
 # ABSTRACT: Database of command argument support data
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -146,7 +146,7 @@ Git::Wrapper::Plus::Support::Arguments - Database of command argument support da
 
 =head1 VERSION
 
-version 0.004010
+version 0.004011
 
 =head1 METHODS
 
@@ -215,11 +215,11 @@ C<cat-file -e> Was added in Git 1.0.0
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

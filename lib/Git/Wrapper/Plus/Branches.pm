@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Branches;
-$Git::Wrapper::Plus::Branches::VERSION = '0.004010';
+$Git::Wrapper::Plus::Branches::VERSION = '0.004011';
 # ABSTRACT: Extract branches from Git
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -135,9 +135,7 @@ sub _current_branch_name {
       128 => sub { return },
     },
   );
-  for (@current_names) {
-    $_ =~ s{\A refs/heads/ }{}msx;
-  }
+  s{\A refs/heads/ }{}msx for @current_names;
   return @current_names;
 
 }
@@ -181,7 +179,7 @@ Git::Wrapper::Plus::Branches - Extract branches from Git
 
 =head1 VERSION
 
-version 0.004010
+version 0.004011
 
 =head1 SYNOPSIS
 
@@ -275,11 +273,11 @@ B<OPTIONAL>: A C<Git::Wrapper::Plus::Refs> Compatible object ( mostly for plumbi
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

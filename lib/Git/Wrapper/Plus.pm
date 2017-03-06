@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus;
-$Git::Wrapper::Plus::VERSION = '0.004010';
+$Git::Wrapper::Plus::VERSION = '0.004011';
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -222,7 +222,7 @@ Git::Wrapper::Plus - A Toolkit for working with Git::Wrapper in an Object Orient
 
 =head1 VERSION
 
-version 0.004010
+version 0.004011
 
 =head1 DESCRIPTION
 
@@ -340,11 +340,11 @@ Construction takes 4 Forms:
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
