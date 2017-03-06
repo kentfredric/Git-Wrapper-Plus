@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support::Commands;
-$Git::Wrapper::Plus::Support::Commands::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: Database of command support data
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

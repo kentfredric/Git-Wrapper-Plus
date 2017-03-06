@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Util;
-$Git::Wrapper::Plus::Util::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support::Behaviors;
-$Git::Wrapper::Plus::Support::Behaviors::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: Database of Git Behavior Support
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

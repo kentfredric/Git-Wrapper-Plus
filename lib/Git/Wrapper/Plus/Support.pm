@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Support;
-$Git::Wrapper::Plus::Support::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: Determine what versions of things support what
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

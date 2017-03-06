@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Ref::Branch;
-$Git::Wrapper::Plus::Ref::Branch::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: A Branch object
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

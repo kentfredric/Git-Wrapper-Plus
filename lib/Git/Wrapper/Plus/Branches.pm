@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Branches;
-$Git::Wrapper::Plus::Branches::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: Extract branches from Git
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

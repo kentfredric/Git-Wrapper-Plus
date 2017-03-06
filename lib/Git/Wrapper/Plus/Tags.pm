@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Git::Wrapper::Plus::Tags;
-$Git::Wrapper::Plus::Tags::VERSION = '0.004011';
+
+our $VERSION = '0.004011';
+
 # ABSTRACT: Extract all tags from a repository
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
