@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Tags;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Extract all tags from a repository
 
 # AUTHORITY

@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: A Toolkit for working with Git::Wrapper in an Object Oriented Way.
 
 # AUTHORITY

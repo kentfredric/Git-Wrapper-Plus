@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Util;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Misc plumbing tools for Git::Wrapper::Plus
 
 # AUTHORITY

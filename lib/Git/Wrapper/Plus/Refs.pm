@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Refs;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Work with refs
 
 # AUTHORITY

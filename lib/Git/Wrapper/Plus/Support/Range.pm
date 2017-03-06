@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Support::Range;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: A record describing a range of supported versions
 
 # AUTHORITY

@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Tester;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Utility for testing things with a git repository
 
 # AUTHORITY

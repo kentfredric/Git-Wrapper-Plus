@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Branches;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Extract branches from Git
 
 # AUTHORITY

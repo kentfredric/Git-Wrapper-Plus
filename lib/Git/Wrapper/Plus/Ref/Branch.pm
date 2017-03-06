@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Ref::Branch;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: A Branch object
 
 # AUTHORITY

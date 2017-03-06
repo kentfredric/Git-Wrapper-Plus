@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Support::Behaviors;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Database of Git Behavior Support
 
 # AUTHORITY

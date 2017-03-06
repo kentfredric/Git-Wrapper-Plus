@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Support::RangeDictionary;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: A key -> range list mapping for support features
 
 # AUTHORITY

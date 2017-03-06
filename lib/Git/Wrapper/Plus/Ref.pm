@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Ref;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: An Abstract REF node
 
 # AUTHORITY

@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Support;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Determine what versions of things support what
 
 # AUTHORITY

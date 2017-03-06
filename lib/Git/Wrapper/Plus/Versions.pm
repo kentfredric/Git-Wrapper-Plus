@@ -5,6 +5,8 @@ use utf8;
 
 package Git::Wrapper::Plus::Versions;
 
+our $VERSION = '0.004011';
+
 # ABSTRACT: Analyze and compare git versions
 
 # AUTHORITY
