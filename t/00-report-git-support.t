@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 3;
 
 # ABSTRACT: Report supported features of your git
 
@@ -19,62 +19,54 @@ my $data = {
 
 $t->run_env(
   sub {
-    subtest 'commands' => sub {
-      note "\nCommands:";
-      for my $command ( $s->commands->entries ) {
-        my $msg = '- ' . $command . ' ';
-        if ( $s->supports_command($command) ) {
+    note "\nCommands:";
+    for my $command ( $s->commands->entries ) {
+      my $msg = '- ' . $command . ' ';
+      if ( $s->supports_command($command) ) {
+        $msg .= "supported";
+        push @{ $data->{commands}->{supported} }, $command;
+      }
+      else {
+        push @{ $data->{commands}->{unsupported} }, $command;
+        $msg .= "UNSUPPORTED";
+      }
+      note $msg;
+
+    }
+    pass("Commands reporting ok");
+    note "\nBehaviours:";
+
+    for my $behavior ( $s->behaviors->entries ) {
+      my $msg = '- ' . $behavior . ' ';
+      if ( $s->supports_behavior($behavior) ) {
+        $msg .= "supported";
+        push @{ $data->{behaviors}->{supported} }, $behavior;
+      }
+      else {
+        push @{ $data->{behaviors}->{unsupported} }, $behavior;
+        $msg .= "UNSUPPORTED";
+      }
+      note $msg;
+    }
+    pass("Behaviours reporting ok");
+
+    note "\nArguments:";
+
+    for my $cmd ( $s->arguments->commands ) {
+      for my $arg ( $s->arguments->arguments($cmd) ) {
+        my $msg = '- ' . $cmd . ' ' . $arg . ' ';
+        if ( $s->supports_argument( $cmd, $arg ) ) {
           $msg .= "supported";
-          push @{ $data->{commands}->{supported} }, $command;
+          push @{ $data->{arguments}->{supported} }, $cmd . ' ' . $arg;
         }
         else {
-          push @{ $data->{commands}->{unsupported} }, $command;
+          push @{ $data->{arguments}->{unsupported} }, $cmd . ' ' . $arg;
           $msg .= "UNSUPPORTED";
         }
         note $msg;
-
       }
-      pass("Commands reporting ok");
-    };
-    subtest 'behaviors' => sub {
-      note "\nBehaviours:";
-
-      for my $behavior ( $s->behaviors->entries ) {
-        my $msg = '- ' . $behavior . ' ';
-        if ( $s->supports_behavior($behavior) ) {
-          $msg .= "supported";
-          push @{ $data->{behaviors}->{supported} }, $behavior;
-        }
-        else {
-          push @{ $data->{behaviors}->{unsupported} }, $behavior;
-          $msg .= "UNSUPPORTED";
-        }
-        note $msg;
-      }
-      pass("Behaviours reporting ok");
-
-    };
-    subtest 'arguments' => sub {
-      note "\nArguments:";
-
-      for my $cmd ( $s->arguments->commands ) {
-        for my $arg ( $s->arguments->arguments($cmd) ) {
-          my $msg = '- ' . $cmd . ' ' . $arg . ' ';
-          if ( $s->supports_argument( $cmd, $arg ) ) {
-            $msg .= "supported";
-            push @{ $data->{arguments}->{supported} }, $cmd . ' ' . $arg;
-          }
-          else {
-            push @{ $data->{arguments}->{unsupported} }, $cmd . ' ' . $arg;
-            $msg .= "UNSUPPORTED";
-          }
-          note $msg;
-        }
-      }
-      pass("Arguments reporting ok");
-
-    };
-
+    }
+    pass("Arguments reporting ok");
   }
 );
 
