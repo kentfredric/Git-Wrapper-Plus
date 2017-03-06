@@ -67,7 +67,7 @@ has 'min_sha1' => ( is => ro =>, predicate => 'has_min_sha1' );
 has 'max_sha1' => ( is => ro =>, predicate => 'has_max_sha1' );
 
 =for Pod::Coverage::TrustPod
-BUILD
+BUILD has_max has_max_sha1 has_max_tag has_min has_min_sha1 has_min_tag
 
 =cut
 

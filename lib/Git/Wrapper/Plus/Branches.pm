@@ -135,9 +135,7 @@ sub _current_branch_name {
       128 => sub { return },
     },
   );
-  for (@current_names) {
-    $_ =~ s{\A refs/heads/ }{}msx;
-  }
+  s{\A refs/heads/ }{}msx for @current_names;
   return @current_names;
 
 }
